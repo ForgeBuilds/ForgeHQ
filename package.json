@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://forge.github.io/Forge/",
+  "homepage": "https://forgebuilds.github.io/Forge/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

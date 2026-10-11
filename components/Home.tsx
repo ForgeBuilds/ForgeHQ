@@ -3,8 +3,8 @@ import { IoLogoGithub } from "react-icons/io5";
 import structPreview from "../src/assets/newtest.png";
 import BackgroundPixelStars from "./background";
 import {MaintenanceBanner} from "./alert.tsx"
-const ORG_URL = "https://github.com/Forge";
-const STRUCT_URL = "https://github.com/Forge/Struct";
+const ORG_URL = "https://github.com/ForgeBuilds";
+const STRUCT_URL = "https://github.com/ForgeBuilds/Struct";
 
 export default function Home() {
   return (

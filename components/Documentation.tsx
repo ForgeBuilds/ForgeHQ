@@ -595,7 +595,7 @@ git status --short`}</CodeBlock>
 
               <DocSection id="building" title="Building from source">
                 <p>Development requires {devRequirements.join(", ")}. Then clone the official repository and start the development shell.</p>
-                <CodeBlock label="Development setup">{`git clone https://github.com/Forge/Struct.git
+                <CodeBlock label="Development setup">{`git clone https://github.com/ForgeBuilds/Struct.git
 cd Struct
 npm install
 npm run tauri dev`}</CodeBlock>
@@ -610,7 +610,7 @@ npm run tauri dev`}</CodeBlock>
 
               <DocSection id="status" title="Project status">
                 <p>Struct is currently in beta and under active development. Architecture, agent capabilities, APIs, shortcuts, and platform support may change between releases. Some features are experimental or incomplete.</p>
-                <p>Development began in May 2026. The project source, releases, and issue tracking live on <a className="text-zinc-100 underline decoration-zinc-600 underline-offset-4" href="https://github.com/Forge/Struct" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+                <p>Development began in May 2026. The project source, releases, and issue tracking live on <a className="text-zinc-100 underline decoration-zinc-600 underline-offset-4" href="https://github.com/ForgeBuilds/Struct" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
                 <Callout title="Help improve Struct"><p>Bug reports with a minimal reproduction, focused feature requests, documentation fixes, and careful contributions are all useful. Do not include API keys, private code, or personal data in a public issue.</p></Callout>
               </DocSection>
             </div>

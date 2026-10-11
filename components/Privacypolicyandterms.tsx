@@ -794,7 +794,7 @@ export default function Legal() {
               <br />
               Forge
               <br />
-              GitHub: Forge/Struct
+              GitHub: ForgeBuilds/Struct
             </p>
           </section>
 

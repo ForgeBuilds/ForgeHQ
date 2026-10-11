@@ -16,14 +16,14 @@ const resourceLinks = [
   { label: "Terms of Service", href: "/privacypolicyandterms" },
   {
     label: "GitHub Repository",
-    href: "https://github.com/Forge",
+    href: "https://github.com/ForgeBuilds",
   },
 ];
 
 const socials = [
   {
     label: "Forge on GitHub",
-    href: "https://github.com/Forge",
+    href: "https://github.com/ForgeBuilds",
     Icon: FaGithub,
   },
   {

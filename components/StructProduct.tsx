@@ -5,7 +5,7 @@ import { IoLogoGithub } from "react-icons/io5";
 import { IoLogoWindows } from "react-icons/io";
 import { IoLogoTux } from "react-icons/io";
 
-const STRUCT_URL = "https://github.com/Forge/Struct";
+const STRUCT_URL = "https://github.com/ForgeBuilds/Struct";
 
 const features = [
   {
@@ -157,7 +157,7 @@ export default function StructProduct() {
             </Link>
 
             <a
-              href="https://github.com/Forge/Struct/issues"
+              href="https://github.com/ForgeBuilds/Struct/issues"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-md border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition hover:border-white/40 hover:bg-white/5"
