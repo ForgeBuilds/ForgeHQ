@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://forge.github.io/Forge/</loc>
+    <loc>https://lumorix-studios.github.io/ForgeHQ/</loc>
     <lastmod>2026-09-12</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://forge.github.io/Forge/downloads</loc>
+    <loc>https://lumorix-studios.github.io/ForgeHQ/downloads</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://forge.github.io/Forge/documentation</loc>
+    <loc>https://lumorix-studios.github.io/ForgeHQ/documentation</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://forge.github.io/Forge/about</loc>
+    <loc>https://lumorix-studios.github.io/ForgeHQ/about</loc>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://forge.github.io/Forge/contact</loc>
+    <loc>https://lumorix-studios.github.io/ForgeHQ/contact</loc>
     <priority>0.6</priority>
   </url>
 </urlset>
