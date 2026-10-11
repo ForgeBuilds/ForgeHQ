@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://forgebuilds.github.io/Forge/",
+  "homepage": "https://lumorix-studios.github.io/ForgeHQ/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

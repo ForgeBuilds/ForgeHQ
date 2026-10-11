@@ -22,5 +22,5 @@ function copy404ForGithubPages(): Plugin {
 
 export default defineConfig({
   plugins: [react(), tailwindcss(), copy404ForGithubPages()],
-  base: '/Forge/',
+  base: '/ForgeHQ/',
 })

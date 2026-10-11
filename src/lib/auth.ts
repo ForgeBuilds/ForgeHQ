@@ -132,7 +132,7 @@ export function authErrorMessage(err: unknown): string {
 
   // redirect_to rejected because it isn't in the allow list.
   if (/redirect/i.test(msg) && /(not allowed|not in|invalid|whitelist)/i.test(msg)) {
-    return "This site's URL isn't in the Redirect URLs allow list — add it in Dashboard → Authentication → URL Configuration (e.g. https://forgebuilds.github.io/Forge/*), then try again.";
+    return "This site's URL isn't in the Redirect URLs allow list — add it in Dashboard → Authentication → URL Configuration (e.g. https://lumorix-studios.github.io/ForgeHQ/*), then try again.";
   }
 
   return msg
