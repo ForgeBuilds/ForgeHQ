@@ -25,9 +25,9 @@ interface ReleaseInfo {
 }
 
 const RELEASE_URL =
-  "https://api.github.com/repos/ForgeBuilds/Struct/releases/latest";
-const RELEASES_PAGE = "https://github.com/ForgeBuilds/Struct/releases";
-const REPO_PAGE = "https://github.com/ForgeBuilds/Struct";
+  "https://api.github.com/repos/Lumorix-studios/Struct/releases/latest";
+const RELEASES_PAGE = "https://github.com/Lumorix-studios/Struct/releases";
+const REPO_PAGE = "https://github.com/Lumorix-studios/Struct";
 
 type OsKey = "windows" | "linux" | "macos" | "other";
 
@@ -73,8 +73,8 @@ function parseVersion(tag: string) {
   return match ? match[1] : tag.replace(/^release[_v-]*/i, "");
 }
 
-function findAsset(assets: ReleaseAsset[], ext: string) {
-  return assets.find((a) => a.name.toLowerCase().endsWith(ext));
+function findAsset(assets: ReleaseAsset[], matches: (asset: ReleaseAsset) => boolean) {
+  return assets.find(matches);
 }
 
 function PlatformIcon({ os }: { os: OsKey }) {
@@ -145,11 +145,15 @@ export default function Downloads() {
   const version = release ? parseVersion(release.tag_name) : null;
   const date = formatDate(release?.published_at);
 
-  const exe = findAsset(assets, ".exe");
-  const msi = findAsset(assets, ".msi");
-  const deb = findAsset(assets, ".deb");
-  const rpm = findAsset(assets, ".rpm");
-  const dmg = findAsset(assets, ".dmg");
+  const exe = findAsset(assets, (asset) => /\.exe$/i.test(asset.name));
+  const msi = findAsset(assets, (asset) => /\.msi$/i.test(asset.name));
+  const deb = findAsset(assets, (asset) => /\.deb$/i.test(asset.name));
+  const rpm = findAsset(assets, (asset) => /\.rpm$/i.test(asset.name));
+  const appImage = findAsset(assets, (asset) => /\.appimage$/i.test(asset.name));
+  const dmg = findAsset(
+    assets,
+    (asset) => /\.dmg$/i.test(asset.name) || /macos.*dmg.*\.zip$/i.test(asset.name),
+  );
 
   const primary =
     os === "windows"
@@ -157,8 +161,8 @@ export default function Downloads() {
       : os === "macos"
         ? dmg
         : os === "linux"
-          ? deb ?? rpm
-          : exe ?? msi ?? dmg ?? deb ?? rpm;
+          ? deb ?? appImage ?? rpm
+          : exe ?? msi ?? dmg ?? deb ?? appImage ?? rpm;
 
   return (
     <main className="min-h-[calc(100vh-4rem)] text-white">
@@ -439,6 +443,25 @@ export default function Downloads() {
                     </a>
                   )}
 
+                  {appImage && (
+                    <a
+                      href={appImage.browser_download_url}
+                      className="group flex items-center justify-between border-b border-white/10 py-4"
+                    >
+                      <div className="min-w-0">
+                        <p className="truncate text-sm text-white/80 group-hover:text-white">
+                          {appImage.name}
+                        </p>
+
+                        <p className="mt-1 font-mono text-[11px] text-white/40">
+                          {formatSize(appImage.size)}
+                        </p>
+                      </div>
+
+                      <IoDownloadOutline className="ml-4 h-4 w-4 shrink-0 text-white/40 group-hover:text-white" />
+                    </a>
+                  )}
+
                   {dmg && (
                     <a
                       href={dmg.browser_download_url}
@@ -458,7 +481,7 @@ export default function Downloads() {
                     </a>
                   )}
 
-                  {!deb && !rpm && !dmg && (
+                  {!deb && !rpm && !appImage && !dmg && (
                     <a
                       href={REPO_PAGE}
                       target="_blank"
