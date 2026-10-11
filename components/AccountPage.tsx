@@ -1,5 +1,5 @@
 /**
- * Account page — the signed-in profile for the shared Lumorix / Struct Supabase
+ * Account page — the signed-in profile for the shared Forge / Struct Supabase
  * account: display name + avatar, current plan and purchase history, plus the
  * security actions (change password, reset link, sign out).
  *

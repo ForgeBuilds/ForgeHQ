@@ -16,14 +16,14 @@ const resourceLinks = [
   { label: "Terms of Service", href: "/privacypolicyandterms" },
   {
     label: "GitHub Repository",
-    href: "https://github.com/Lumorix-studios",
+    href: "https://github.com/Forge",
   },
 ];
 
 const socials = [
   {
-    label: "Lumorix Studios on GitHub",
-    href: "https://github.com/Lumorix-studios",
+    label: "Forge on GitHub",
+    href: "https://github.com/Forge",
     Icon: FaGithub,
   },
   {
@@ -48,11 +48,11 @@ const Footer: React.FC = () => (
           >
             
 
-            <span>Lumorix Studios</span>
+            <span>Forge</span>
           </Link>
 
           <p className="mt-4 max-w-sm text-sm leading-6 text-zinc-500">
-            Lumorix Studios builds modern applications, developer tools, and
+            Forge builds modern applications, developer tools, and
             experimental projects.
           </p>
 
@@ -133,7 +133,7 @@ const Footer: React.FC = () => (
 
         {/* Copyright */}
         <span>
-          © {new Date().getFullYear()} Lumorix Studios. All rights reserved.
+          © {new Date().getFullYear()} Forge. All rights reserved.
         </span>
 
         {/* Info */}

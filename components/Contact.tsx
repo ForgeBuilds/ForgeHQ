@@ -23,7 +23,7 @@ export default function Contact() {
 
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href="https://github.com/Lumorix-studios/Struct"
+              href="https://github.com/Forge/Struct"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
@@ -34,7 +34,7 @@ export default function Contact() {
               Struct repository
             </a>
             <a
-              href="https://github.com/Lumorix-studios"
+              href="https://github.com/Forge"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg border border-zinc-700 px-5 py-3 text-sm font-medium text-white transition hover:border-zinc-500 hover:bg-zinc-800"
@@ -63,7 +63,7 @@ export default function Contact() {
                 
               </span></button>
             <a
-              href="https://github.com/Lumorix-studios/Struct"
+              href="https://github.com/Forge/Struct"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-sm font-medium text-white underline underline-offset-4 transition hover:text-zinc-300"

@@ -180,7 +180,7 @@ export default function AuthModal() {
           </button>
 
           <h2 id="auth-modal-title" className="text-xl font-semibold text-white">
-            {isSetPassword ? "Set a new password" : isSignUp ? "Create your account" : "Sign in to Lumorix"}
+            {isSetPassword ? "Set a new password" : isSignUp ? "Create your account" : "Sign in to Forge"}
           </h2>
           <p className="mt-2 text-sm leading-6 text-zinc-400">
             {isSetPassword
@@ -293,7 +293,7 @@ export default function AuthModal() {
               )}
 
               <p className="mt-5 text-center text-sm text-zinc-400">
-                {isSignUp ? "Already have an account?" : "New to Lumorix?"}{" "}
+                {isSignUp ? "Already have an account?" : "New to Forge?"}{" "}
                 <button
                   type="button"
                   onClick={() => switchMode(isSignUp ? "sign-in" : "sign-up")}

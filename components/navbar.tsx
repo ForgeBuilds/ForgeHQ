@@ -2,7 +2,7 @@
 import { useState } from "react";
 import type { KeyboardEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
-import icon from "../src/assets/orglogo.jpg";
+import icon from "../src/assets/forgelogo.jpg";
 import AccountMenu from "./AccountMenu";
 import {IoLogoGithub} from "react-icons/io5"
 const navigation = [
@@ -43,14 +43,14 @@ export default function Navbar() {
         <Link
           to="/"
           className="flex shrink-0 items-center gap-[clamp(0.5rem,1vw,0.75rem)] text-[clamp(1rem,1.2vw,1.25rem)] font-semibold tracking-tight text-white"
-          aria-label="Lumorix Studios — home"
+          aria-label="Forge — home"
         >
           <img
             src={icon}
-            alt=""
-            className="h-[clamp(1.75rem,2.5vw,2.25rem)] w-[clamp(1.75rem,2.5vw,2.25rem)] rounded-md"
+            alt="Forge logo"
+            className="h-[clamp(1.75rem,2.5vw,2.25rem)] w-[clamp(1.75rem,2.5vw,2.25rem)] rounded-md bg-[#f4f2ec] object-cover"
           />
-          <span>Lumorix Studios</span>
+          <span>Forge</span>
         </Link>
 
         {/* Desktop nav */}
@@ -73,7 +73,7 @@ export default function Navbar() {
           <AccountMenu />
 
           <a
-            href="https://github.com/Lumorix-studios"
+            href="https://github.com/Forge"
             target="_blank"
             rel="noopener noreferrer"
             className="ml-[clamp(0.5rem,1vw,1rem)] inline-flex items-center gap-1.5 rounded-lg bg-white px-[clamp(0.75rem,1vw,1.25rem)] py-[clamp(0.5rem,0.8vw,0.6875rem)] text-[clamp(0.8125rem,0.95vw,1rem)] font-medium text-zinc-950 transition hover:bg-zinc-200"
@@ -128,7 +128,7 @@ export default function Navbar() {
           </div>
 
           <a
-            href="https://github.com/Lumorix-studios"
+            href="https://github.com/Forge"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-2 flex min-h-[clamp(2.75rem,3.5vw,3.25rem)] items-center justify-center rounded-lg bg-white px-3 py-[clamp(0.5rem,1.2vw,0.75rem)] text-[clamp(0.875rem,1.2vw,1rem)] font-medium text-zinc-950 transition hover:bg-zinc-200"

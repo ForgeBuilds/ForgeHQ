@@ -1,9 +1,9 @@
-# Lumorix Studios HQ
+# Forge HQ
 
-Official website for **Lumorix Studios** and **Struct** — a lightweight,
+Official website for **Forge** and **Struct** — a lightweight,
 local-first, agentic integrated development environment.
 
-Live site: https://lumorix-studios.github.io/LumorixStudiosHq/
+Live site: https://forge.github.io/Forge/
 
 ## What this repo is
 
@@ -27,8 +27,8 @@ features work without signing in.
 ## Pricing
 
 **Struct is free.** There are no paid plans, no subscriptions, and no
-paywall. Every feature is available to all users at no cost, and Lumorix
-Studios does not process payments.
+paywall. Every feature is available to all users at no cost, and Forge
+does not process payments.
 
 ## Getting started
 
@@ -59,7 +59,7 @@ Three.js · GSAP
 
 ## Legal
 
-* [Privacy Policy & Terms of Use](https://lumorix-studios.github.io/LumorixStudiosHq/privacypolicyandterms)
+* [Privacy Policy & Terms of Use](https://forge.github.io/Forge/privacypolicyandterms)
 * [`LICENSE`](LICENSE) — MIT, covering this website's own source code
 * The Struct desktop app is licensed separately under the STRUCT Source-Available
   License 1.0 — see that repository's `LICENSE` file
@@ -71,4 +71,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) and
 
 ---
 
-Copyright © 2026 Lumorix Studios
+Copyright © 2026 Forge

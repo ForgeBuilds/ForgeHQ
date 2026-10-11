@@ -10,7 +10,7 @@ const docGroups = [
   {
     label: "Getting started",
     items: [
-      { id: "what-is-neo", label: "What is Struct?" },
+      { id: "what-is-struct", label: "What is Struct?" },
       { id: "installation", label: "Installation" },
       { id: "first-workspace", label: "Open a workspace" },
       { id: "first-task", label: "Run your first task" },
@@ -180,7 +180,7 @@ function DocsImage({ name, alt, title }: { name: string; alt: string; title: str
 
 export default function Documentation() {
   const [openGroup, setOpenGroup] = useState<string | null>(docGroups[0].label);
-  const [activeId, setActiveId] = useState<string>("what-is-neo");
+  const [activeId, setActiveId] = useState<string>("what-is-struct");
 
   const activeGroupLabel =
     docGroups.find((group) => group.items.some((item) => item.id === activeId))?.label ?? docGroups[0].label;
@@ -291,7 +291,7 @@ export default function Documentation() {
             <div className="mt-10 space-y-12 sm:mt-12 sm:space-y-16">
 
 
-              <DocSection id="what-is-neo" title="What is Struct?">
+              <DocSection id="what-is-struct" title="What is Struct?">
                 <p>Struct is a lightweight desktop coding environment built with React, TypeScript, Tauri, and Rust. It combines an editor, an AI agent, filesystem tools, Git, terminals, and extensible model connections in one application.</p>
                 <p>The important idea is not only that Struct can generate text. It can operate on a real folder: inspect project structure, read relevant files, search code, propose edits, run commands, and show you exactly what changed before you accept it.</p>
                 <DocsImage name="workspace" alt="Struct workspace with the editor, agent, and terminal" title="Struct workspace" />
@@ -566,7 +566,7 @@ git status --short`}</CodeBlock>
               </DocSection>
 
               <DocSection id="accounts" title="Accounts">
-                <p>The Lumorix Studios website and Struct use the same account system. Signing in on the website gives you access to your profile, so everything follows you between the site and the app.</p>
+                <p>The Forge website and Struct use the same account system. Signing in on the website gives you access to your profile, so everything follows you between the site and the app.</p>
                 <Steps items={[
                   { title: "Sign in", body: <>Use the account menu in the navbar or the <Link className="text-zinc-100 underline decoration-zinc-600 underline-offset-4" to="/account">Account page</Link>.</> },
                   { title: "Check your account", body: <>Return to your profile to see your display name, avatar and member-since date.</> },
@@ -595,7 +595,7 @@ git status --short`}</CodeBlock>
 
               <DocSection id="building" title="Building from source">
                 <p>Development requires {devRequirements.join(", ")}. Then clone the official repository and start the development shell.</p>
-                <CodeBlock label="Development setup">{`git clone https://github.com/Lumorix-studios/Struct.git
+                <CodeBlock label="Development setup">{`git clone https://github.com/Forge/Struct.git
 cd Struct
 npm install
 npm run tauri dev`}</CodeBlock>
@@ -610,7 +610,7 @@ npm run tauri dev`}</CodeBlock>
 
               <DocSection id="status" title="Project status">
                 <p>Struct is currently in beta and under active development. Architecture, agent capabilities, APIs, shortcuts, and platform support may change between releases. Some features are experimental or incomplete.</p>
-                <p>Development began in May 2026. The project source, releases, and issue tracking live on <a className="text-zinc-100 underline decoration-zinc-600 underline-offset-4" href="https://github.com/Lumorix-studios/Struct" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+                <p>Development began in May 2026. The project source, releases, and issue tracking live on <a className="text-zinc-100 underline decoration-zinc-600 underline-offset-4" href="https://github.com/Forge/Struct" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
                 <Callout title="Help improve Struct"><p>Bug reports with a minimal reproduction, focused feature requests, documentation fixes, and careful contributions are all useful. Do not include API keys, private code, or personal data in a public issue.</p></Callout>
               </DocSection>
             </div>

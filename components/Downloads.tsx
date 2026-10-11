@@ -1,6 +1,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import {MaintenanceBanner} from "./alert.tsx"
 import {
   IoLogoApple,
   IoLogoTux,
@@ -24,9 +25,9 @@ interface ReleaseInfo {
 }
 
 const RELEASE_URL =
-  "https://api.github.com/repos/Lumorix-studios/Struct/releases/latest";
-const RELEASES_PAGE = "https://github.com/Lumorix-studios/Struct/releases";
-const REPO_PAGE = "https://github.com/Lumorix-studios/Struct";
+  "https://api.github.com/repos/Forge/Struct/releases/latest";
+const RELEASES_PAGE = "https://github.com/Forge/Struct/releases";
+const REPO_PAGE = "https://github.com/Forge/Struct";
 
 type OsKey = "windows" | "linux" | "macos" | "other";
 
@@ -161,6 +162,10 @@ export default function Downloads() {
 
   return (
     <main className="min-h-[calc(100vh-4rem)] text-white">
+      <MaintenanceBanner
+                message="macOS support added"
+                variant="info"
+              />
       <div className="px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
         <div className="mx-auto max-w-5xl">
 
@@ -169,7 +174,7 @@ export default function Downloads() {
             <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="mb-2 text-xs font-medium uppercase tracking-[0.16em] text-zinc-600">
-                  Lumorix Studios · Struct
+                  Forge · Struct
                 </p>
 
                 <h1 className="text-4xl font-medium tracking-tight sm:text-5xl">
@@ -511,7 +516,7 @@ export default function Downloads() {
             </p>
 
             <p className="mt-2 text-xs leading-5 text-white/50">
-              Only download Struct from this page or the official Lumorix-studios
+              Only download Struct from this page or the official Forge
               GitHub repository. Never trust third-party builds or installers.
               Verify the source before installing.
             </p>

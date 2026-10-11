@@ -1,5 +1,5 @@
 /**
- * Supabase client for the Lumorix Studios site.
+ * Supabase client for the Forge site.
  *
  * Points at the SAME Supabase project the Struct desktop app uses, so an account
  * created in the app can sign in here (and vice versa) and any plan purchased

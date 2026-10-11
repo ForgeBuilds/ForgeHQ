@@ -3,7 +3,7 @@ import {
   getProfile,
   getCurrentUser,
   onAuthChanged,
-  type NeoUser,
+  type StructUser,
   type Profile,
 } from "./auth";
 import { isSupabaseConfigured } from "./supabase";
@@ -32,7 +32,7 @@ export function subscribeAccountRefresh(listener: () => void): () => void {
 export interface AccountState {
   /** True while the very first session probe is in flight. */
   loading: boolean;
-  user: NeoUser | null;
+  user: StructUser | null;
   /** Includes the informational `plan` column from `profiles`. */
   profile: Profile | null;
   /** Re-read user + profile (e.g. after a profile save). */
@@ -47,7 +47,7 @@ export interface AccountState {
  */
 export function useAccount(): AccountState {
   const [loading, setLoading] = useState(isSupabaseConfigured);
-  const [user, setUser] = useState<NeoUser | null>(null);
+  const [user, setUser] = useState<StructUser | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
 
   const refresh = useCallback(async () => {

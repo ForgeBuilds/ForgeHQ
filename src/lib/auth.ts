@@ -1,4 +1,4 @@
-// author : Lumorix Studios
+// author : Forge
 
 import {
   supabase,
@@ -66,7 +66,7 @@ export function providerDisabledMessage(provider: AuthProvider): string {
   );
 }
 
-export interface NeoUser {
+export interface StructUser {
   id: string;
   email: string;
   /** Display name (profile row if present, else email local-part). */
@@ -77,7 +77,7 @@ export interface NeoUser {
   provider: string;
 }
 
-export interface Profile extends NeoUser {
+export interface Profile extends StructUser {
   /** Legacy plan id from profiles.plan. Kept for display only — nothing is gated on it. */
   plan: string;
   /** Always true for a signed-in account (BYOK is no longer a paid feature). */
@@ -93,7 +93,7 @@ function resolveByokEnabled(): boolean {
 }
 
 /** Map a supabase auth user + profile row to our app-level shape. */
-function toNeoUser(
+function toStructUser(
   authUser: {
     id: string;
     email?: string | null;
@@ -101,7 +101,7 @@ function toNeoUser(
     app_metadata?: Record<string, unknown>;
   },
   profile?: { display_name?: string | null; avatar_url?: string | null } | null
-): NeoUser {
+): StructUser {
   const meta = authUser.user_metadata ?? {};
   const metaName =
     (typeof meta.full_name === "string" && meta.full_name) ||
@@ -132,7 +132,7 @@ export function authErrorMessage(err: unknown): string {
 
   // redirect_to rejected because it isn't in the allow list.
   if (/redirect/i.test(msg) && /(not allowed|not in|invalid|whitelist)/i.test(msg)) {
-    return "This site's URL isn't in the Redirect URLs allow list — add it in Dashboard → Authentication → URL Configuration (e.g. https://lumorix-studios.github.io/LumorixStudiosHq/*), then try again.";
+    return "This site's URL isn't in the Redirect URLs allow list — add it in Dashboard → Authentication → URL Configuration (e.g. https://forge.github.io/Forge/*), then try again.";
   }
 
   return msg
@@ -157,7 +157,7 @@ export function siteRedirectUrl(): string {
 }
 
 /** Current signed-in user (null when signed out / Supabase unconfigured). */
-export async function getCurrentUser(): Promise<NeoUser | null> {
+export async function getCurrentUser(): Promise<StructUser | null> {
   if (!isSupabaseConfigured) return null;
   const sb = supabase();
   if (!sb) return null;
@@ -168,7 +168,7 @@ export async function getCurrentUser(): Promise<NeoUser | null> {
     .select("display_name, avatar_url")
     .eq("id", data.session.user.id)
     .maybeSingle();
-  return toNeoUser(data.session.user, profile ?? undefined);
+  return toStructUser(data.session.user, profile ?? undefined);
 }
 
 /** Full profile (includes the plan / BYOK entitlement flag). Null when signed out. */
@@ -185,7 +185,7 @@ export async function getProfile(): Promise<Profile | null> {
     .maybeSingle();
   const resolvedPlan = rowError ? "unavailable" : (row?.plan ?? "free");
   const resolvedByok = resolveByokEnabled();
-  const base = toNeoUser(data.session.user, row ?? undefined);
+  const base = toStructUser(data.session.user, row ?? undefined);
   return {
     ...base,
     plan: resolvedPlan,
@@ -342,7 +342,7 @@ export async function signInWithOAuth(provider: AuthProvider): Promise<void> {
 }
 
 /** Subscribe to sign-in / sign-out events. Returns an unsubscribe fn. */
-export function onAuthChanged(cb: (user: NeoUser | null) => void): () => void {
+export function onAuthChanged(cb: (user: StructUser | null) => void): () => void {
   if (!isSupabaseConfigured) {
     cb(null);
     return () => undefined;

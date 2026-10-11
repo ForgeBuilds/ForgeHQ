@@ -7,18 +7,7 @@ const projects = [
     href: "/products/struct",
     external: false,
   },
-  {
-    name: "TeamDiscussions",
-    body: "Where members talk through projects, plans, and general stuff.",
-    href: "https://github.com/Lumorix-studios/TeamDiscussions",
-    external: true,
-  },
-  {
-    name: "Lumorix Studios HQ",
-    body: "This website — documentation, downloads, and everything we publish.",
-    href: "https://github.com/Lumorix-studios/LumorixStudiosHq",
-    external: true,
-  },
+  
 ];
 
 export default function About() {
@@ -29,14 +18,8 @@ export default function About() {
         {/* Header */}
         <header className="pb-10">
           <h1 className="text-4xl font-medium tracking-tight sm:text-5xl">
-            About Lumorix Studios
+            About Forge
           </h1>
-
-          <p className="mt-5 max-w-2xl text-base leading-7 text-white/60 sm:text-lg">
-            A technology-focused team developing modern applications,
-            developer tools, and experimental projects — open source by
-            default.
-          </p>
         </header>
 
         {/* Content */}
@@ -50,16 +33,15 @@ export default function About() {
 
             <div className="mt-4 max-w-3xl space-y-4 leading-7 text-white/60">
               <p>
-                Lumorix Studios is a GitHub organization where our projects,
+                Forge is a GitHub organization where our projects,
                 releases, and issue tracking live. It isn't a separate company
-                or legal entity — think of it as the home for the code and the
-                team behind it.
+                or legal entity 
               </p>
 
               <p>
                 We explore the intersection of software engineering,
                 artificial intelligence, and user-focused design to create
-                practical, forward-thinking tools. Some projects ship; some
+                practical, forward thinking tools. Some projects ship; some
                 stay experiments. All of them are public.
               </p>
             </div>
@@ -124,7 +106,7 @@ export default function About() {
               </p>
 
               <p>
-                We keep things lightweight on purpose — native backends instead
+                We keep things lightweight on purpose. Native backends instead
                 of heavyweight runtimes, and interfaces that stay out of the
                 way. The goal is tools that remain usable on modest hardware.
               </p>

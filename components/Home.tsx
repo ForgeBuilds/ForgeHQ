@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 import { IoLogoGithub } from "react-icons/io5";
 import structPreview from "../src/assets/newtest.png";
 import BackgroundPixelStars from "./background";
-const ORG_URL = "https://github.com/Lumorix-studios";
-const STRUCT_URL = "https://github.com/Lumorix-studios/Struct";
+import {MaintenanceBanner} from "./alert.tsx"
+const ORG_URL = "https://github.com/Forge";
+const STRUCT_URL = "https://github.com/Forge/Struct";
 
 export default function Home() {
   return (
@@ -12,6 +13,10 @@ export default function Home() {
       <BackgroundPixelStars/>
       
       <section>
+        <MaintenanceBanner
+          message="macOS support added"
+          variant="info"
+        />
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-8 lg:py-24">
           <div>
             <p className="mb-5 text-xs font-medium uppercase tracking-[0.16em] text-zinc-500">
@@ -23,7 +28,7 @@ export default function Home() {
             </h1>
 
             <p className="mt-6 max-w-lg text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
-              Lumorix Studios builds focused tools for people who make things.
+              Forge builds focused tools for people who make things.
               Start with Struct, a lightweight desktop IDE with a built-in
               coding agent.
             </p>

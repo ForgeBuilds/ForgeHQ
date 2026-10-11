@@ -5,7 +5,7 @@ export default function Legal() {
         <article className="space-y-12">
           <header className="border-b border-zinc-800 pb-8">
             <p className="mb-3 text-sm font-medium uppercase tracking-widest text-zinc-500">
-              Lumorix Studios · ProjectStruct
+              Forge · Struct
             </p>
             <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Privacy Policy &amp; Terms of Use
@@ -22,8 +22,8 @@ export default function Legal() {
               Plain-language summary
             </h2>
             <p className="mt-2">
-              ProjectStruct is a local-first, agentic integrated development
-              environment connected to a Lumorix-operated backend for account
+              Struct is a local-first, agentic integrated development
+              environment connected to a Forge-operated backend for account
               management, cloud synchronization, encrypted storage of your own
               provider API keys, and certain AI-provider requests. Your local
               workspace, source files, local model activity, and local agent
@@ -35,7 +35,7 @@ export default function Legal() {
             </p>
             <p className="mt-3">
               If you use a cloud AI provider through Struct, including a provider
-              such as OpenRouter, the request may pass through Lumorix
+              such as OpenRouter, the request may pass through Forge
               infrastructure before being sent to the provider. Depending on
               the feature and configuration, this can include prompts, code
               context, tool results, model settings, request metadata, and an
@@ -59,13 +59,13 @@ export default function Legal() {
             </h2>
 
             <p>
-              This Privacy Policy describes how Lumorix Studios
-              (&quot;Lumorix,&quot; &quot;we,&quot; &quot;us,&quot; or
+              This Privacy Policy describes how Forge
+              (&quot;Forge,&quot; &quot;we,&quot; &quot;us,&quot; or
               &quot;our&quot;) handles information in connection with
               Struct (&quot;Struct&quot; or the &quot;Application&quot;).
-              Lumorix Studios is the GitHub organization name used to host and
+              Forge is the GitHub organization name used to host and
               organize Struct and related repositories; it is not, by this
-              statement alone, a representation that Lumorix Studios is a
+              statement alone, a representation that Forge is a
               separate incorporated legal entity. The person or organization
               legally operating the service should be identified in the
               applicable purchase, account, or commercial documentation.
@@ -101,7 +101,7 @@ export default function Legal() {
                 local model can run without sending its prompt or workspace to
                 a remote model provider, but account, cloud sync, and
                 backend-routed AI features necessarily involve the relevant
-                Lumorix systems and, where applicable, third-party systems.
+                Forge systems and, where applicable, third-party systems.
                 Review the feature description and network destination before
                 using a feature with confidential content.
               </p>
@@ -164,7 +164,7 @@ export default function Legal() {
                 1.4 Backend-routed AI requests
               </h3>
               <p className="mt-3">
-                Struct may use the Lumorix backend to call AI providers on your
+                Struct may use the Forge backend to call AI providers on your
                 behalf or to manage the credentials required for those calls.
                 Providers may include OpenRouter and other providers that are
                 made available through Struct. When you invoke a backend-routed AI
@@ -204,13 +204,13 @@ export default function Legal() {
                 API keys, access tokens, OAuth tokens, SSH keys, environment
                 variables, and similar credentials are sensitive information.
                 Depending on the integration, a credential may be stored
-                locally, transmitted to the Lumorix backend for protected
+                locally, transmitted to the Forge backend for protected
                 provider calling, or passed to a provider. The relevant
                 storage and transmission behavior should be disclosed in the
                 integration interface.
               </p>
               <p className="mt-3">
-                Lumorix uses reasonable safeguards intended to restrict
+                Forge uses reasonable safeguards intended to restrict
                 unauthorized access to credentials and backend data. No
                 storage or transmission method is guaranteed to be completely
                 secure. Use least-privilege keys, provider spending limits,
@@ -272,7 +272,7 @@ export default function Legal() {
               <p className="mt-3">
                 Struct may also include a local crash handler that records crash
                 information on your device. The crash handler does not
-                automatically make a local crash report available to Lumorix
+                automatically make a local crash report available to Forge
                 unless the product implementation expressly sends it. If you
                 export or submit a crash report, log, screenshot, or diagnostic
                 file, review and redact it first because it may contain file
@@ -287,7 +287,7 @@ export default function Legal() {
                 1.8 Network requests and third-party services
               </h3>
               <p className="mt-3">
-                In addition to Lumorix systems, Struct may interact with services
+                In addition to Forge systems, Struct may interact with services
                 that you choose or that are required by a connected feature,
                 including:
               </p>
@@ -301,7 +301,7 @@ export default function Legal() {
               <p className="mt-3">
                 These services are independent third parties. Their collection,
                 use, retention, international transfer, and security practices
-                are governed by their own notices and terms. Lumorix does not
+                are governed by their own notices and terms. Forge does not
                 control a third party&apos;s processing after a request is
                 delivered to that third party.
               </p>
@@ -334,7 +334,7 @@ export default function Legal() {
               </p>
               <p className="mt-3">
                 Data sent to an external AI provider is also governed by that
-                provider&apos;s retention and deletion controls. Lumorix may
+                provider&apos;s retention and deletion controls. Forge may
                 not be able to retrieve or delete information held by a
                 provider that received a request.
               </p>
@@ -381,7 +381,7 @@ export default function Legal() {
                 information, export-controlled information, or other regulated
                 data unless you have confirmed the required authorization,
                 contracts, safeguards, provider configuration, and legal basis.
-                Lumorix does not represent Struct as compliant with any particular
+                Forge does not represent Struct as compliant with any particular
                 regulatory framework merely because safeguards are provided.
               </p>
             </div>
@@ -445,7 +445,7 @@ export default function Legal() {
               <p className="mt-3">
                 Struct is provided <strong>free of charge</strong>. There is
                 no subscription, no paid plan, no paywall, and no in-app
-                purchase or checkout. Lumorix Studios does not process,
+                purchase or checkout. Forge does not process,
                 collect, or store payment or card information, and all
                 features are available to all users at no cost.
               </p>
@@ -477,12 +477,12 @@ export default function Legal() {
                 paying any provider charges associated with your account or
                 credentials. A provider may change its models, pricing,
                 limits, availability, routing, retention, or acceptable-use
-                rules without control by Lumorix.
+                rules without control by Forge.
               </p>
               <p className="mt-3">
                 Review every destination, model, prompt, selected file,
                 requested tool action, and expected cost before approving an
-                operation. Lumorix is not responsible for provider charges,
+                operation. Forge is not responsible for provider charges,
                 inaccurate output, provider downtime, provider retention, or
                 actions taken by a provider under its own terms.
               </p>
@@ -526,11 +526,11 @@ export default function Legal() {
                 content with Struct, the backend, and every provider you select.
               </p>
               <p className="mt-3">
-                By submitting content to a backend feature, you grant Lumorix
+                By submitting content to a backend feature, you grant Forge
                 the limited rights necessary to host, store, transmit,
                 process, secure, display, analyze, evaluate, train, and
                 improve the service as described in this policy. This does not
-                transfer ownership of your content to Lumorix. Third-party
+                transfer ownership of your content to Forge. Third-party
                 providers may receive content under their own terms when you
                 use a provider integration.
               </p>
@@ -555,7 +555,7 @@ export default function Legal() {
                 privacy, licensing, originality, compatibility, performance,
                 and fitness for purpose before relying on it, shipping it, or
                 using it in production or a safety-critical environment.
-                Lumorix does not guarantee that output is original,
+                Forge does not guarantee that output is original,
                 non-infringing, secure, or suitable for any particular use.
               </p>
             </div>
@@ -597,11 +597,11 @@ export default function Legal() {
                 OpenRouter, and other third-party
                 technology. Those components may be subject to separate
                 licenses, notices, acceptable-use rules, pricing, service
-                limits, and changes outside Lumorix&apos;s control. You must
+                limits, and changes outside Forge&apos;s control. You must
                 comply with all applicable terms and preserve required notices.
               </p>
               <p className="mt-3">
-                Lumorix does not endorse, guarantee, or assume responsibility
+                Forge does not endorse, guarantee, or assume responsibility
                 for a third-party service, model, package, repository, tool,
                 recommendation, routing decision, or result accessed through
                 Struct.
@@ -628,7 +628,7 @@ export default function Legal() {
                 <li>Misrepresent AI-generated work as reviewed, tested, or human-authored when it was not</li>
               </ul>
               <p className="mt-3">
-                This list is illustrative, not exhaustive. Lumorix may
+                This list is illustrative, not exhaustive. Forge may
                 suspend access or restrict distribution where necessary to
                 address legal, security, abuse, or operational risk.
               </p>
@@ -641,7 +641,7 @@ export default function Legal() {
               </h3>
               <p className="mt-3">
                 Struct and the backend may change, be discontinued, lose
-                compatibility, experience outages, or contain defects. Lumorix
+                compatibility, experience outages, or contain defects. Forge
                 does not promise uninterrupted availability, continued support
                 for a provider or operating system, backward compatibility,
                 preservation of local settings, or preservation of hosted
@@ -667,13 +667,13 @@ export default function Legal() {
                 APPLICATION, PROVIDER ROUTING, AND ALL RELATED
                 MATERIALS ARE PROVIDED &quot;AS IS&quot; AND &quot;AS
                 AVAILABLE,&quot; WITHOUT WARRANTIES OF ANY KIND, EXPRESS,
-                IMPLIED, OR STATUTORY. LUMORIX DISCLAIMS WARRANTIES OF
+                IMPLIED, OR STATUTORY. FORGE DISCLAIMS WARRANTIES OF
                 MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
                 NON-INFRINGEMENT, TITLE, ACCURACY, SECURITY, AVAILABILITY, AND
                 QUIET ENJOYMENT.
               </p>
               <p className="mt-3">
-                LUMORIX DOES NOT WARRANT THAT STRUCT, THE BACKEND, AN AGENT,
+                FORGE DOES NOT WARRANT THAT STRUCT, THE BACKEND, AN AGENT,
                 GENERATED OUTPUT, A PROVIDER, A LOCAL MODEL, OR A CONNECTED
                 SERVICE WILL BE ERROR-FREE, SECURE, PRIVATE, UNINTERRUPTED,
                 COMPATIBLE, OR FREE FROM MALWARE OR OTHER HARMFUL COMPONENTS.
@@ -688,7 +688,7 @@ export default function Legal() {
                 2.12 Limitation of liability
               </h3>
               <p className="mt-3">
-                TO THE MAXIMUM EXTENT PERMITTED BY LAW, LUMORIX STUDIOS AND
+                TO THE MAXIMUM EXTENT PERMITTED BY LAW, FORGE AND
                 ITS CONTRIBUTORS, MAINTAINERS, LICENSORS, SERVICE PROVIDERS,
                 AND AFFILIATES WILL NOT BE LIABLE FOR INDIRECT, INCIDENTAL,
                 SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, OR FOR
@@ -701,7 +701,7 @@ export default function Legal() {
               <p className="mt-3">
                 To the extent liability cannot be excluded, total aggregate
                 liability will be limited to the greater of the amount you paid
-                for the relevant Lumorix service in the twelve months before
+                for the relevant Forge service in the twelve months before
                 the event giving rise to the claim or the minimum amount
                 permitted by applicable law. Some jurisdictions do not allow
                 certain exclusions or limitations, so some terms may not apply
@@ -716,7 +716,7 @@ export default function Legal() {
               </h3>
               <p className="mt-3">
                 To the extent permitted by law, you agree to defend, indemnify,
-                and hold harmless Lumorix and its contributors from claims,
+                and hold harmless Forge and its contributors from claims,
                 liabilities, damages, losses, and expenses arising from your
                 unlawful use of Struct, breach of these terms, content, account,
                 credentials, provider use, or violation
@@ -732,7 +732,7 @@ export default function Legal() {
                 2.14 Suspension and termination
               </h3>
               <p className="mt-3">
-                You may stop using Struct at any time. Lumorix
+                You may stop using Struct at any time. Forge
                 may suspend or terminate an account, backend
                 access, or provider feature for abuse, security
                 risk, legal requirements, violation of these terms, or
@@ -792,9 +792,9 @@ export default function Legal() {
             <p className="text-sm text-zinc-500">
               Struct
               <br />
-              Lumorix Studios
+              Forge
               <br />
-              GitHub: Lumorix-studios/Struct
+              GitHub: Forge/Struct
             </p>
           </section>
 

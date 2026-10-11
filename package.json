@@ -1,9 +1,9 @@
 {
-  "name": "lumorixstudioshq",
+  "name": "forge",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://lumorix-studios.github.io/LumorixStudiosHq/",
+  "homepage": "https://forge.github.io/Forge/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

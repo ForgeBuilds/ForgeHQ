@@ -1,1 +1,1 @@
-for contributing informations contact the owner/maintainer of the lumorix-studios.org
+for contributing informations contact the owner/maintainer of the forge.org

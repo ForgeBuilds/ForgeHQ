@@ -5,7 +5,7 @@ import { IoLogoGithub } from "react-icons/io5";
 import { IoLogoWindows } from "react-icons/io";
 import { IoLogoTux } from "react-icons/io";
 
-const STRUCT_URL = "https://github.com/Lumorix-studios/Struct";
+const STRUCT_URL = "https://github.com/Forge/Struct";
 
 const features = [
   {
@@ -42,7 +42,7 @@ export default function StructProduct() {
         <div className="mx-auto max-w-4xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
           <div className="max-w-3xl">
             <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-zinc-500">
-              Lumorix Studios · Product
+              Forge · Product
             </p>
 
             <h1 className="text-5xl font-semibold tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl">
@@ -157,7 +157,7 @@ export default function StructProduct() {
             </Link>
 
             <a
-              href="https://github.com/Lumorix-studios/Struct/issues"
+              href="https://github.com/Forge/Struct/issues"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-md border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition hover:border-white/40 hover:bg-white/5"
