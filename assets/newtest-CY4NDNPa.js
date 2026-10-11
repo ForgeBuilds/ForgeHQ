@@ -1,0 +1,1 @@
+var e=`/Forge/assets/newtest-Dt4TrGtl.png`;export{e as t};
