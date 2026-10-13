@@ -29,7 +29,7 @@ export default function Home() {
 
             <p className="mt-6 max-w-lg text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
               Forge builds focused tools for people who make things.
-              Start with Struct, a lightweight desktop IDE with a built-in
+              Start with Struct, a lightweight app with a built-in
               coding agent.
             </p>
 
@@ -63,7 +63,7 @@ export default function Home() {
           >
             <img
               src={structPreview}
-              alt="Struct desktop IDE with its code editor and agent panel"
+              alt="Struct app with its coding agent"
               className="block h-auto w-full rounded-lg"
             />
             <p className="mt-3 text-sm text-zinc-500 transition group-hover:text-zinc-300">
@@ -83,9 +83,9 @@ export default function Home() {
               Built to be useful.
             </h2>
             <p className="mt-4 text-sm leading-6 text-zinc-400 sm:text-base">
-              Struct is a lightweight desktop IDE with an agent that works in
+              Struct is a lightweight app with an agent that works in
               your project. Review changes before accepting them, use your
-              preferred provider, and keep your editor and terminal together.
+              preferred provider, and keep your workspace tidy.
             </p>
           </div>
 

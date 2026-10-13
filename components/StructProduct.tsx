@@ -10,7 +10,7 @@ const STRUCT_URL = "https://github.com/ForgeBuilds/Struct";
 const features = [
   {
     title: "Agent that works in your project",
-    body: "Read, search, write, replace, rename, and delete inside the workspace you opened. Deletions ask first.",
+    body: "A built-in coding agent reads, searches, writes, replaces, and deletes inside the workspace you opened. Deletions ask first.",
   },
   {
     title: "Review before you accept",
@@ -21,16 +21,12 @@ const features = [
     body: "Bring a hosted endpoint or run inference locally through Ollama. You control the model and the cost.",
   },
   {
-    title: "Editor and terminal",
-    body: "A code editor and an integrated terminal working on the same project as the explorer.",
-  },
-  {
     title: "MCP connections",
     body: "Connect compatible tools and services, reviewing what each server can read and change first.",
   },
   {
     title: "Lightweight by design",
-    body: "A Rust backend via Tauri with a React and TypeScript frontend, so it stays usable on modest hardware.",
+    body: "A small, focused app that stays usable on modest hardware.",
   },
 ];
 
@@ -50,8 +46,8 @@ export default function StructProduct() {
             </h1>
 
             <p className="mt-6 max-w-xl text-base leading-7 text-zinc-400 sm:text-lg">
-              A lightweight agentic interface with a desktop IDE where the agent
-              works alongside you, inside the project you opened. Built to stay
+              A lightweight agentic app that works alongside you directly in
+              the project you opened. Built to stay
               fast on modest hardware.
             </p>
 

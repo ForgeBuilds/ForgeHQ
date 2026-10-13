@@ -22,9 +22,8 @@ export default function Legal() {
               Plain-language summary
             </h2>
             <p className="mt-2">
-              Struct is a local-first, agentic integrated development
-              environment connected to a Forge-operated backend for account
-              management, cloud synchronization, encrypted storage of your own
+              Struct is a local-first, agentic app connected to a Forge-operated backend
+              for account management, cloud synchronization, encrypted storage of your own
               provider API keys, and certain AI-provider requests. Your local
               workspace, source files, local model activity, and local agent
               data are intended to remain on your device when you use local
@@ -147,7 +146,7 @@ export default function Legal() {
                 <li>Editor preferences, workspace settings, and local metadata</li>
                 <li>Local model inputs, outputs, weights, caches, and runtime data</li>
                 <li>Provider configuration and credentials stored at your direction</li>
-                <li>Local extension, tool, terminal, and automation configuration</li>
+                <li>Local app and tool configuration</li>
               </ul>
               <p className="mt-3">
                 When you use a local model and do not invoke an online
@@ -452,8 +451,8 @@ export default function Legal() {
               <p className="mt-3">
                 An account is required only for features that need a backend,
                 such as sign-in, cloud synchronization, and encrypted storage
-                of your own provider API keys. Local editing, terminal use, and
-                local model execution (Ollama) work without an account. You can
+                of your own provider API keys. Local model execution
+                (Ollama) and local app use work without an account. You can
                 delete your synced data at any time.
               </p>
               <p className="mt-3">

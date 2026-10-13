@@ -22,14 +22,11 @@ const docGroups = [
       { id: "agentic-tools", label: "Agent tools" },
       { id: "prompting", label: "Writing effective prompts" },
       { id: "change-review", label: "Reviewing changes" },
-      { id: "git-workflow", label: "Git workflow" },
     ],
   },
   {
     label: "Workspace",
     items: [
-      { id: "editor", label: "Code editor" },
-      { id: "terminal", label: "Integrated terminal" },
       { id: "project-context", label: "Project context" },
     ],
   },
@@ -64,8 +61,6 @@ const shortcuts = [
   { keys: "Ctrl+B", action: "Toggle AI settings sidebar" },
   { keys: "Ctrl+Shift+H", action: "Toggle chat history" },
   { keys: "Ctrl+Shift+P", action: "Open command palette" },
-  { keys: "Ctrl+Shift+E", action: "Toggle code editor" },
-  { keys: "Ctrl+S", action: "Save active file" },
   { keys: "Escape", action: "Close an open panel or dialog" },
 ];
 
@@ -91,7 +86,7 @@ const devRequirements = [
   "Git",
 ];
 
-function CodeBlock({ children, label = "Terminal" }: { children: string; label?: string }) {
+function CodeBlock({ children, label = "Output" }: { children: string; label?: string }) {
   const [copied, setCopied] = useState(false);
 
   const copy = async () => {
@@ -292,9 +287,9 @@ export default function Documentation() {
 
 
               <DocSection id="what-is-struct" title="What is Struct?">
-                <p>Struct is a lightweight desktop coding environment built with React, TypeScript, Tauri, and Rust. It combines an editor, an AI agent, filesystem tools, Git, terminals, and extensible model connections in one application.</p>
+                <p>Struct is a lightweight desktop app built with React and TypeScript. It combines an AI agent, filesystem tools, model connections, and encrypted account sync in one application.</p>
                 <p>The important idea is not only that Struct can generate text. It can operate on a real folder: inspect project structure, read relevant files, search code, propose edits, run commands, and show you exactly what changed before you accept it.</p>
-                <DocsImage name="workspace" alt="Struct workspace with the editor, agent, and terminal" title="Struct workspace" />
+                <DocsImage name="workspace" alt="Struct workspace with open files and an active conversation" title="Struct workspace" />
                 <Callout title="What Struct does not do"><p>Struct does not silently take ownership of your repository. The agent is a collaborator: it works from the context you provide and the files it is allowed to inspect, while you keep control of consequential changes.</p></Callout>
               </DocSection>
 
@@ -309,7 +304,7 @@ export default function Documentation() {
               </DocSection>
 
               <DocSection id="first-workspace" title="Open a workspace">
-                <p>Struct is folder-based. A workspace is the project directory that the explorer, editor, terminal, and agent operate on. Choose the repository root when possible so searches and Git operations have the full project context.</p>
+                <p>Struct is folder-based. A workspace is the project directory you open. Choose the repository root when possible so searches and agent context have the full project context.</p>
                 <h3 className="text-base font-semibold text-zinc-200">A good first workspace</h3>
                 <ul className="list-disc space-y-2 pl-5 marker:text-zinc-600">
                   <li>Use a project you understand well enough to verify the result.</li>
@@ -326,7 +321,7 @@ export default function Documentation() {
                   { title: "Describe one outcome", body: <>Write what should be different when the task is complete, where the relevant code appears, and any constraints.</> },
                   { title: "Watch the activity", body: <>The agent may list directories, read files, or search content. Interrupt it if it starts exploring somewhere unrelated.</> },
                   { title: "Review every proposed edit", body: <>Open the diff, read the changed lines in context, and reject changes you cannot explain.</> },
-                  { title: "Run the checks yourself", body: <>Use the integrated terminal for tests, builds, linters, and formatters. A successful edit is not the same as a verified feature.</> },
+                  { title: "Run the checks yourself", body: <>Use the project's own scripts for tests, builds, linters, and formatters. A successful edit is not the same as a verified feature.</> },
                 ]} />
                 <CodeBlock label="Example first prompt">{`Goal: add input validation to the sign-in form.\n\nScope:\n- Inspect the existing form and its tests.\n- Follow the current validation style.\n- Do not change the visual design.\n\nBefore finishing:\n- Run the smallest relevant test suite.\n- Summarize the files you changed.`}</CodeBlock>
               </DocSection>
@@ -380,47 +375,6 @@ export default function Documentation() {
                   <li><span className="font-medium text-zinc-200">Verify manually.</span> Exercise the user flow when tests cannot capture the behavior.</li>
                 </ol>
                 <Callout title="Never approve a change you cannot explain" warning><p>If a diff introduces a dependency, changes security behavior, deletes data, or rewrites unrelated code, pause and investigate before accepting it.</p></Callout>
-              </DocSection>
-
-              <DocSection id="git-workflow" title="Git workflow">
-                <p>Git is your safety net, history, and review tool. The integrated terminal gives you the same Git commands you already know, while the interface can display repository-aware changes.</p>
-                <CodeBlock label="Safe starting point">{`git status
-git branch --show-current
-git diff
-git log -5 --oneline`}</CodeBlock>
-                <h3 className="pt-2 text-base font-semibold text-zinc-200">A practical agent loop</h3>
-                <ol className="list-decimal space-y-2 pl-5 marker:text-zinc-500">
-                  <li>Start from a clean branch with current work committed.</li>
-                  <li>Ask the agent for one bounded change.</li>
-                  <li>Review the diff and run checks.</li>
-                  <li>Commit the verified result with a useful message.</li>
-                  <li>Use a new branch when exploring a larger refactor.</li>
-                </ol>
-                <p>Do not ask the agent to commit, push, rewrite history, or create a pull request unless that action is part of your request. Those operations can affect collaborators and remote systems.</p>
-              </DocSection>
-
-
-              <DocSection id="editor" title="Code editor">
-                <p>Struct includes a built-in editor designed to operate alongside the agent. It supports a workspace explorer, multi-tab editing, dirty-state indicators, syntax highlighting, line numbers, active-line highlighting, breadcrumbs, cursor position, indentation, and native undo history.</p>
-                <p>Up to 10 tabs stay open at once. Least-recently-used tabs can be evicted automatically, so save important work before closing or replacing a tab. When the agent or another process modifies a file, an open tab updates live rather than requiring the file to be reopened.</p>
-                <DocsImage name="editor" alt="Struct code editor showing a project file" title="Code editor" />
-                <p>Use the command palette to reach editor actions quickly. Save with <kbd className="rounded border border-zinc-700 bg-zinc-900 px-1.5 py-0.5 font-mono text-xs text-zinc-300">Ctrl+S</kbd> and toggle the editor with <kbd className="rounded border border-zinc-700 bg-zinc-900 px-1.5 py-0.5 font-mono text-xs text-zinc-300">Ctrl+Shift+E</kbd>.</p>
-              </DocSection>
-
-              <DocSection id="terminal" title="Integrated terminal">
-                <p>Struct includes an integrated PowerShell terminal backed by a native PTY. It is a real interactive shell, so it can run tools already installed on your system, including Python, Node.js, npm, Git, Rust, Cargo, and project-specific commands.</p>
-                <h3 className="pt-2 text-base font-semibold text-zinc-200">Use the terminal for verification</h3>
-                <ul className="list-disc space-y-2 pl-5 marker:text-zinc-600">
-                  <li>Run the smallest relevant test before the full suite.</li>
-                  <li>Use the project&apos;s package scripts instead of inventing command variants.</li>
-                  <li>Capture the exact failure when a command does not behave as expected.</li>
-                  <li>Stop long-running processes before closing Struct or changing ports.</li>
-                </ul>
-                <p>Multiple sessions let you keep a development server, test run, and debugging shell separate. Struct does not install your toolchain; it uses what is available in the environment you launch it from.</p>
-                <CodeBlock label="Common checks">{`npm test
-npm run lint
-npm run build
-git status --short`}</CodeBlock>
               </DocSection>
 
               <DocSection id="project-context" title="Project context">

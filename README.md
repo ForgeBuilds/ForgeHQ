@@ -1,9 +1,9 @@
 # Forge HQ
 
-Official website for **Forge** and **Struct** — a lightweight,
-local-first, agentic integrated development environment.
+Official website for **Forge** and **Struct** — a lightweight, local-first, agentic
+desktop app that brings an AI agent and real tools into a single window.
 
-Live site: https://lumorix-studios.github.io/ForgeHQ/
+Live site: https://forgebuilds.github.io/ForgeHQ/
 
 ## What this repo is
 
@@ -59,7 +59,7 @@ Three.js · GSAP
 
 ## Legal
 
-* [Privacy Policy & Terms of Use](https://lumorix-studios.github.io/ForgeHQ/privacypolicyandterms)
+* [Privacy Policy & Terms of Use](https://forgebuilds.github.io/ForgeHQ/privacypolicyandterms)
 * [`LICENSE`](LICENSE) — MIT, covering this website's own source code
 * The Struct desktop app is licensed separately under the STRUCT Source-Available
   License 1.0 — see that repository's `LICENSE` file

@@ -25,9 +25,9 @@ interface ReleaseInfo {
 }
 
 const RELEASE_URL =
-  "https://api.github.com/repos/Lumorix-studios/Struct/releases/latest";
-const RELEASES_PAGE = "https://github.com/Lumorix-studios/Struct/releases";
-const REPO_PAGE = "https://github.com/Lumorix-studios/Struct";
+  "https://api.github.com/repos/ForgeBuilds/Struct/releases/latest";
+const RELEASES_PAGE = "https://github.com/ForgeBuilds/Struct/releases";
+const REPO_PAGE = "https://github.com/ForgeBuilds/Struct";
 
 type OsKey = "windows" | "linux" | "macos" | "other";
 

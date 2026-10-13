@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const projects = [
   {
     name: "Struct",
-    body: "A lightweight desktop IDE with agentic coding, for Windows and Linux.",
+    body: "A lightweight app with agentic coding, for Windows and Linux.",
     href: "/products/struct",
     external: false,
   },
