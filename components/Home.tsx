@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { IoLogoGithub } from "react-icons/io5";
-import structPreview from "../src/assets/newtest.png";
+import structPreview from "../src/assets/mainchatinterface.png";
 import BackgroundPixelStars from "./background";
 import {MaintenanceBanner} from "./alert.tsx"
 const ORG_URL = "https://github.com/ForgeBuilds";
@@ -63,7 +63,7 @@ export default function Home() {
           >
             <img
               src={structPreview}
-              alt="Struct app with its coding agent"
+              alt="Struct main chat interface with coding agent"
               className="block h-auto w-full rounded-lg"
             />
             <p className="mt-3 text-sm text-zinc-500 transition group-hover:text-zinc-300">

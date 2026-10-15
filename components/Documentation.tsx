@@ -1,10 +1,12 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import ScreenshotFrame from "./ScreenshotFrame";
-import webSearchPreview from "../src/assets/websearch.png";
-import mcpusage from "../src/assets/MCPTESTBUIld.png";
+import mcpusage from "../src/assets/mcpsection.png";
+import chatPreview from "../src/assets/chatsection.png";
+import mainInterface from "../src/assets/mainchatinterface.png";
+import aiSettings from "../src/assets/aisettings.png";
+import additionalInfo from "../src/assets/Additionalinfo.png";
 import { IoInformationCircleOutline } from "react-icons/io5"
-const BASE_URL = import.meta.env.BASE_URL;
 
 const docGroups = [
   {
@@ -157,22 +159,6 @@ function Steps({ items }: { items: { title: string; body: ReactNode }[] }) {
   );
 }
 
-function DocsImage({ name, alt, title }: { name: string; alt: string; title: string }) {
-  return (
-    <ScreenshotFrame
-      src={`${BASE_URL}docs/${name}-960.webp`}
-      srcSet={`${BASE_URL}docs/${name}-960.webp 960w, ${BASE_URL}docs/${name}-1440.webp 1440w`}
-      sizes="(min-width: 1024px) 720px, calc(100vw - 2rem)"
-      width={1440}
-      height={860}
-      alt={alt}
-      title={title}
-      loading="lazy"
-      decoding="async"
-    />
-  );
-}
-
 export default function Documentation() {
   const [openGroup, setOpenGroup] = useState<string | null>(docGroups[0].label);
   const [activeId, setActiveId] = useState<string>("what-is-struct");
@@ -289,7 +275,8 @@ export default function Documentation() {
               <DocSection id="what-is-struct" title="What is Struct?">
                 <p>Struct is a lightweight desktop app built with React and TypeScript. It combines an AI agent, filesystem tools, model connections, and encrypted account sync in one application.</p>
                 <p>The important idea is not only that Struct can generate text. It can operate on a real folder: inspect project structure, read relevant files, search code, propose edits, run commands, and show you exactly what changed before you accept it.</p>
-                <DocsImage name="workspace" alt="Struct workspace with open files and an active conversation" title="Struct workspace" />
+                <ScreenshotFrame src={mainInterface} alt="Struct main chat interface with an active agent conversation" title="Main chat interface" />
+                <ScreenshotFrame src={additionalInfo} alt="Additional information about Struct capabilities" title="Additional info" />
                 <Callout title="What Struct does not do"><p>Struct does not silently take ownership of your repository. The agent is a collaborator: it works from the context you provide and the files it is allowed to inspect, while you keep control of consequential changes.</p></Callout>
               </DocSection>
 
@@ -336,11 +323,8 @@ export default function Documentation() {
                   ))}
                 </div>
                 <p>Preview of web search</p>
-                <ScreenshotFrame
-                src = {webSearchPreview}
-                title = "web_search agent tool"
-                />
                 <p>Agent activity appears in a timeline with tool status and output. Destructive operations require explicit approval, but approval alone is not a substitute for reviewing the resulting diff.</p>
+                <ScreenshotFrame src={chatPreview} alt="Chat interface with agent conversation" title="Chat section" />
 
                 <Callout title="Context is selected"><p>Struct does not automatically send your entire repository to a provider. The agent can work with open editor files, files you select, files discovered by search, and files reached through its tools.</p></Callout>
               </DocSection>
@@ -406,6 +390,7 @@ export default function Documentation() {
                   <li>The selected context window can hold the files you plan to send.</li>
                   <li>You understand the provider&apos;s retention and training terms.</li>
                 </ul>
+                <ScreenshotFrame src={aiSettings} alt="AI model provider settings and system prompt" title="Provider settings" />
               </DocSection>
 
 
@@ -439,7 +424,6 @@ export default function Documentation() {
                 </CodeBlock>
                 
                 <p>In Struct, use the local endpoint and the model identifier reported by Ollama. The exact setup varies by machine and model, so check the Ollama documentation and Struct&apos;s provider settings if the names do not match.</p>
-                <DocsImage name="local-models" alt="Struct configured to use a local Ollama model" title="Local model provider" />
                 <Callout title="Local does not automatically mean private" warning><p>Check what the model, OS, and any extensions can access. Avoid sending secrets or sensitive files to a model simply because the interface is running locally.</p></Callout>
               </DocSection>
 
