@@ -1,1 +1,0 @@
-var e=`/ForgeHQ/assets/newtest-Dt4TrGtl.png`;export{e as t};
