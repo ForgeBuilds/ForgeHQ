@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import ScreenshotFrame from "./ScreenshotFrame";
-import previewSss from "../src/assets/newtest.png";
+//import ScreenshotFrame from "./ScreenshotFrame";
+//import previewSss from "../src/assets/newtest.png";
 import { IoLogoGithub } from "react-icons/io5";
 import { IoLogoWindows } from "react-icons/io";
 import { IoLogoTux } from "react-icons/io";
@@ -91,8 +91,8 @@ export default function StructProduct() {
       <section>
         <div className="mx-auto max-w-4xl px-4 pb-24 sm:px-6 sm:pb-28 lg:px-8">
           <div className="overflow-hidden bg-black/30">
-            <ScreenshotFrame
-              src={previewSss}
+            <img
+              src="../src/assets/chat.png"
               alt="Struct workspace preview"
               title="Main chat interface"
             />

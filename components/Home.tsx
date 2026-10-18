@@ -3,7 +3,7 @@ import { IoLogoGithub } from "react-icons/io5";
 import structPreview from "../src/assets/mainchatinterface.png";
 import BackgroundPixelStars from "./background";
 import {MaintenanceBanner} from "./alert.tsx"
-import DitherVeil from "../src/component/DitherVeil.tsx";
+
 const ORG_URL = "https://github.com/ForgeBuilds";
 const STRUCT_URL = "https://github.com/ForgeBuilds/Struct";
 import SplitFlapText from "../src/component/SplitFlapText.tsx";
