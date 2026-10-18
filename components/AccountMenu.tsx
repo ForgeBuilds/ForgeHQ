@@ -58,7 +58,7 @@ export default function AccountMenu() {
         <button
           type="button"
           onClick={() => openAuthModal("sign-in")}
-          className="min-h-11 rounded-lg border border-zinc-700 px-[clamp(0.625rem,0.9vw,0.875rem)] py-[clamp(0.5rem,0.8vw,0.625rem)] text-[clamp(0.8125rem,0.95vw,0.875rem)] font-medium text-zinc-200 transition hover:border-zinc-500 hover:bg-zinc-800 hover:text-white"
+          className="min-h-8 w-19 rounded-lg border border-zinc-700 px-[clamp(0.625rem,0.9vw,0.875rem)] py-[clamp(0.5rem,0.8vw,0.625rem)] text-[clamp(0.8125rem,0.95vw,0.875rem)] font-medium text-zinc-200 transition hover:border-zinc-500 hover:bg-zinc-800 hover:text-white m-2"
         >
           Sign in
         </button>

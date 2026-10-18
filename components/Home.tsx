@@ -3,9 +3,10 @@ import { IoLogoGithub } from "react-icons/io5";
 import structPreview from "../src/assets/mainchatinterface.png";
 import BackgroundPixelStars from "./background";
 import {MaintenanceBanner} from "./alert.tsx"
+import DitherVeil from "../src/component/DitherVeil.tsx";
 const ORG_URL = "https://github.com/ForgeBuilds";
 const STRUCT_URL = "https://github.com/ForgeBuilds/Struct";
-
+import SplitFlapText from "../src/component/SplitFlapText.tsx";
 export default function Home() {
   return (
     
@@ -22,10 +23,28 @@ export default function Home() {
             <p className="mb-5 text-xs font-medium uppercase tracking-[0.16em] text-zinc-500">
               
             </p>
+            <SplitFlapText
+              words={[" Efficient","Always free","Open source"]}
+              flipDuration={0.10}
+              stagger={0.06}
+              cycleDelay={2000}
+              charset="alpha"
+              flipsPerChar={8}
+              order="left"
+              align="left"
+              tileStyle="board"
+              tileColor="#f8f2f2fa"
+              textColor="#0d0e0e"
+              glare={0}
+              depth={0.5}
+              tileRadius={8}
+              gap={4}
+              fontSize={52}
+              loop
+              padTo={10}
+              intro
+            />
 
-            <h1 className="max-w-xl text-4xl font-semibold tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl">
-              Practical software, shared openly.
-            </h1>
 
             <p className="mt-6 max-w-lg text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
               Forge builds focused tools for people who make things.
@@ -52,7 +71,7 @@ export default function Home() {
             </div>
 
             <p className="mt-5 text-sm text-zinc-500">
-              Available for Windows and Linux
+              Available for Windows, macos and linux distros
             </p>
           </div>
 
@@ -61,6 +80,7 @@ export default function Home() {
             aria-label="See the Struct product page"
             className="group block"
           >
+            
             <img
               src={structPreview}
               alt="Struct main chat interface with coding agent"
