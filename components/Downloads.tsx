@@ -181,7 +181,7 @@ export default function Downloads() {
                   Forge · Struct
                 </p>
 
-                <h1 className="text-4xl font-medium tracking-tight sm:text-5xl">
+                <h1 className="text-4xl font-medium tracking-tight sm:text-5xl py-15">
                   Downloads
                 </h1>
 
@@ -198,7 +198,7 @@ export default function Downloads() {
               </div>
 
               {version && (
-                <div className="font-mono text-xs text-white/50">
+                <div className="font-mono text-xs text-white/50 ">
                   v{version}
                   {date && ` · ${date}`}
                 </div>
@@ -207,7 +207,7 @@ export default function Downloads() {
           </header>
 
           {/* Recommended */}
-          <section className="border border-white/15 bg-black/40">
+          <section className="border border-white/15 bg-black/40 rounded-lg">
             <div className="p-6 sm:p-7">
               {loading ? (
                 <div className="font-mono text-sm text-white/60">
@@ -310,7 +310,7 @@ export default function Downloads() {
           {/* Builds */}
           <section className="mt-10">
             <div className="mb-5">
-              <h2 className="text-lg font-medium">
+              <h2 className="text-lg font-medium m-0.5">
                 Available builds
               </h2>
 
@@ -322,7 +322,7 @@ export default function Downloads() {
             <div className="grid gap-6 md:grid-cols-2">
 
               {/* Windows */}
-              <section className="border border-white/25 bg-black/40">
+              <section className="border border-white/25 bg-black/40 rounded-lg">
                 <div className="flex items-center gap-3 border-b border-white/20 px-5 py-4">
                   <IoLogoWindows className="h-5 w-5 text-white/80" />
 
@@ -332,7 +332,7 @@ export default function Downloads() {
                     </h3>
 
                     <p className="mt-0.5 text-xs text-white/45">
-                      Windows 10 or later · 64-bit
+                      Windows 11 or later · 64-bit
                     </p>
                   </div>
                 </div>
@@ -341,7 +341,7 @@ export default function Downloads() {
                   {exe && (
                     <a
                       href={exe.browser_download_url}
-                      className="group flex items-center justify-between border-b border-white/10 py-4"
+                      className="group flex items-center justify-between py-4"
                     >
                       <div className="min-w-0">
                         <p className="truncate text-sm text-white/80 group-hover:text-white">
@@ -385,7 +385,7 @@ export default function Downloads() {
               </section>
 
               {/* Linux / macOS */}
-              <section className="border border-white/25 bg-black/40">
+              <section className="border border-white/25 bg-black/40 rounded-lg">
                 <div className="flex items-center gap-3 border-b border-white/20 px-5 py-4">
                   {dmg ? (
                     <IoLogoApple className="h-5 w-5 text-white/80" />
@@ -408,7 +408,7 @@ export default function Downloads() {
                   {deb && (
                     <a
                       href={deb.browser_download_url}
-                      className="group flex items-center justify-between border-b border-white/10 py-4"
+                      className="group flex items-center justify-between border-white/10 py-4"
                     >
                       <div>
                         <p className="text-sm text-white/80 group-hover:text-white">
@@ -427,7 +427,7 @@ export default function Downloads() {
                   {rpm && (
                     <a
                       href={rpm.browser_download_url}
-                      className="group flex items-center justify-between border-b border-white/10 py-4"
+                      className="group flex items-center justify-between border-white/10 py-4"
                     >
                       <div>
                         <p className="text-sm text-white/80 group-hover:text-white">
@@ -446,7 +446,7 @@ export default function Downloads() {
                   {appImage && (
                     <a
                       href={appImage.browser_download_url}
-                      className="group flex items-center justify-between border-b border-white/10 py-4"
+                      className="group flex items-center justify-between bg-(--fill-3) py-4"
                     >
                       <div className="min-w-0">
                         <p className="truncate text-sm text-white/80 group-hover:text-white">
@@ -500,7 +500,7 @@ export default function Downloads() {
           {/* Footer */}
           <footer className="mt-8 flex flex-col gap-4 pt-6 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <p className="text-sm text-white/50">
+          <p className="text-sm text-white/50 py-10">
             Looking for an older build or release notes?
           </p>
 
@@ -513,6 +513,7 @@ export default function Downloads() {
             Browse all releases
             <IoOpenOutline />
           </a>
+          <p className = "py-5"></p>
         </div>
 
         <div className="relative max-w-md sm:text-right">
@@ -528,20 +529,20 @@ export default function Downloads() {
             <IoInformationCircleOutline className="h-4 w-4" />
           </button>
 
-          <div className="absolute right-0 z-50 mt-3 hidden w-80 border border-white/20 bg-zinc-950 p-4 text-left shadow-xl">
+          <div className="absolute right-0 z-50 mt-3 hidden w-80 border border-white/20 bg-zinc-950 p-4 text-left shadow-xl rounded-2xl">
             <p className="text-xs font-medium text-white">
               About builds
             </p>
 
             <p className="mt-2 text-xs leading-5 text-white/50">
-              Struct is currently in beta and Windows builds are unsigned, so
+              Struct is currently in beta and Windows, macos, and linux builds are unsigned, so
               Microsoft Defender SmartScreen may display a warning.
             </p>
 
             <p className="mt-2 text-xs leading-5 text-white/50">
               Only download Struct from this page or the official Forge
               GitHub repository. Never trust third-party builds or installers.
-              Verify the source before installing.
+              Verify the source before installing !
             </p>
           </div>
         </div>

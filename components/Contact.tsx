@@ -1,12 +1,44 @@
 
 
 
-const contact = async() => {
-  const email = "madhusudhant207@gmail.com";
-  window.location.href = `mailto:${email}`;
-  
-}
+const contact = async () => {
+  try {
+    const email = "madhusudhant207@gmail.com";
+    window.location.href = `mailto:${email}`;
+  } catch (error) {
+    console.error("Error occurred while trying to email:", error);
+  }
+};
+
+import { useState } from "react";
+
+const contact2 = () => {
+  try {
+    const phoneDiv = (
+      <div className="mt-3 inline-block border border-white/20 bg-zinc-950 px-4 py-3 text-left text-white/80 shadow-lg rounded-xl">
+        <p className="text-xs font-medium text-white">
+          Phone number
+        </p>
+
+        <p className="mt-1 text-xs leading-5 text-white/50">
+          +1 772-259-0947
+        </p>
+
+        <p className="mt-1 text-xs leading-5 text-white/50">
+          For any other inquiries contact using the email : madhusudhant207@gmail.com
+        </p>
+      </div>
+    );
+
+    return phoneDiv;
+  } catch (error) {
+    console.error("Error occurred while trying to call:", error);
+    return null;
+  }
+};
 export default function Contact() {
+  const [showPhone, setShowPhone] = useState(false);
+
   return (
     <main className="bg-zinc-950 text-white">
       <section className="mx-auto max-w-3xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
@@ -58,11 +90,20 @@ export default function Contact() {
           <div className="mt-5">
             <button
               onClick={contact}>
-              <span className="hover:text-blue-500 m-4 underline underline-offset-4">
-                Contact us using Email
+              <span className="hover:text-blue-500 m-4 underline underline-offset-4 font-medium">
+                Contact us using Email 
                 
-              </span></button>
-            <a
+              </span>
+              </button>
+              <button
+              onClick={() => setShowPhone((v) => !v)}
+            >
+              <span className="hover:text-blue-500 m-4 underline underline-offset-4 font-medium">
+                Contact us using phone
+              </span>
+            </button>
+            {showPhone && contact2()}
+            {/* <a
               href="https://github.com/ForgeBuilds/Struct"
               target="_blank"
               rel="noopener noreferrer"
@@ -72,7 +113,7 @@ export default function Contact() {
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-3.5 w-3.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
               </svg>
-            </a>
+            </a> */}
           </div>
         </div>
 
