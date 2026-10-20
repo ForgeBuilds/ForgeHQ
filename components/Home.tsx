@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { IoLogoGithub } from "react-icons/io5";
-import structPreview from "../src/assets/mainchatinterface.png";
+import structPreview from "../src/assets/chat.png";
 import BackgroundPixelStars from "./background";
 import {MaintenanceBanner} from "./alert.tsx"
 
@@ -21,7 +21,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-8 lg:py-24">
           <div>
             <p className="mb-5 text-xs font-medium uppercase tracking-[0.16em] text-zinc-500">
-              
+              The future of development
             </p>
             <SplitFlapText
               words={[" Efficient","Always free","Open source"]}
@@ -47,9 +47,7 @@ export default function Home() {
 
 
             <p className="mt-6 max-w-lg text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
-              Forge builds focused tools for people who make things.
-              Start with Struct, a lightweight app with a built-in
-              coding agent.
+              We at Forge build tools specialized for developers.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
@@ -97,15 +95,13 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6 sm:pb-20 sm:pt-10 lg:px-8">
           <div className="max-w-2xl">
             <p className="text-xs font-medium uppercase tracking-[0.16em] text-zinc-500">
-              The work
+              Struct, your personal agent utility
             </p>
             <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-              Built to be useful.
+              Built for almost anything.
             </h2>
             <p className="mt-4 text-sm leading-6 text-zinc-400 sm:text-base">
-              Struct is a lightweight app with an agent that works in
-              your project. Review changes before accepting them, use your
-              preferred provider, and keep your workspace tidy.
+              Struct is a lightweight app that provides AI models with agent tools 
             </p>
           </div>
 
@@ -136,12 +132,12 @@ export default function Home() {
             >
               Source code
             </a>
-            <Link
+            {/* <Link
               to="/about"
               className="text-zinc-400 transition hover:text-white"
             >
               About the studio
-            </Link>
+            </Link> */}
           </div>
         </div>
         <p className = "m-80"></p>
