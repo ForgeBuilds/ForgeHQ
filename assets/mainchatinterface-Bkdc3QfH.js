@@ -1,1 +1,0 @@
-var e=`/ForgeHQ/assets/mainchatinterface-zjYJp6Di.png`;export{e as t};
