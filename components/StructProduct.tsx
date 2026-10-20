@@ -35,9 +35,9 @@ export default function StructProduct() {
   return (
     <>
       {/* Product hero */}
-      <section className="min-h-screen bg-slate-950">
+      <section className="relative min-h-screen overflow-hidden">
         <div className="absolute inset-0">
-          <div className="relative h-full w-full overflow-hidden">
+          <div className="relative h-full w-full">
             <GradientASCII
               colors={["#1e3fd8", "#f6f8ff", "#a5d8ff", "#38bdf8"]}
               shape="horizon"
@@ -61,7 +61,6 @@ export default function StructProduct() {
               intro
               lightMode={false}
             />
-            {/* Overlay for text visibility */}
             <div className="absolute inset-0 bg-slate-950/70" />
           </div>
         </div>
@@ -118,7 +117,7 @@ export default function StructProduct() {
       </section>
 
       {/* Preview */}
-      <section>
+      <section className="relative bg-slate-950">
         <div className="mx-auto max-w-4xl px-4 pb-24 sm:px-6 sm:pb-28 lg:px-8">
           <img
             src={chatPreview}

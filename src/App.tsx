@@ -14,7 +14,7 @@ import AuthModal from "../components/AuthModal";
 import { BackgroundPixelStars } from "../components/background";
 const PrivacyPolicy = lazy(() => import("../components/Privacypolicyandterms"));
 const Downloads = lazy(() => import("../components/Downloads"));
-const About = lazy(() => import("../components/About"));
+//const About = lazy(() => import("../components/About"));
 const Contact = lazy(() => import("../components/Contact"));
 const Documentation = lazy(() => import("../components/Documentation"));
 const Home = lazy(() => import("../components/Home"));
@@ -71,10 +71,10 @@ function PageContent() {
             />
 
             {/* About */}
-            <Route
+            {/* <Route
               path="/about"
               element={<About />}
-            />
+            /> */}
 
             {/* Privacy */}
             <Route
