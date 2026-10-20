@@ -8,7 +8,7 @@ import {IoLogoGithub} from "react-icons/io5"
 const navigation = [
   { label: "Home", href: "/" },
   { label: "Downloads", href: "/downloads" },
-  { label: "About", href: "/about" },
+  // { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
