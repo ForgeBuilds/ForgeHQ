@@ -863,6 +863,20 @@ const GradientASCII = ({
 
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(container);
+    // Retry sizing shortly after mount — fixed-position parents can report
+    // 0x0 on first measure, which permanently trips the WebGL fallback.
+    let retries = 0;
+    const retryTimer = window.setInterval(() => {
+      const rect = container.getBoundingClientRect();
+      if ((rect.width > 2 && rect.height > 2) || retries >= 20) {
+        window.clearInterval(retryTimer);
+        resize();
+        wake();
+        return;
+      }
+      retries += 1;
+      resize();
+    }, 100);
     const intersection = new IntersectionObserver(entries => {
       visible = entries.some(entry => entry.isIntersecting);
       if (visible) {
@@ -882,18 +896,24 @@ const GradientASCII = ({
       cancelAnimationFrame(raf);
       wakeRef.current = null;
       resizeObserver.disconnect();
+      window.clearInterval(retryTimer);
       intersection.disconnect();
       window.removeEventListener('pointermove', onPointerMove);
       window.removeEventListener('pointerdown', onPointerDown);
       document.removeEventListener('visibilitychange', onVisibility);
-      [fieldTarget, haloA, haloB].forEach(target => {
-        target.textures.forEach(texture => gl.deleteTexture(texture));
-        gl.deleteFramebuffer(target.framebuffer);
-      });
-      if (atlas) gl.deleteTexture(atlas.texture);
-      gl.deleteVertexArray(vao);
-      [field, halo, blur, composite].forEach(item => gl.deleteProgram(item.program));
-      gl.getExtension('WEBGL_lose_context')?.loseContext();
+      try {
+        [fieldTarget, haloA, haloB].forEach(target => {
+          target.textures.forEach(texture => texture && gl.deleteTexture(texture));
+          if (target.framebuffer) gl.deleteFramebuffer(target.framebuffer);
+        });
+        if (atlas) gl.deleteTexture(atlas.texture);
+        gl.deleteVertexArray(vao);
+        [field, halo, blur, composite].forEach(item => item && gl.deleteProgram(item.program));
+      } catch {
+        /* ignore GL cleanup errors on unmount / StrictMode remount */
+      }
+      // NOTE: intentionally NOT calling loseContext() here — it breaks
+      // React StrictMode remounts (second mount gets a lost context -> gray fallback).
     };
   }, []);
 

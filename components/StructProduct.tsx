@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-import GradientASCII from "../src/component/GradientASCII";
-//import ScreenshotFrame from "./ScreenshotFrame";
 import chatPreview from "../src/assets/chat.png";
 import { IoLogoGithub } from "react-icons/io5";
 import { IoLogoWindows } from "react-icons/io";
@@ -33,53 +31,24 @@ const features = [
 
 export default function StructProduct() {
   return (
-    <>
+    <div className="relative min-h-screen">
+      {/* All content above the page-level bg in App.tsx */}
+      <div className="relative z-10">
       {/* Product hero */}
-      <section className="relative min-h-screen overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="relative h-full w-full">
-            <GradientASCII
-              colors={["#1e3fd8", "#f6f8ff", "#a5d8ff", "#38bdf8"]}
-              shape="horizon"
-              characters=" =+xX0S8#@"
-              cellSize={18}
-              density={0.8}
-              glyphOpacity={0.85}
-              glow={0.2}
-              depthOfField={0}
-              flicker={0.2}
-              softness={0.5}
-              scale={1}
-              flow={0.5}
-              speed={1}
-              gradientOpacity={0.9}
-              grain={0.08}
-              variation={0}
-              mouseInteraction
-              scrambleRadius={0.1}
-              clickEffect="wave"
-              intro
-              lightMode={false}
-            />
-            <div className="absolute inset-0 bg-slate-950/70" />
-          </div>
-        </div>
+      <section className="relative overflow-hidden">
         <div className="relative z-10 mx-auto max-w-4xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
           <div className="max-w-3xl">
             <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-zinc-500">
               Forge · Product
             </p>
-
             <h1 className="text-5xl font-semibold tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl">
               Struct
             </h1>
-
             <p className="mt-6 max-w-xl text-base leading-7 text-zinc-400 sm:text-lg">
               A lightweight agentic app that works alongside you directly in
               the project you opened. Built to stay
               fast on modest hardware.
             </p>
-
             <div className="mt-9 flex flex-wrap gap-3">
               <Link
                 to="/downloads"
@@ -87,14 +56,12 @@ export default function StructProduct() {
               >
                 Download
               </Link>
-
               <Link
                 to="/documentation"
                 className="rounded-md border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition hover:border-white/40 hover:bg-white/5"
               >
                 Documentation
               </Link>
-
               <a
                 href={STRUCT_URL}
                 target="_blank"
@@ -105,7 +72,6 @@ export default function StructProduct() {
                 GitHub
               </a>
             </div>
-
             <p className="mt-6 flex items-center gap-2 text-xs text-zinc-500">
               <IoLogoWindows />
               <span>Windows 10+</span>
@@ -117,7 +83,7 @@ export default function StructProduct() {
       </section>
 
       {/* Preview */}
-      <section className="relative bg-slate-950">
+      <section className="relative">
         <div className="mx-auto max-w-4xl px-4 pb-24 sm:px-6 sm:pb-28 lg:px-8">
           <img
             src={chatPreview}
@@ -128,16 +94,14 @@ export default function StructProduct() {
       </section>
 
       {/* Features */}
-      <section>
+      <section className="relative">
         <div className="mx-auto max-w-4xl px-4 py-24 sm:px-6 sm:py-28 lg:px-8">
           <p className="text-xs font-medium uppercase tracking-[0.16em] text-zinc-600">
             Features
           </p>
-
           <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
             What it does
           </h2>
-
           <dl className="mt-12 space-y-10">
             {features.map((f) => (
               <div key={f.title}>
@@ -151,19 +115,16 @@ export default function StructProduct() {
         </div>
       </section>
 
-
-      {/* Documentation entry point — docs live only behind this product page. */}
-      <section>
-        <div className="mx-auto max-w-4xl px-4 pb-24 pt-4 sm:px-6 sm:pb-28 lg:px-8">
+      {/* Documentation entry point */}
+      <section className="relative overflow-hidden">
+        <div className="relative z-10 mx-auto max-w-4xl px-4 pb-24 pt-4 sm:px-6 sm:pb-28 lg:px-8">
           <h2 className="max-w-2xl text-2xl font-semibold tracking-tight text-white sm:text-3xl">
             New to Struct?
           </h2>
-
           <p className="mt-3 max-w-xl text-sm leading-6 text-zinc-400 sm:text-base">
             Installation, provider setup, the agent workflow, and a full FAQ are
             covered in the documentation.
           </p>
-
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               to="/documentation"
@@ -171,14 +132,12 @@ export default function StructProduct() {
             >
               Read the documentation
             </Link>
-
             <Link
               to="/downloads"
               className="rounded-md border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition hover:border-white/40 hover:bg-white/5"
             >
               Download Struct
             </Link>
-
             <a
               href="https://github.com/ForgeBuilds/Struct/issues"
               target="_blank"
@@ -190,7 +149,7 @@ export default function StructProduct() {
           </div>
         </div>
       </section>
-    </>
+      </div>
+    </div>
   );
 }
-
