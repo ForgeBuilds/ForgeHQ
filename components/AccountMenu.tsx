@@ -94,7 +94,7 @@ export default function AccountMenu() {
         {open && (
           <div
             role="menu"
-            className="absolute right-0 top-full z-50 mt-2 w-[clamp(15rem,70vw,16rem)] rounded-xl border border-zinc-800 bg-zinc-900 p-4 shadow-2xl shadow-black/50"
+            className="relative right-0 top-full z-50 mt-2 w-40 rounded-xl border border-zinc-800 bg-zinc-900 p-4 shadow-2xl shadow-black/50"
           >
             <div className="flex items-start justify-between gap-2">
               <div className="min-w-0">
@@ -102,9 +102,7 @@ export default function AccountMenu() {
                 <p className="truncate text-xs text-zinc-500">{user.email || user.provider}</p>
               </div>
             </div>
-            <p className="mt-3 text-xs leading-5 text-zinc-500">
-              The same account you sign into inside the Struct app.
-            </p>
+           
 
             <div className="mt-4 space-y-1">
               <Link
@@ -114,7 +112,7 @@ export default function AccountMenu() {
               >
                 <span className="flex items-center gap-2">
                   <IoPersonCircleOutline className="h-4 w-4" />
-                  Account &amp; profile
+                  profile
                 </span>
                 <IoChevronForward className="h-3.5 w-3.5 text-zinc-500" />
               </Link>

@@ -155,15 +155,7 @@ export default function Navbar() {
             <AccountMenu />
           </div>
 
-          <a
-            href="https://github.com/ForgeBuilds"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2 m-4 flex min-h-[clamp(2.75rem,3.5vw,3.25rem)] w-14 items-center justify-center rounded-2xl bg-transparent text-[clamp(0.875rem,1.2vw,1rem)] font-medium text-zinc-950 transition hover:bg-zinc-200"
-          >
-            <IoLogoGithub className="h-9 w-10 shrink-0" />
-            {/* <span>GitHub</span> */}
-          </a>
+          
         </div>
       )}
     </nav>

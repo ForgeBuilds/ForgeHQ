@@ -4,7 +4,7 @@ import { IoLogoGithub } from "react-icons/io5";
 import {MaintenanceBanner} from "./alert.tsx"
 
 const ORG_URL = "https://github.com/ForgeBuilds";
-const STRUCT_URL = "https://github.com/ForgeBuilds/Struct";
+//const STRUCT_URL = "https://github.com/ForgeBuilds/Struct";
 import SplitFlapText from "../src/component/SplitFlapText.tsx";
 //import FaultyTerminal from "../src/component/FaultyTerminal.tsx";
 import BackgroundPixelStars from "./background.tsx";
@@ -21,6 +21,7 @@ export default function Home() {
         />
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-8 lg:py-24">
           <div>
+            <p className = "text-lg font-semibold text-white py-5">Forge</p>
             {/* <p className="mb-5 text-xs font-medium uppercase tracking-[0.16em] text-zinc-500">
               
             </p> */}
@@ -74,6 +75,7 @@ export default function Home() {
               Available for Windows, macos and linux distros
             </p>
             </a>
+
             
             
 
@@ -99,8 +101,88 @@ export default function Home() {
           </Link>
         </div>
       </section>
+                    {/* Additive homepage section: place after the existing products section */}
+      <section
+        id="how-struct-works"
+        className="scroll-mt-24 py-20 sm:py-24"
+      >
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl">
+            <p className="text-xs font-medium uppercase tracking-[0.16em] text-zinc-500">
+              Inside Struct
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              A coding agent that works in your project.
+            </h2>
+            <p className="mt-4 text-base leading-7 text-zinc-400">
+              Open a folder, choose a model, and give Struct a task. It can work
+              with the files and tools in that workspace, while you stay in
+              control of what it does.
+            </p>
+          </div>
 
-      <section id="products" className="scroll-mt-24 py-30">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <article className="rounded-xl border border-white/10 bg-white/[0.03] p-6">
+              <h3 className="text-base font-semibold text-white">
+                Context from your workspace
+              </h3>
+              <p className="mt-3 text-sm leading-6 text-zinc-400">
+                Struct maps the project folder you open and can keep pinned
+                files in context as you work.
+              </p>
+            </article>
+
+            <article className="rounded-xl border border-white/10 bg-white/[0.03] p-6">
+              <h3 className="text-base font-semibold text-white">
+                Use your model
+              </h3>
+              <p className="mt-3 text-sm leading-6 text-zinc-400">
+                Connect a supported provider or run a local model through
+                Ollama. You choose what powers the agent.
+              </p>
+            </article>
+
+            <article className="rounded-xl border border-white/10 bg-white/[0.03] p-6">
+              <h3 className="text-base font-semibold text-white">
+                See what the agent does
+              </h3>
+              <p className="mt-3 text-sm leading-6 text-zinc-400">
+                Tool calls appear in an activity feed. Destructive actions wait
+                for your approval.
+              </p>
+            </article>
+          </div>
+
+          <div className="mt-8 flex flex-col gap-5 rounded-xl border border-white/10 bg-white/[0.03] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+            <div>
+              <h3 className="text-base font-semibold text-white">
+                Free to use. Local features need no account.
+              </h3>
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-zinc-400">
+                Struct has no subscriptions or paywall. An account is optional
+                for features such as cloud sync and encrypted provider-key
+                storage.
+              </p>
+            </div>
+
+            <div className="flex shrink-0 flex-wrap gap-3">
+              <Link
+                to="/downloads"
+                className="rounded-md bg-white px-5 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+              >
+                Download Struct
+              </Link>
+              <Link
+                to="/documentation"
+                className="rounded-md border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition hover:border-white/40 hover:bg-white/5"
+              >
+                Read the docs
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* <section id="products" className="scroll-mt-24 py-30">
         <div className="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6 sm:pb-20 sm:pt-10 lg:px-8">
           <div className="max-w-2xl">
             <p className="text-xs font-medium uppercase tracking-[0.16em] text-zinc-500">
@@ -146,11 +228,11 @@ export default function Home() {
               className="text-zinc-400 transition hover:text-white"
             >
               About the studio
-            </Link> */}
+            </Link> 
           </div>
         </div>
-        <p className = "m-80"></p>
-      </section>
+      
+     </section>*/}
 
     </div>
   );

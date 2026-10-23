@@ -1,14 +1,4 @@
-/**
- * Account page — the signed-in profile for the shared Forge / Struct Supabase
- * account: display name + avatar, current plan and purchase history, plus the
- * security actions (change password, reset link, sign out).
- *
- * Everything editable here is the same `profiles` row the Struct desktop app
- * reads, so a save shows up in both places.
- *
- * Deliberately plain: one narrow column, hairline separators, no cards, glows
- * or pills — this page should read like settings, not a dashboard.
- */
+
 
 import {
   useCallback,
