@@ -57,7 +57,7 @@ export default function Home() {
                 to="/products/struct"
                 className="rounded-md bg-white px-5 py-3 font-medium text-zinc-950 transition hover:bg-zinc-200"
               >
-                Explore Struct
+                Explore Our projects
               </Link>
               <a
                 href={ORG_URL}
@@ -69,10 +69,14 @@ export default function Home() {
                 GitHub
               </a>
             </div>
-
-            <p className="mt-5 text-sm text-zinc-500">
+              <a href="">
+                <p className="mt-5 text-sm text-zinc-500 hover:text-blue-500">
               Available for Windows, macos and linux distros
             </p>
+            </a>
+            
+            
+
           </div>
 
           <Link
