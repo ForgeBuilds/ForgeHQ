@@ -1,13 +1,84 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type CSSProperties, type HTMLAttributes } from 'react';
 import './FaultyTerminal.css';
+
+type Vec2 = [number, number];
+
+export type FaultyTerminalGlyphs = 'blocks' | 'dots' | 'characters';
+export type FaultyTerminalClickEffect = 'glitch' | 'degauss' | 'none';
+
+export interface FaultyTerminalProps extends Omit<HTMLAttributes<HTMLDivElement>, 'style'> {
+  scale?: number;
+  gridMul?: Vec2;
+  digitSize?: number;
+  timeScale?: number;
+  pause?: boolean;
+  scanlineIntensity?: number;
+  glitchAmount?: number;
+  flickerAmount?: number;
+  noiseAmp?: number;
+  chromaticAberration?: number;
+  dither?: number | boolean;
+  curvature?: number;
+  tint?: string;
+  mouseReact?: boolean;
+  mouseStrength?: number;
+  pageLoadAnimation?: boolean;
+  brightness?: number;
+  glyphs?: FaultyTerminalGlyphs;
+  glow?: number;
+  persistence?: number;
+  scramble?: number;
+  mouseGlow?: number;
+  vignette?: number;
+  clickEffect?: FaultyTerminalClickEffect;
+  variation?: number;
+  lightMode?: boolean;
+  dpr?: number;
+  className?: string;
+  style?: CSSProperties;
+}
+
+type Settings = {
+  scale: number;
+  gridX: number;
+  gridY: number;
+  digitSize: number;
+  timeScale: number;
+  pause: boolean;
+  scanlineIntensity: number;
+  glitchAmount: number;
+  flickerAmount: number;
+  noiseAmp: number;
+  chromaticAberration: number;
+  dither: number;
+  curvature: number;
+  tint: string;
+  mouseReact: boolean;
+  mouseStrength: number;
+  pageLoadAnimation: boolean;
+  brightness: number;
+  glyphs: number;
+  glow: number;
+  persistence: number;
+  scramble: number;
+  mouseGlow: number;
+  vignette: number;
+  clickEffect: number;
+  clickSeconds: number;
+  variation?: number;
+  lightMode: boolean;
+  dpr?: number;
+};
+
+type Program = { program: WebGLProgram; uniforms: Record<string, WebGLUniformLocation | null> };
 
 const INTRO_SECONDS = 2;
 const MAX_CLICKS = 4;
-const CLICK_SECONDS = { glitch: 0.7, degauss: 1.6 };
-const GLYPHS = { blocks: 0, dots: 1, characters: 2 };
-const CLICKS = { none: 0, glitch: 1, degauss: 2 };
+const CLICK_SECONDS: Record<string, number> = { glitch: 0.7, degauss: 1.6 };
+const GLYPHS: Record<string, number> = { blocks: 0, dots: 1, characters: 2 };
+const CLICKS: Record<string, number> = { none: 0, glitch: 1, degauss: 2 };
 
 const FONT = [
   ['.###.', '#..##', '#.#.#', '##..#', '.###.'],
@@ -445,9 +516,9 @@ void main() {
   outColor = vec4(col, max(col.r, max(col.g, col.b)));
 }`;
 
-const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
 
-const compile = (gl, type, source) => {
+const compile = (gl: WebGL2RenderingContext, type: number, source: string) => {
   const shader = gl.createShader(type);
   if (!shader) return null;
   gl.shaderSource(shader, source);
@@ -457,7 +528,7 @@ const compile = (gl, type, source) => {
   return null;
 };
 
-const link = (gl, fragmentSource) => {
+const link = (gl: WebGL2RenderingContext, fragmentSource: string): Program | null => {
   const vertex = compile(gl, gl.VERTEX_SHADER, VERTEX);
   const fragment = compile(gl, gl.FRAGMENT_SHADER, fragmentSource);
   const program = gl.createProgram();
@@ -471,7 +542,7 @@ const link = (gl, fragmentSource) => {
     gl.deleteProgram(program);
     return null;
   }
-  const uniforms = {};
+  const uniforms: Record<string, WebGLUniformLocation | null> = {};
   const count = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS);
   for (let i = 0; i < count; i++) {
     const info = gl.getActiveUniform(program, i);
@@ -482,7 +553,7 @@ const link = (gl, fragmentSource) => {
   return { program, uniforms };
 };
 
-const hexToRgb = hex => {
+const hexToRgb = (hex: string): number[] => {
   let h = String(hex || '#ffffff')
     .replace('#', '')
     .trim();
@@ -528,11 +599,11 @@ export default function FaultyTerminal({
   className = '',
   style,
   ...rest
-}) {
-  const containerRef = useRef(null);
-  const canvasRef = useRef(null);
-  const wakeRef = useRef(null);
-  const settings = {
+}: FaultyTerminalProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const wakeRef = useRef<(() => void) | null>(null);
+  const settings: Settings = {
     scale: Math.max(0.05, scale),
     gridX: Math.max(0.1, (gridMul?.[0] ?? 2) * 15),
     gridY: Math.max(0.1, (gridMul?.[1] ?? 1) * 15),
@@ -625,7 +696,7 @@ export default function FaultyTerminal({
     let visible = true;
     let quiet = 0;
 
-    const layoutCells = s => {
+    const layoutCells = (s: Settings) => {
       const reach = 1 + Math.max(0, s.curvature) * 2;
       const uvMin = 0.5 - 0.5 * reach;
       const uvMax = 0.5 + 0.5 * reach;
@@ -651,7 +722,7 @@ export default function FaultyTerminal({
       fresh = true;
     };
 
-    const stepCells = (s, decay) => {
+    const stepCells = (s: Settings, decay: number) => {
       const source = targets[current];
       const target = targets[1 - current];
       gl.bindFramebuffer(gl.FRAMEBUFFER, target.framebuffer);
@@ -742,7 +813,7 @@ export default function FaultyTerminal({
       wake();
     };
 
-    const frame = now => {
+    const frame = (now: number) => {
       raf = 0;
       if (!visible || document.hidden) return;
       const s = settingsRef.current;
@@ -780,14 +851,14 @@ export default function FaultyTerminal({
       }
     }
 
-    const locate = event => {
+    const locate = (event: PointerEvent) => {
       const rect = container.getBoundingClientRect();
       const x = (event.clientX - rect.left) / Math.max(rect.width, 1);
       const y = 1 - (event.clientY - rect.top) / Math.max(rect.height, 1);
       return { x, y, inside: x >= 0 && x <= 1 && y >= 0 && y <= 1 };
     };
 
-    const onPointerMove = event => {
+    const onPointerMove = (event: PointerEvent) => {
       const { x, y, inside } = locate(event);
       const was = pointer.inside;
       pointer.inside = inside;
@@ -798,7 +869,7 @@ export default function FaultyTerminal({
       if (inside || was) wake();
     };
 
-    const onPointerDown = event => {
+    const onPointerDown = (event: PointerEvent) => {
       const s = settingsRef.current;
       const { x, y, inside } = locate(event);
       if (!inside || reduce || !s.clickEffect) return;
@@ -861,10 +932,15 @@ export default function FaultyTerminal({
     <div
       ref={containerRef}
       className={`faulty-terminal-container${className ? ` ${className}` : ''}`}
-      style={style}
+      style={{ ...style, backgroundColor: '#000', position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: -1 }}
       {...rest}
     >
-      <canvas ref={canvasRef} className="faulty-terminal-canvas" aria-hidden="true" />
+      <canvas
+        ref={canvasRef}
+        className="faulty-terminal-canvas"
+        aria-hidden="true"
+        style={{ backgroundColor: '#000', display: 'block', width: '100%', height: '100%' }}
+      />
     </div>
   );
 }

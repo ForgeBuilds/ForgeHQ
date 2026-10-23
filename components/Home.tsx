@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
 import { IoLogoGithub } from "react-icons/io5";
 //import structPreview from "../src/assets/chat.png";
-//import BackgroundPixelStars from "./background";
 import {MaintenanceBanner} from "./alert.tsx"
 
 const ORG_URL = "https://github.com/ForgeBuilds";
 const STRUCT_URL = "https://github.com/ForgeBuilds/Struct";
 import SplitFlapText from "../src/component/SplitFlapText.tsx";
-import FaultyTerminal from "../src/component/FaultyTerminal.jsx";
+//import FaultyTerminal from "../src/component/FaultyTerminal.tsx";
+import BackgroundPixelStars from "./background.tsx";
 export default function Home() {
   return (
     
     <div>
-      <FaultyTerminal/>
+     <BackgroundPixelStars/>
       
       <section>
         <MaintenanceBanner
@@ -24,6 +24,7 @@ export default function Home() {
             {/* <p className="mb-5 text-xs font-medium uppercase tracking-[0.16em] text-zinc-500">
               
             </p> */}
+            
             <SplitFlapText
               words={[" Efficient","Always free","Open source"]}
               flipDuration={0.10}

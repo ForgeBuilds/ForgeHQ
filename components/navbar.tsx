@@ -37,7 +37,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav aria-label="Primary" className="fixed top-0 z-50 w-full  border-zinc-800/60 bg-zinc-950/80 backdrop-blur-xl">
+    <nav aria-label="Primary" className="fixed top-0 z-50 w-full  border-zinc-800/60 bg-transparent backdrop-blur-xl">
       <div className="mx-auto flex h-[clamp(4.25rem,5vw,5.5rem)] max-w-7xl items-center justify-between px-[clamp(1rem,3vw,2.5rem)]">
         {/* Logo */}
         <Link

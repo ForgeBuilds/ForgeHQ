@@ -11,7 +11,7 @@ import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import AuthModal from "../components/AuthModal";
 
-import FaultyTerminal from "./component/FaultyTerminal.jsx";
+import BackgroundPixelStars from "../components/background";
 import GradientASCII from "./component/GradientASCII";
 const PrivacyPolicy = lazy(() => import("../components/Privacypolicyandterms"));
 const Downloads = lazy(() => import("../components/Downloads"));
@@ -39,7 +39,7 @@ function PageContent() {
   return (
     //credits to https://21st.dev/@uicapsule/components/background-pixel-stars for the background component
      <div className={isStructPage ? "h-dvh w-dvw bg-transparent" : "h-dvh w-dvw bg-black bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAIElEQVR42mIUEhJiwAbevXuHVZyJgUQwqmEUDB0AEGAADd8DEPTX6ksAAAAASUVORK5CYII=')] bg-[size:10px]"}>
-       {pathname === "/" || isStructPage ? null : <FaultyTerminal/>}
+       {pathname === "/" || isStructPage ? null : <BackgroundPixelStars/>}
 
       {/* Struct page alone posesses this bg*/}
       {isStructPage && (
@@ -78,7 +78,7 @@ function PageContent() {
         <div className={isStructPage ? "[&_nav]:bg-transparent [&_nav]:border-transparent [&_nav]:backdrop-blur-none" : ""}>
         <Navbar />
         </div>
-
+      
         {/* Global auth modal (sign in / sign up) — opened by the navbar. */}
         <AuthModal />
 
