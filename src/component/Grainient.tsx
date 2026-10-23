@@ -1,5 +1,5 @@
 'use client';
-
+//credit to reactbits.dev for this component
 import { useEffect, useRef, type PointerEvent } from 'react';
 import './Grainient.css';
 
