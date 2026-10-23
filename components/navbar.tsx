@@ -1,10 +1,10 @@
-
 import { useState } from "react";
 import type { KeyboardEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
 import icon from "../src/assets/forgelogo.jpg";
 import AccountMenu from "./AccountMenu";
-import {IoLogoGithub} from "react-icons/io5"
+import { IoLogoGithub } from "react-icons/io5";
+
 const navigation = [
   { label: "Home", href: "/" },
   { label: "Downloads", href: "/downloads" },
@@ -37,7 +37,10 @@ export default function Navbar() {
   };
 
   return (
-    <nav aria-label="Primary" className="fixed top-0 z-50 w-full  border-zinc-800/60 bg-transparent backdrop-blur-xl">
+    <nav
+      aria-label="Primary"
+      className="fixed top-0 z-50 w-full border-zinc-800/60 bg-transparent backdrop-blur-xl"
+    >
       <div className="mx-auto flex h-[clamp(4.25rem,5vw,5.5rem)] max-w-7xl items-center justify-between px-[clamp(1rem,3vw,2.5rem)]">
         {/* Logo */}
         <Link
@@ -93,12 +96,34 @@ export default function Navbar() {
           aria-controls="mobile-nav"
         >
           {mobileOpen ? (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="h-[clamp(1.25rem,1.7vw,1.375rem)] w-[clamp(1.25rem,1.7vw,1.375rem)]">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.8}
+              stroke="currentColor"
+              className="h-[clamp(1.25rem,1.7vw,1.375rem)] w-[clamp(1.25rem,1.7vw,1.375rem)]"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18 18 6M6 6l12 12"
+              />
             </svg>
           ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="h-[clamp(1.25rem,1.7vw,1.375rem)] w-[clamp(1.25rem,1.7vw,1.375rem)]">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.8}
+              stroke="currentColor"
+              className="h-[clamp(1.25rem,1.7vw,1.375rem)] w-[clamp(1.25rem,1.7vw,1.375rem)]"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
             </svg>
           )}
         </button>
@@ -109,8 +134,7 @@ export default function Navbar() {
         <div
           id="mobile-nav"
           onKeyDown={handleMenuKeyDown}
-          className="hidden sm:block relative top-[clamp(4.25rem,5vw,5.5rem)] left-0 w-full bg-zinc-800/50 w-[clamp(11rem,45vw,13rem)] px-[clamp(1rem,3vw,2.5rem)] pb-[clamp(1rem,2vw,1.5rem)] pt-[clamp(0.5rem,1vw,0.75rem)] rounded-lg shadow-xl mx-auto"
-        >
+          className="block fixed top-[clamp(4.25rem,5vw,5.5rem)] right-2 w-[clamp(10rem,35vw,13rem)] max-w-[calc(100vw-1rem)] max-h-[calc(100dvh-6rem)] overflow-y-auto overscroll-contain bg-zinc-900 px-[clamp(1rem,3vw,1.5rem)] pb-[clamp(0.75rem,2vw,1rem)] pt-[clamp(0.5rem,1vw,0.75rem)] rounded-lg shadow-xl"        >
           {navigation.map(({ label, href }) => (
             <Link
               key={label}
