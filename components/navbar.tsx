@@ -106,7 +106,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div id="mobile-nav" onKeyDown={handleMenuKeyDown} className="hidden sm:block absolute top-[clamp(4.25rem,5vw,5.5rem)] right-10 bg-zinc-800/50 w-[clamp(15rem,70vw,16rem)] px-[clamp(1rem,3vw,2.5rem)] pb-[clamp(1rem,2vw,1.5rem)] pt-[clamp(0.5rem,1vw,0.75rem)] rounded-lg shadow-xl">
+        <div id="mobile-nav" onKeyDown={handleMenuKeyDown} className="hidden sm:block absolute top-[clamp(4.25rem,5vw,5.5rem)] right-10 bg-zinc-800/50 w-[clamp(11rem,45vw,13rem)] px-[clamp(1rem,3vw,2.5rem)] pb-[clamp(1rem,2vw,1.5rem)] pt-[clamp(0.5rem,1vw,0.75rem)] rounded-lg shadow-xl">
           {navigation.map(({ label, href }) => (
             <Link
               key={label}
@@ -131,10 +131,10 @@ export default function Navbar() {
             href="https://github.com/ForgeBuilds"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-2 flex min-h-[clamp(2.75rem,3.5vw,3.25rem)] items-center justify-center rounded-lg bg-white px-3 py-[clamp(0.5rem,1.2vw,0.75rem)] text-[clamp(0.875rem,1.2vw,1rem)] font-medium text-zinc-950 transition hover:bg-zinc-200"
+            className="mt-2 m-4 flex min-h-[clamp(2.75rem,3.5vw,3.25rem)] w-14 items-center justify-center rounded-2xl bg-transparent text-[clamp(0.875rem,1.2vw,1rem)] font-medium text-zinc-950 transition hover:bg-zinc-200"
           >
-            <IoLogoGithub className="h-4 w-4 shrink-0" />
-            <span>GitHub</span>
+            <IoLogoGithub className="h-9 w-10 shrink-0" />
+            {/* <span>GitHub</span> */}
           </a>
         </div>
       )}

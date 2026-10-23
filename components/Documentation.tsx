@@ -5,7 +5,7 @@ import mcpusage from "../src/assets/mcpsection.png";
 import chatPreview from "../src/assets/chat.png";
 //import mainInterface from "../src/assets/mainchatinterface.png";
 import aiSettings from "../src/assets/aisettings.png";
-import additionalInfo from "../src/assets/Additionalinfo.png";
+//import additionalInfo from "../src/assets/Additionalinfo.png";
 import { IoInformationCircleOutline } from "react-icons/io5"
 
 const docGroups = [
