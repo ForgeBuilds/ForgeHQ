@@ -1,4 +1,4 @@
-import{A as e,P as t,k as n,n as r,v as i}from"./index-BdC8ML_I.js";import{t as a}from"./chat-XDsYyofA.js";var o=t(e(),1),s=r();function c({src:e,alt:t=``,title:n,className:r,...i}){return(0,s.jsxs)(`div`,{className:`
+import{A as e,P as t,k as n,n as r,v as i}from"./index-Bhh2yM23.js";import{t as a}from"./chat-XDsYyofA.js";var o=t(e(),1),s=r();function c({src:e,alt:t=``,title:n,className:r,...i}){return(0,s.jsxs)(`div`,{className:`
         mx-auto my-6
         max-w-4xl
         overflow-hidden
