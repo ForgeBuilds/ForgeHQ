@@ -87,7 +87,7 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setMobileOpen((o) => !o)}
-          className="flex h-[clamp(2.75rem,3.5vw,3.25rem)] w-[clamp(2.75rem,3.5vw,3.25rem)] items-center justify-center rounded-lg text-zinc-400 transition hover:bg-zinc-800 hover:text-white xl:hidden"
+          className="flex h-[clamp(2.75rem,3.5vw,3.25rem)] w-[clamp(2.5rem,3vw,3rem)] items-center justify-center rounded-lg bg-zinc-800/50 text-zinc-400 transition hover:bg-zinc-800 hover:text-white xl:hidden"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
           aria-controls="mobile-nav"
@@ -106,7 +106,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div id="mobile-nav" onKeyDown={handleMenuKeyDown} className="sticky top-0 border-zinc-800 bg-zinc-950 px-[clamp(1rem,3vw,2.5rem)] pb-[clamp(1rem,2vw,1.5rem)] pt-[clamp(0.5rem,1vw,0.75rem)] xl:hidden">
+        <div id="mobile-nav" onKeyDown={handleMenuKeyDown} className="hidden sm:block absolute top-[clamp(4.25rem,5vw,5.5rem)] right-10 bg-zinc-800/50 w-[clamp(15rem,70vw,16rem)] px-[clamp(1rem,3vw,2.5rem)] pb-[clamp(1rem,2vw,1.5rem)] pt-[clamp(0.5rem,1vw,0.75rem)] rounded-lg shadow-xl">
           {navigation.map(({ label, href }) => (
             <Link
               key={label}
@@ -115,7 +115,7 @@ export default function Navbar() {
               aria-current={isActive(href) ? "page" : undefined}
               className={`flex min-h-[clamp(2.75rem,3.5vw,3.25rem)] items-center rounded-lg px-[clamp(0.75rem,1.5vw,1rem)] py-[clamp(0.5rem,1.2vw,0.75rem)] text-[clamp(0.875rem,1.2vw,1rem)] font-medium transition-colors ${
                 isActive(href)
-                  ? "bg-zinc-800/80 text-white"
+                  ? "bg-transparent text-white"
                   : "text-zinc-400 hover:bg-zinc-800/50 hover:text-white"
               }`}
             >
