@@ -7,12 +7,12 @@ import {MaintenanceBanner} from "./alert.tsx"
 const ORG_URL = "https://github.com/ForgeBuilds";
 const STRUCT_URL = "https://github.com/ForgeBuilds/Struct";
 import SplitFlapText from "../src/component/SplitFlapText.tsx";
-import Grainient from "../src/component/Grainient.tsx";
+import FaultyTerminal from "../src/component/FaultyTerminal.jsx";
 export default function Home() {
   return (
     
     <div>
-      <Grainient/>
+      <FaultyTerminal/>
       
       <section>
         <MaintenanceBanner

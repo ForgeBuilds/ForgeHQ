@@ -1,3 +1,5 @@
+//DEPRECATED IN THE NEWER VERSION
+
 "use client";
 //all credits goes to https://21st.dev/@uicapsule/components/background-pixel-stars for the component
 import { memo, useCallback, useEffect, useRef } from "react";
