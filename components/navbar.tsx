@@ -109,7 +109,7 @@ export default function Navbar() {
         <div
           id="mobile-nav"
           onKeyDown={handleMenuKeyDown}
-          className="hidden sm:block relative left-0 w-full bg-zinc-800/50 w-[clamp(11rem,45vw,13rem)] px-[clamp(1rem,3vw,2.5rem)] pb-[clamp(1rem,2vw,1.5rem)] pt-[clamp(0.5rem,1vw,0.75rem)] rounded-lg shadow-xl mx-auto"
+          className="hidden sm:block relative top-[clamp(4.25rem,5vw,5.5rem)] left-0 w-full bg-zinc-800/50 w-[clamp(11rem,45vw,13rem)] px-[clamp(1rem,3vw,2.5rem)] pb-[clamp(1rem,2vw,1.5rem)] pt-[clamp(0.5rem,1vw,0.75rem)] rounded-lg shadow-xl mx-auto"
         >
           {navigation.map(({ label, href }) => (
             <Link
