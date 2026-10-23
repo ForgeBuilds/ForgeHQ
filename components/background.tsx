@@ -1,5 +1,5 @@
 "use client";
-//credits to https://21st.dev/@uicapsule/components/background-pixel-stars for the component
+//all credits goes to https://21st.dev/@uicapsule/components/background-pixel-stars for the component
 import { memo, useCallback, useEffect, useRef } from "react";
 
 // 16-bit color palette (reduced color options)
@@ -16,8 +16,8 @@ const STAR_COLORS = [
 // Configuration constants
 const starDensity = 0.00006; // Reduced density for larger stars
 const twinkleProbability = 1;
-const minTwinkleSpeed = 1;
-const maxTwinkleSpeed = 4;
+const minTwinkleSpeed = 0.5;
+const maxTwinkleSpeed = 2;
 const pixelSize = 4;
 const starRegenerationInterval = 5000; // Interval to regenerate stars (in ms)
 const percentToRegenerate = 0.15; // Percentage of stars to regenerate at each interval

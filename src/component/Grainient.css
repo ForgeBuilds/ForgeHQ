@@ -6,8 +6,6 @@
   pointer-events: none;
   overflow: hidden;
   background: #000;
-  min-height: 100vh;
-  min-width: 100vw;
 }
 
 .grainient-canvas {

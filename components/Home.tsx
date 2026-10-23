@@ -1,17 +1,18 @@
 import { Link } from "react-router-dom";
 import { IoLogoGithub } from "react-icons/io5";
-import structPreview from "../src/assets/chat.png";
-import BackgroundPixelStars from "./background";
+//import structPreview from "../src/assets/chat.png";
+//import BackgroundPixelStars from "./background";
 import {MaintenanceBanner} from "./alert.tsx"
 
 const ORG_URL = "https://github.com/ForgeBuilds";
 const STRUCT_URL = "https://github.com/ForgeBuilds/Struct";
 import SplitFlapText from "../src/component/SplitFlapText.tsx";
+import Grainient from "../src/component/Grainient.tsx";
 export default function Home() {
   return (
     
     <div>
-      <BackgroundPixelStars/>
+      <Grainient/>
       
       <section>
         <MaintenanceBanner
@@ -20,9 +21,9 @@ export default function Home() {
         />
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-8 lg:py-24">
           <div>
-            <p className="mb-5 text-xs font-medium uppercase tracking-[0.16em] text-zinc-500">
-              The future of development
-            </p>
+            {/* <p className="mb-5 text-xs font-medium uppercase tracking-[0.16em] text-zinc-500">
+              
+            </p> */}
             <SplitFlapText
               words={[" Efficient","Always free","Open source"]}
               flipDuration={0.10}
@@ -33,8 +34,8 @@ export default function Home() {
               order="left"
               align="left"
               tileStyle="board"
-              tileColor="#f8f2f2fa"
-              textColor="#0d0e0e"
+              tileColor="#00000000"
+              textColor="#fdfdfd"
               glare={0}
               depth={0.5}
               tileRadius={8}
@@ -78,12 +79,15 @@ export default function Home() {
             aria-label="See the Struct product page"
             className="group block"
           >
-            
-            <img
+              
+            {/* <img
               src={structPreview}
               alt="Struct main chat interface with coding agent"
               className="block h-auto w-full rounded-lg"
-            />
+            /> //wouldnt need this as this the product image and 
+            we already have this in the actual page so 
+            this is deprecated dont touch it
+            */}
             <p className="mt-3 text-sm text-zinc-500 transition group-hover:text-zinc-300">
               {/*Struct <span aria-hidden="true"></span>*/}
             </p>
@@ -91,7 +95,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="products" className="scroll-mt-24">
+      <section id="products" className="scroll-mt-24 py-30">
         <div className="mx-auto max-w-6xl px-4 pb-16 pt-8 sm:px-6 sm:pb-20 sm:pt-10 lg:px-8">
           <div className="max-w-2xl">
             <p className="text-xs font-medium uppercase tracking-[0.16em] text-zinc-500">

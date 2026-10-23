@@ -37,7 +37,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav aria-label="Primary" className="sticky top-0 z-50 w-full border-b border-zinc-800/60 bg-zinc-950/80 backdrop-blur-xl">
+    <nav aria-label="Primary" className="fixed top-0 z-50 w-full  border-zinc-800/60 bg-zinc-950/80 backdrop-blur-xl">
       <div className="mx-auto flex h-[clamp(4.25rem,5vw,5.5rem)] max-w-7xl items-center justify-between px-[clamp(1rem,3vw,2.5rem)]">
         {/* Logo */}
         <Link
@@ -50,7 +50,7 @@ export default function Navbar() {
             alt="Forge logo"
             className="h-[clamp(1.75rem,2.5vw,2.25rem)] w-[clamp(1.75rem,2.5vw,2.25rem)] rounded-md bg-[#f4f2ec] object-cover"
           />
-          <span>Forge</span>
+          <span>ForgeHQ</span>
         </Link>
 
         {/* Desktop nav */}
@@ -106,7 +106,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div id="mobile-nav" onKeyDown={handleMenuKeyDown} className="border-t border-zinc-800 bg-zinc-950 px-[clamp(1rem,3vw,2.5rem)] pb-[clamp(1rem,2vw,1.5rem)] pt-[clamp(0.5rem,1vw,0.75rem)] xl:hidden">
+        <div id="mobile-nav" onKeyDown={handleMenuKeyDown} className="sticky top-0 border-zinc-800 bg-zinc-950 px-[clamp(1rem,3vw,2.5rem)] pb-[clamp(1rem,2vw,1.5rem)] pt-[clamp(0.5rem,1vw,0.75rem)] xl:hidden">
           {navigation.map(({ label, href }) => (
             <Link
               key={label}

@@ -2,8 +2,8 @@ import { useEffect, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import ScreenshotFrame from "./ScreenshotFrame";
 import mcpusage from "../src/assets/mcpsection.png";
-import chatPreview from "../src/assets/chatsection.png";
-import mainInterface from "../src/assets/mainchatinterface.png";
+import chatPreview from "../src/assets/chat.png";
+//import mainInterface from "../src/assets/mainchatinterface.png";
 import aiSettings from "../src/assets/aisettings.png";
 import additionalInfo from "../src/assets/Additionalinfo.png";
 import { IoInformationCircleOutline } from "react-icons/io5"
@@ -275,8 +275,8 @@ export default function Documentation() {
               <DocSection id="what-is-struct" title="What is Struct?">
                 <p>Struct is a lightweight desktop app built with React and TypeScript. It combines an AI agent, filesystem tools, model connections, and encrypted account sync in one application.</p>
                 <p>The important idea is not only that Struct can generate text. It can operate on a real folder: inspect project structure, read relevant files, search code, propose edits, run commands, and show you exactly what changed before you accept it.</p>
-                <ScreenshotFrame src={mainInterface} alt="Struct main chat interface with an active agent conversation" title="Main chat interface" />
-                <ScreenshotFrame src={additionalInfo} alt="Additional information about Struct capabilities" title="Additional info" />
+                {/* <ScreenshotFrame src={mainInterface} alt="Struct main chat interface with an active agent conversation" title="Main chat interface" /> */}
+                <ScreenshotFrame src={chatPreview} alt="Additional information about Struct capabilities" title="Additional info" />
                 <Callout title="What Struct does not do"><p>Struct does not silently take ownership of your repository. The agent is a collaborator: it works from the context you provide and the files it is allowed to inspect, while you keep control of consequential changes.</p></Callout>
               </DocSection>
 

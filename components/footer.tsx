@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaDiscord, FaGithub } from "react-icons/fa6";
+import { FaInstagram, FaGithub } from "react-icons/fa6";
 import { IoInformationCircleOutline } from "react-icons/io5";
 
 
@@ -27,9 +27,9 @@ const socials = [
     Icon: FaGithub,
   },
   {
-    label: "Discord",
-    href: "https://discord.gg/nMfbNrebs",
-    Icon: FaDiscord,
+    label: "Instagram",
+    href: "https://www.instagram.com/forgebuilds1/",
+    Icon: FaInstagram,
   },
 ];
 
@@ -77,7 +77,7 @@ const Footer: React.FC = () => (
         {/* Product */}
         <div>
           <h3 className="text-sm font-semibold text-white">
-            Product
+            Products
           </h3>
 
           <ul className="mt-4 space-y-2.5">

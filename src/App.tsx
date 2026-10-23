@@ -11,7 +11,7 @@ import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import AuthModal from "../components/AuthModal";
 
-import { BackgroundPixelStars } from "../components/background";
+import Grainient from "../src/component/Grainient";
 import GradientASCII from "./component/GradientASCII";
 const PrivacyPolicy = lazy(() => import("../components/Privacypolicyandterms"));
 const Downloads = lazy(() => import("../components/Downloads"));
@@ -39,7 +39,7 @@ function PageContent() {
   return (
     //credits to https://21st.dev/@uicapsule/components/background-pixel-stars for the background component
      <div className={isStructPage ? "h-dvh w-dvw bg-transparent" : "h-dvh w-dvw bg-black bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAIElEQVR42mIUEhJiwAbevXuHVZyJgUQwqmEUDB0AEGAADd8DEPTX6ksAAAAASUVORK5CYII=')] bg-[size:10px]"}>
-       {pathname === "/" || isStructPage ? null : <BackgroundPixelStars/>}
+       {pathname === "/" || isStructPage ? null : <Grainient/>}
 
       {/* Struct page only: full-page ASCII bg behind navbar + content + footer */}
       {isStructPage && (

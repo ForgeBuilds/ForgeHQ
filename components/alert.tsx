@@ -64,7 +64,7 @@ export function MaintenanceBanner({
           animate={{ height: 'auto', opacity: 1 }}
           exit={{ height: 0, opacity: 0 }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.2, ease: 'easeOut' }}
-          className={`w-full overflow-hidden border-b backdrop-blur-md ${classes}`}
+          className={`w-full overflow-hidden backdrop-blur-md ${classes}`}
         >
           <div role={role} aria-atomic="true">
             <div className="mx-auto flex w-full max-w-6xl items-center gap-4 px-4 py-4 sm:px-6 lg:px-8">
