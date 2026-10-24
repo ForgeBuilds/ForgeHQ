@@ -10,7 +10,7 @@ import { IoInformationCircleOutline } from "react-icons/io5"
 
 const docGroups = [
   {
-    label: "Getting started",
+    label: "Guide",
     items: [
       { id: "what-is-struct", label: "What is Struct?" },
       { id: "installation", label: "Installation" },
@@ -19,26 +19,11 @@ const docGroups = [
     ],
   },
   {
-    label: "Agent workflow",
-    items: [
-      { id: "agentic-tools", label: "Agent tools" },
-      { id: "prompting", label: "Writing effective prompts" },
-      { id: "change-review", label: "Reviewing changes" },
-    ],
-  },
-  {
-    label: "Workspace",
-    items: [
-      { id: "project-context", label: "Project context" },
-    ],
-  },
-  {
     label: "AI & extensibility",
     items: [
       { id: "providers", label: "Model providers" },
       { id: "local-models", label: "Local models" },
       { id: "mcp", label: "MCP connections" },
-      { id: "ai-troubleshooting", label: "AI troubleshooting" },
     ],
   },
   {
@@ -48,13 +33,6 @@ const docGroups = [
       { id: "privacy", label: "Privacy & local data" },
       { id: "accounts", label: "Accounts" },
       { id: "faq", label: "Frequently asked questions" },
-    ],
-  },
-  {
-    label: "Development",
-    items: [
-      { id: "building", label: "Building from source" },
-      { id: "status", label: "Project status" },
     ],
   },
 ] as const;
@@ -78,13 +56,16 @@ const agentTools = [
   ["rename", "Rename a file or directory."],
   ["delete_file", "Delete a file after confirmation."],
   ["delete_dir", "Delete a directory after confirmation."],
-  ["web_search", "Surfs the web and grabs whatever you ask it to"]
+  ["web_search", "Surfs the web and grabs whatever you ask it to"],
+  ["Gmail tools", "Interact with Gmail for sending and reading emails."],
+  ["Spotify_tools", "Interact with Spotify for playing, searching songs, and editing playlists."],
+  ["mcp_server", "Access the MCP server for connections."]
 ] as const;
 
 const devRequirements = [
   "Node.js and npm",
-  "Rust and Cargo",
-  "the Tauri prerequisites for your platform",
+  "Accounts",
+  "Electron",
   "Git",
 ];
 
@@ -93,29 +74,27 @@ function CodeBlock({ children, label = "Output" }: { children: string; label?: s
 
   const copy = async () => {
     try {
-      await navigator.clipboard.writeText(children);
+      await navigator.clipboard.writeText(children as string);
       setCopied(true);
-      window.setTimeout(() => setCopied(false), 1600);
-    } catch {
-      setCopied(false);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy:", err);
     }
   };
 
   return (
-    <div className="my-6 overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900">
-      <div className="flex min-h-10 items-center justify-between gap-3 border-b border-zinc-800 px-3 py-2 sm:px-4">
-        <span className="truncate text-xs text-zinc-500">{label}</span>
-        <button
-          type="button"
-          onClick={copy}
-          className="min-h-9 rounded-md px-2.5 text-xs font-medium text-zinc-400 transition hover:bg-zinc-800 hover:text-white"
-        >
-          {copied ? "Copied" : "Copy"}
-        </button>
-      </div>
-      <pre className="max-w-full overflow-x-auto p-4 text-[0.8125rem] leading-6 text-zinc-300 sm:text-sm">
-        <code>{children}</code>
-      </pre>
+    <div className="bg-zinc-900 rounded-lg p-4 mt-4 overflow-x-auto">
+      <button
+        onClick={copy}
+        className={`w-full text-left text-sm font-medium text-zinc-300 hover:text-white transition-colors ${copied ? "text-zinc-400" : ""} mb-2`}
+        aria-label="Copy code"
+      >
+        {label}
+        {copied && (
+          <span className="inline-block text-xs text-zinc-500">Copied!</span>
+        )}
+      </button>
+      <code className="text-zinc-300 text-sm overflow-x-auto">{children}</code>
     </div>
   );
 }
@@ -160,12 +139,7 @@ function Steps({ items }: { items: { title: string; body: ReactNode }[] }) {
 }
 
 export default function Documentation() {
-  const [openGroup, setOpenGroup] = useState<string | null>(docGroups[0].label);
   const [activeId, setActiveId] = useState<string>("what-is-struct");
-
-  const activeGroupLabel =
-    docGroups.find((group) => group.items.some((item) => item.id === activeId))?.label ?? docGroups[0].label;
-  const visibleGroup = openGroup ?? activeGroupLabel;
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ block: "start" });
@@ -177,99 +151,54 @@ export default function Documentation() {
     const id = window.location.hash.slice(1);
     if (id) window.setTimeout(() => scrollToSection(id), 50);
   }, []);
+return (
+    
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+        <div className="mt-10 space-y-12 sm:mt-12 sm:space-y-16">
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
-        if (visible) setActiveId(visible.target.id);
-      },
-      { rootMargin: "-18% 0px -68% 0px", threshold: 0 }
-    );
-    docGroups.forEach((group) => group.items.forEach(({ id }) => {
-      const element = document.getElementById(id);
-      if (element) observer.observe(element);
-    }));
-    return () => observer.disconnect();
-  }, []);
 
-  return (
-    <main className="min-h-[calc(100vh-4rem)] bg-zinc-950 text-white">
-      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
-        <div className="lg:grid lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-12 xl:gap-16">
-          <aside className="hidden lg:block">
-            <nav aria-label="Documentation sections" className="sticky top-28 max-h-[calc(100vh-9rem)] overflow-y-auto pr-2">
-              <p className="mb-3 px-3 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-600">Guide</p>
-              {docGroups.map((group) => {
-                const open = visibleGroup === group.label;
-                return (
-                  <div key={group.label} className="mb-2">
-                    <button
-                      type="button"
-                      onClick={() => setOpenGroup(open ? null : group.label)}
-                      aria-expanded={open}
-                      className={`flex min-h-10 w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors ${open ? "text-white" : "text-zinc-400 hover:bg-zinc-900 hover:text-zinc-200"}`}
-                    >
-                      {group.label}
-                      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={`h-4 w-4 shrink-0 transition-transform ${open ? "rotate-180" : ""}`}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                      </svg>
-                    </button>
-                    {open && (
-                      <ul className="ml-3 border-l border-zinc-800 pl-2">
-                        {group.items.map(({ id, label }) => (
-                          <li key={id}>
-                            <a
-                              href={`#${id}`}
-                              onClick={(event) => { event.preventDefault(); scrollToSection(id); }}
-                              aria-current={activeId === id ? "location" : undefined}
-                              className={`block rounded-md px-3 py-2 text-sm transition-colors ${activeId === id ? "bg-zinc-800/80 text-white" : "text-zinc-500 hover:bg-zinc-900 hover:text-zinc-300"}`}
-                            >
-                              {label}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                );
-              })}
-            </nav>
-          </aside>
 
-          <article className="min-w-0">
-            <div className="mb-8 lg:hidden">
-              <label htmlFor="docs-mobile-nav" className="mb-2 block text-xs font-semibold uppercase tracking-[0.14em] text-zinc-500">On this page</label>
-              <select
-                id="docs-mobile-nav"
-                value={activeId}
-                onChange={(event) => scrollToSection(event.target.value)}
-                className="min-h-11 w-full rounded-xl border border-zinc-800 bg-zinc-900 px-3 text-sm text-zinc-200 outline-none"
-              >
-                {docGroups.map((group) => (
-                  <optgroup key={group.label} label={group.label}>
-                    {group.items.map((item) => <option key={item.id} value={item.id}>{item.label}</option>)}
-                  </optgroup>
-                ))}
-              </select>
-            </div>
 
-            <header className="max-w-3xl border-b border-zinc-800 pb-10 sm:pb-12">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Struct handbook</p>
-              <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">Documentation</h1>
-              <p className="mt-4 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
-                Install Struct, open a project, connect a model, and learn a safe, repeatable workflow for working with an AI agent.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-2 text-xs text-zinc-400">
-                <span className="rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1.5">21 chapters</span>
-                <span className="rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1.5">Windows & Linux</span>
-                <span className="rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1.5">Beginner friendly</span>
-              </div>
-            </header>
+      {/* Mobile-only select nav - hidden on desktop */}
+      <div className="hidden lg:block">
+        <select
+          id="docs-mobile-nav"
+          value={activeId || ""}
+          onChange={(event) => {
+            const id = event.target.value;
+            if (id) {
+              scrollToSection(id);
+              setActiveId(id);
+            }
+          }}
+          className="min-h-11 w-full rounded-xl border border-zinc-800 bg-zinc-900 px-3 text-sm text-zinc-200 outline-none"
+        >
+          <option value="">Jump to section</option>
+          {docGroups.map((group) => (
+            <optgroup key={group.label} label={group.label}>
+              {group.items.map((item) => (
+                <option key={item.id} value={item.id}>
+                  {item.label}
+                </option>
+              ))}
+            </optgroup>
+          ))}
+        </select>
+      </div>
 
-            <div className="mt-10 space-y-12 sm:mt-12 sm:space-y-16">
+      <header className="max-w-3xl border-b border-zinc-800 pb-10 sm:pb-12">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Struct handbook</p>
+        <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">Documentation</h1>
+        <p className="mt-4 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
+          Install Struct, open a project, connect a model, and learn a safe, repeatable workflow for working with an AI agent.
+        </p>
+        <div className="mt-6 flex flex-wrap gap-2 text-xs text-zinc-400">
+          <span className="rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1.5">21 chapters</span>
+          <span className="rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1.5">Windows & Linux</span>
+          <span className="rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1.5">Beginner friendly</span>
+        </div>
+      </header>
+    </div>
 
 
               <DocSection id="what-is-struct" title="What is Struct?">
@@ -534,9 +463,9 @@ export default function Documentation() {
               <DocSection id="building" title="Building from source">
                 <p>Development requires {devRequirements.join(", ")}. Then clone the official repository and start the development shell.</p>
                 <CodeBlock label="Development setup">{`git clone https://github.com/ForgeBuilds/Struct.git
-cd Struct
-npm install
-npm run tauri dev`}</CodeBlock>
+                cd Struct
+                npm install
+                npm run tauri dev`}</CodeBlock>
                 <h3 className="pt-2 text-base font-semibold text-zinc-200">Before opening a pull request</h3>
                 <ul className="list-disc space-y-2 pl-5 marker:text-zinc-600">
                   <li>Run the project&apos;s lint, type-check, and test commands.</li>
@@ -552,9 +481,7 @@ npm run tauri dev`}</CodeBlock>
                 <Callout title="Help improve Struct"><p>Bug reports with a minimal reproduction, focused feature requests, documentation fixes, and careful contributions are all useful. Do not include API keys, private code, or personal data in a public issue.</p></Callout>
               </DocSection>
             </div>
-          </article>
-        </div>
-      </div>
-    </main>
-  );
+        
+      
+);
 }
