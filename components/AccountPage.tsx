@@ -12,9 +12,6 @@ import {
   IoCheckmarkCircle,
   IoChevronForward,
   IoCloseOutline,
-  IoLogoGithub,
-  IoLogoGoogle,
-  IoMailOutline,
 } from "react-icons/io5";
 import {
   resetPassword,
