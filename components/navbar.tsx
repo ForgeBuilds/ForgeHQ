@@ -3,7 +3,7 @@ import type { KeyboardEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
 import icon from "../src/assets/forgelogo.jpg";
 import AccountMenu from "./AccountMenu";
-import { IoLogoGithub } from "react-icons/io5";
+import { IoClose, IoLogoGithub, IoMenu } from "react-icons/io5";
 
 const navigation = [
   { label: "Home", href: "/" },
@@ -39,7 +39,7 @@ export default function Navbar() {
   return (
     <nav
       aria-label="Primary"
-      className="fixed top-0 z-50 w-full border-zinc-800/60 bg-transparent backdrop-blur-xl"
+      className="fixed top-0 z-50 w-full border-zinc-800/60 bg-transparent backdrop-blur-xl py-1"
     >
       <div className="mx-auto flex h-[clamp(4.25rem,5vw,5.5rem)] max-w-7xl items-center justify-between px-[clamp(1rem,3vw,2.5rem)]">
         {/* Logo */}
@@ -96,40 +96,12 @@ export default function Navbar() {
           aria-controls="mobile-nav"
         >
           {mobileOpen ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.8}
-              stroke="currentColor"
-              className="h-[clamp(1.25rem,1.7vw,1.375rem)] w-[clamp(1.25rem,1.7vw,1.375rem)]"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18 18 6M6 6l12 12"
-              />
-            </svg>
+          <IoClose/>
           ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.8}
-              stroke="currentColor"
-              className="h-[clamp(1.25rem,1.7vw,1.375rem)] w-[clamp(1.25rem,1.7vw,1.375rem)]"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
+          <IoMenu/>
           )}
         </button>
       </div>
-
-      {/* Mobile menu */}
       {mobileOpen && (
         <div
           id="mobile-nav"
