@@ -62,11 +62,11 @@ function providerLabel(provider: string): string {
 }
 
 /** Icon for the account's sign-in provider. */
-function ProviderIcon({ provider }: { provider: string }) {
-  if (provider === "github") return <IoLogoGithub className="h-3.5 w-3.5" />;
-  if (provider === "google") return <IoLogoGoogle className="h-3.5 w-3.5" />;
-  return <IoMailOutline className="h-3.5 w-3.5" />;
-}
+//function ProviderIcon({ provider }: { provider: string }) {
+  //if (provider === "github") return <IoLogoGithub className="h-3.5 w-3.5" />;
+  //if (provider === "google") return <IoLogoGoogle className="h-3.5 w-3.5" />;
+  //return <IoMailOutline className="h-3.5 w-3.5" />;
+//}
 
 /* ── UI primitives ── */
 
@@ -458,7 +458,7 @@ export default function AccountPage() {
   };
 
   return (
-    <div className="bg-zinc-950 text-white">
+    <div className="bg-zinc-950 text-white py-30">
       <section className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         {/* Page header */}
         <div className="max-w-xl">
@@ -557,16 +557,15 @@ export default function AccountPage() {
                   {user.email || providerLabel(user.provider)}
                 </p>
                 <p className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-zinc-500">
-                  <ProviderIcon provider={user.provider} />
-                  <span>{providerLabel(user.provider)}</span>
-                  <span aria-hidden="true">·</span>
+                 
+                 
                   <span>
                     Member since {profile?.createdAt ? formatDate(profile.createdAt) : "—"}
                   </span>
                   <span aria-hidden="true">·</span>
-                  <span className="font-mono" title={user.id}>
+                  {/* <span className="font-mono" title={user.id}>
                     {user.id.slice(0, 8)}…{user.id.slice(-4)}
-                  </span>
+                  </span> */}
                 </p>
               </div>
             </div>
