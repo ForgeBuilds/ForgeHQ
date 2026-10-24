@@ -109,15 +109,15 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
             <p className="text-xs font-medium uppercase tracking-[0.16em] text-zinc-500">
-              Inside Struct
+              
             </p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              A coding agent that works in your project.
+             Your own agent that does whatever you ask it to do.
             </h2>
             <p className="mt-4 text-base leading-7 text-zinc-400">
               Open a folder, choose a model, and give Struct a task. It can work
               with the files and tools in that workspace, while you stay in
-              control of what it does.
+              control of what it does. (Gotta get your own api keys for inference or run your own local model)
             </p>
           </div>
 
