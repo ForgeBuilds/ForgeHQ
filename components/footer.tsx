@@ -34,7 +34,7 @@ const socials = [
 ];
 
 const Footer: React.FC = () => (
-  <footer className="border-t border-zinc-800/60 bg-zinc-950">
+  <footer className="bg-zinc-950">
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
 
       {/* Main footer */}

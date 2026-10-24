@@ -72,12 +72,14 @@ export default function StructProduct() {
                 GitHub
               </a>
             </div>
-            <p className="mt-6 flex items-center gap-2 text-xs text-zinc-500">
+            <a href = "https://forgebuilds.github.io/ForgeHQ/downloads">
+            <p className="mt-6 flex items-center gap-2 text-xs text-zinc-500 hover:text-blue-500">
               <IoLogoWindows />
               <span>Windows 10+</span>
               <IoLogoTux />
               <span>Linux distros</span>
             </p>
+            </a>
           </div>
         </div>
       </section>

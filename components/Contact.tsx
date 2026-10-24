@@ -76,7 +76,7 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="mt-16 border-t border-zinc-800 pt-12 sm:mt-20 sm:pt-16">
+        <div className="mt-8 border-t border-zinc-800 pt-12 sm:mt-20 sm:pt-16">
           <h2 className="text-xl font-semibold">
             Struct
           </h2>
@@ -87,7 +87,7 @@ export default function Contact() {
             </p>
           
         
-          <div className="mt-5">
+          <div className="mt-6">
             <button
               onClick={contact}>
               <span className="hover:text-blue-500 m-4 underline underline-offset-4 font-medium">
@@ -103,17 +103,7 @@ export default function Contact() {
               </span>
             </button>
             {showPhone && contact2()}
-            {/* <a
-              href="https://github.com/ForgeBuilds/Struct"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-sm font-medium text-white underline underline-offset-4 transition hover:text-zinc-300"
-            >
-              Struct repository
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-3.5 w-3.5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-              </svg>
-            </a> */}
+            
           </div>
         </div>
 

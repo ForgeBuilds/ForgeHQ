@@ -525,7 +525,7 @@ export default function Downloads() {
               popover?.classList.toggle("hidden");
             }}
           >
-            Important information !
+            Important information
             <IoInformationCircleOutline className="h-4 w-4" />
           </button>
 

@@ -70,7 +70,7 @@ export default function Home() {
                 GitHub
               </a>
             </div>
-              <a href="">
+              <a href="https://forgebuilds.github.io/ForgeHQ/downloads">
                 <p className="mt-5 text-sm text-zinc-500 hover:text-blue-500">
               Available for Windows, macos and linux distros
             </p>
@@ -122,7 +122,7 @@ export default function Home() {
           </div>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <article className="rounded-xl border border-white/10 bg-white/[0.03] p-6">
+            <article className="rounded-xl bg-white/[0.03] p-6">
               <h3 className="text-base font-semibold text-white">
                 Context from your workspace
               </h3>
@@ -132,7 +132,7 @@ export default function Home() {
               </p>
             </article>
 
-            <article className="rounded-xl border border-white/10 bg-white/[0.03] p-6">
+            <article className="rounded-xl bg-white/[0.03] p-6">
               <h3 className="text-base font-semibold text-white">
                 Use your model
               </h3>
@@ -142,7 +142,7 @@ export default function Home() {
               </p>
             </article>
 
-            <article className="rounded-xl border border-white/10 bg-white/[0.03] p-6">
+            <article className="rounded-xl bg-white/[0.03] p-6">
               <h3 className="text-base font-semibold text-white">
                 See what the agent does
               </h3>
@@ -153,7 +153,7 @@ export default function Home() {
             </article>
           </div>
 
-          <div className="mt-8 flex flex-col gap-5 rounded-xl border border-white/10 bg-white/[0.03] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+          <div className="mt-8 flex flex-col gap-5 rounded-xl bg-white/[0.03] p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
             <div>
               <h3 className="text-base font-semibold text-white">
                 Free to use. Local features need no account.
