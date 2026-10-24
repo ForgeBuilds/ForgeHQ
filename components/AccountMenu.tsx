@@ -94,7 +94,7 @@ export default function AccountMenu() {
         {open && (
           <div
             role="menu"
-            className="relative right-0 top-full z-50 mt-2 w-40 rounded-xl border border-zinc-800 bg-zinc-900 p-4 shadow-2xl shadow-black/50"
+            className="relative right-0 top-20 z-50 mt-2 w-40 rounded-xl border border-zinc-800 bg-zinc-900 p-4 shadow-2xl shadow-black/50"
           >
             <div className="flex items-start justify-between gap-2">
               <div className="min-w-0">
