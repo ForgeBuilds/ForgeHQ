@@ -14,7 +14,7 @@ export default function Home() {
     <div>
      <BackgroundPixelStars/>
       
-      <section>
+      <section className = "m-15">
         <MaintenanceBanner
           message="macOS support added"
           variant="info"

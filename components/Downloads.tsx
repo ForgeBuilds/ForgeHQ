@@ -165,9 +165,9 @@ export default function Downloads() {
           : exe ?? msi ?? dmg ?? deb ?? appImage ?? rpm;
 
   return (
-    <main className="min-h-[calc(100vh-4rem)] text-white">
+    <main className="min-h-[calc(100vh-4rem)] text-white m-15">
       <MaintenanceBanner
-                message="macOS support added"
+                message="V1.15.0 build is being put down for maintenence"
                 variant="info"
               />
       <div className="px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
