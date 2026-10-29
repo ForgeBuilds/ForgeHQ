@@ -41,7 +41,7 @@ export default function Navbar() {
       aria-label="Primary"
       className="site-nav sticky top-0 z-50 w-full border-b border-white/10 bg-[#10100f]/90 backdrop-blur-xl"
     >
-      <div className="mx-auto flex h-[clamp(4.25rem,5vw,5.5rem)] max-w-7xl items-center justify-between px-[clamp(1rem,3vw,2.5rem)]">
+      <div className="site-nav-inner mx-auto flex h-[clamp(4.25rem,5vw,5.5rem)] max-w-7xl items-center justify-between px-[clamp(1rem,3vw,2.5rem)]">
         {/* Logo */}
         <Link
           to="/"
@@ -106,7 +106,7 @@ export default function Navbar() {
         <div
           id="mobile-nav"
           onKeyDown={handleMenuKeyDown}
-          className="absolute right-4 top-full z-50 mt-2 block max-h-[calc(100dvh-6rem)] w-56 overflow-y-auto rounded-lg border border-white/10 bg-[#181817] p-2 shadow-xl md:hidden"
+          className="mobile-nav-menu md:hidden"
         >
           {navigation.map(({ label, href }) => (
             <Link
@@ -124,9 +124,7 @@ export default function Navbar() {
             </Link>
           ))}
 
-          <div className="mt-2">
-            <AccountMenu />
-          </div>
+          <AccountMenu />
 
           
         </div>

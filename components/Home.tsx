@@ -29,7 +29,7 @@ export default function Home() {
       <section className="home-hero page-shell">
         <div className="home-hero-copy">
           <p className="eyebrow"><span className="eyebrow-dot" />Forge builds in the open</p>
-          <h1>Tools made to be<br /><span>used, not admired.</span></h1>
+          <h1>Tools made to be<br className="home-title-break" />{" "}<span>used, not admired.</span></h1>
           <p className="hero-description">
             Forge is a GitHub organization for software projects. Struct is our current project: a desktop workspace for working with an AI coding agent.
           </p>

@@ -6,6 +6,7 @@ html {
 
 body {
   margin: 0;
+  overflow-x: clip;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   background: #10100f;
@@ -33,7 +34,12 @@ body {
 }
 
 .site-page { overflow: hidden; }
-.site-nav > div { height: 4.5rem; }
+.site-nav-inner { height: 4.5rem; }
+.mobile-nav-menu { border-top: 1px solid var(--line); background: #171716; padding: .5rem 1rem 1rem; }
+.mobile-nav-menu > a { display: flex; min-height: 2.75rem; align-items: center; border-radius: .3rem; padding: .55rem .75rem; color: #c4c1b9; font-size: .9rem; }
+.mobile-nav-menu > a[aria-current="page"] { background: #ffffff10; color: var(--paper); }
+.mobile-nav-menu > a:hover { background: #ffffff08; color: var(--paper); }
+.mobile-nav-menu > div { margin-top: .5rem; border-top: 1px solid var(--line); padding-top: .5rem; }
 .brand-lockup { display: inline-flex; align-items: center; gap: .65rem; color: var(--paper); }
 .brand-lockup img { width: 2rem; height: 2rem; border-radius: .35rem; object-fit: cover; }
 
@@ -91,11 +97,12 @@ body {
 @media (max-width: 760px) {
   .page-shell { width: min(100% - 2rem, 40rem); }
   .home-hero { min-height: auto; grid-template-columns: 1fr; gap: 0; padding-block: 4.25rem 3.5rem; }
-  .home-hero h1 { font-size: clamp(3.25rem, 13vw, 5.5rem); }
-  .home-hero-art { min-height: 17rem; margin-top: -1rem; }
-  .home-hero-art img { width: min(65%, 16rem); }
+  .home-hero h1 { font-size: clamp(2.4rem, 10.5vw, 5.5rem); }
+  .home-title-break { display: none; }
+  .home-hero-art { min-height: 12rem; margin-top: .75rem; }
+  .home-hero-art img { width: min(8rem, 42vw); border-radius: 1rem; }
   .hero-art-glow { width: 15rem; height: 15rem; }
-  .hero-art-caption { right: .5rem; bottom: .4rem; }
+  .hero-art-caption { right: .5rem; bottom: -.3rem; }
   .workflow-grid { grid-template-columns: 1fr; gap: .75rem; }
   .workflow-card { min-height: auto; }
   .workflow-card h3 { margin-top: 1rem; }
@@ -175,6 +182,18 @@ body {
   .docs-page { padding-top: 1rem; }
   .contact-page { padding-block: 4rem; }
   .contact-options { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 390px) {
+  .page-shell { width: calc(100% - 1.5rem); }
+  .home-hero { padding-top: 3.25rem; }
+  .home-hero h1 { font-size: clamp(2.25rem, 10vw, 2.5rem); letter-spacing: -.07em; }
+  .hero-description { font-size: 1rem; line-height: 1.7; }
+  .home-project { padding-block: 3rem; }
+  .section-heading-row { align-items: flex-start; flex-direction: column; gap: .8rem; }
+  .text-link { padding-bottom: 0; }
+  .workflow-card { padding: 1.2rem; }
+  .footer-links { gap: .75rem 1rem; }
 }
 
 /* Consistent keyboard focus without changing the visual design */
