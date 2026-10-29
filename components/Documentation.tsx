@@ -153,14 +153,14 @@ export default function Documentation() {
   }, []);
 return (
     
-      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+      <div className="docs-page page-shell px-4 py-10 sm:px-6 sm:py-14">
         <div className="mt-10 space-y-12 sm:mt-12 sm:space-y-16">
 
 
 
 
       {/* Mobile-only select nav - hidden on desktop */}
-      <div className="hidden lg:block">
+      <div className="mb-6 block max-w-md">
         <select
           id="docs-mobile-nav"
           value={activeId || ""}
@@ -171,7 +171,8 @@ return (
               setActiveId(id);
             }
           }}
-          className="min-h-11 w-full rounded-xl border border-zinc-800 bg-zinc-900 px-3 text-sm text-zinc-200 outline-none"
+          aria-label="Jump to a documentation section"
+          className="min-h-11 w-full rounded border border-zinc-800 bg-zinc-900 px-3 text-sm text-zinc-200 outline-none"
         >
           <option value="">Jump to section</option>
           {docGroups.map((group) => (
@@ -194,7 +195,7 @@ return (
         </p>
         <div className="mt-6 flex flex-wrap gap-2 text-xs text-zinc-400">
           <span className="rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1.5">21 chapters</span>
-          <span className="rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1.5">Windows & Linux</span>
+          <span className="rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1.5">Platform packages vary by release</span>
           <span className="rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1.5">Beginner friendly</span>
         </div>
       </header>

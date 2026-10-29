@@ -1,157 +1,65 @@
 import { Link } from "react-router-dom";
+import { IoArrowForward, IoLogoGithub } from "react-icons/io5";
 import chatPreview from "../src/assets/chat.png";
-import { IoLogoGithub } from "react-icons/io5";
-import { IoLogoWindows } from "react-icons/io";
-import { IoLogoTux } from "react-icons/io";
 
 const STRUCT_URL = "https://github.com/ForgeBuilds/Struct";
 
 const features = [
-  {
-    title: "Agent that works in your project",
-    body: "A built-in coding agent reads, searches, writes, replaces, and deletes inside the workspace you opened. Deletions ask first.",
-  },
-  {
-    title: "Review before you accept",
-    body: "The agent shows exactly what changed, so consequential edits are yours to keep or discard.",
-  },
-  {
-    title: "Any provider",
-    body: "Bring a hosted endpoint or run inference locally through Ollama. You control the model and the cost.",
-  },
-  {
-    title: "MCP connections",
-    body: "Connect compatible tools and services, reviewing what each server can read and change first.",
-  },
-  {
-    title: "Lightweight by design",
-    body: "A small, focused app that stays usable on modest hardware.",
-  },
+  { number: "01", title: "Works in your workspace", body: "Open a project folder and let the agent read, search, and edit files there. You choose which workspace to open." },
+  { number: "02", title: "Review edits first", body: "Inspect the proposed changes before accepting them. File and directory deletions require confirmation." },
+  { number: "03", title: "Choose your model", body: "Connect a supported hosted provider or run a local model through Ollama." },
+  { number: "04", title: "Connect MCP tools", body: "Add compatible MCP servers and review the tools they make available to Struct." },
 ];
 
 export default function StructProduct() {
   return (
-    <div className="relative min-h-screen">
-      {/* All content above the page-level bg in App.tsx */}
-      <div className="relative z-10">
-      {/* Product hero */}
-      <section className="relative overflow-hidden">
-        <div className="relative z-10 mx-auto max-w-4xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
-          <div className="max-w-3xl">
-            <p className="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-zinc-500">
-              Forge · Product
-            </p>
-            <h1 className="text-5xl font-semibold tracking-[-0.03em] text-white sm:text-6xl lg:text-7xl">
-              Struct
-            </h1>
-            <p className="mt-6 max-w-xl text-base leading-7 text-zinc-400 sm:text-lg">
-              A lightweight agentic app that works alongside you directly in
-              the project you opened. Built to stay
-              fast on modest hardware.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <Link
-                to="/downloads"
-                className="rounded-md bg-white px-5 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
-              >
-                Download
-              </Link>
-              <Link
-                to="/documentation"
-                className="rounded-md border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition hover:border-white/40 hover:bg-white/5"
-              >
-                Documentation
-              </Link>
-              <a
-                href={STRUCT_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-md border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition hover:border-white/40 hover:bg-white/5"
-              >
-                <IoLogoGithub className="mr-2 inline-block" />
-                GitHub
-              </a>
-            </div>
-            <a href = "https://forgebuilds.github.io/ForgeHQ/downloads">
-            <p className="mt-6 flex items-center gap-2 text-xs text-zinc-500 hover:text-blue-500">
-              <IoLogoWindows />
-              <span>Windows 10+</span>
-              <IoLogoTux />
-              <span>Linux distros</span>
-            </p>
-            </a>
+    <div className="product-page">
+      <section className="page-shell product-hero">
+        <div className="product-hero-copy">
+          <p className="eyebrow"><span className="eyebrow-dot" />Forge / Product</p>
+          <h1>Struct<span className="accent-period">.</span></h1>
+          <p>A lightweight desktop workspace for working with an AI coding agent. Open a project, choose a model, and stay close to every change.</p>
+          <div className="hero-actions">
+            <Link to="/downloads" className="button button-primary">Get Struct <IoArrowForward aria-hidden="true" /></Link>
+            <Link to="/documentation" className="button button-quiet">Read the guide</Link>
+            <a href={STRUCT_URL} target="_blank" rel="noopener noreferrer" className="button button-quiet"><IoLogoGithub aria-hidden="true" /> Repository</a>
           </div>
+          <p className="hero-note">Available builds are listed on the downloads page.</p>
         </div>
       </section>
 
-      {/* Preview */}
-      <section className="relative">
-        <div className="mx-auto max-w-4xl px-4 pb-24 sm:px-6 sm:pb-28 lg:px-8">
-          <img
-            src={chatPreview}
-            alt="Struct workspace preview"
-            title="Main chat interface"
-          />
+      <section className="page-shell product-preview-section">
+        <div className="product-preview-top"><span>STRUCT / WORKSPACE</span><span>INTERFACE PREVIEW</span></div>
+        <img src={chatPreview} alt="Struct chat and project workspace interface" />
+      </section>
+
+      <section className="page-shell product-features">
+        <div className="product-section-heading">
+          <p className="eyebrow">How it works</p>
+          <h2>Useful tools.<br /><span>Clear decisions.</span></h2>
+        </div>
+        <div className="product-feature-grid">
+          {features.map((feature) => (
+            <article className="product-feature" key={feature.number}>
+              <span>{feature.number}</span>
+              <h3>{feature.title}</h3>
+              <p>{feature.body}</p>
+            </article>
+          ))}
         </div>
       </section>
 
-      {/* Features */}
-      <section className="relative">
-        <div className="mx-auto max-w-4xl px-4 py-24 sm:px-6 sm:py-28 lg:px-8">
-          <p className="text-xs font-medium uppercase tracking-[0.16em] text-zinc-600">
-            Features
-          </p>
-          <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-            What it does
-          </h2>
-          <dl className="mt-12 space-y-10">
-            {features.map((f) => (
-              <div key={f.title}>
-                <dt className="text-base font-medium text-white">{f.title}</dt>
-                <dd className="mt-2 max-w-2xl text-sm leading-6 text-zinc-400">
-                  {f.body}
-                </dd>
-              </div>
-            ))}
-          </dl>
+      <section className="page-shell product-bottom-cta">
+        <div>
+          <p className="eyebrow">No subscription</p>
+          <h2>Struct is free to use.</h2>
+          <p>A Struct account is optional for local features. Account features include cloud sync and encrypted provider-key storage.</p>
+        </div>
+        <div className="hero-actions">
+          <Link to="/downloads" className="button button-primary">View downloads <IoArrowForward aria-hidden="true" /></Link>
+          <Link to="/documentation" className="button button-quiet">Setup instructions</Link>
         </div>
       </section>
-
-      {/* Documentation entry point */}
-      <section className="relative overflow-hidden">
-        <div className="relative z-10 mx-auto max-w-4xl px-4 pb-24 pt-4 sm:px-6 sm:pb-28 lg:px-8">
-          <h2 className="max-w-2xl text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-            New to Struct?
-          </h2>
-          <p className="mt-3 max-w-xl text-sm leading-6 text-zinc-400 sm:text-base">
-            Installation, provider setup, the agent workflow, and a full FAQ are
-            covered in the documentation.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              to="/documentation"
-              className="rounded-md bg-white px-5 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
-            >
-              Read the documentation
-            </Link>
-            <Link
-              to="/downloads"
-              className="rounded-md border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition hover:border-white/40 hover:bg-white/5"
-            >
-              Download Struct
-            </Link>
-            <a
-              href="https://github.com/ForgeBuilds/Struct/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-md border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition hover:border-white/40 hover:bg-white/5"
-            >
-              Report an issue
-            </a>
-          </div>
-        </div>
-      </section>
-      </div>
     </div>
   );
 }

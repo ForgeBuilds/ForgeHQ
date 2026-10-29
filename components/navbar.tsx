@@ -6,9 +6,9 @@ import AccountMenu from "./AccountMenu";
 import { IoClose, IoLogoGithub, IoMenu } from "react-icons/io5";
 
 const navigation = [
-  { label: "Home", href: "/" },
+  { label: "Struct", href: "/products/struct" },
+  { label: "Docs", href: "/documentation" },
   { label: "Downloads", href: "/downloads" },
-  // { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -39,7 +39,7 @@ export default function Navbar() {
   return (
     <nav
       aria-label="Primary"
-      className="fixed top-0 z-50 w-full border-zinc-800/60 bg-transparent backdrop-blur-xl py-1"
+      className="site-nav sticky top-0 z-50 w-full border-b border-white/10 bg-[#10100f]/90 backdrop-blur-xl"
     >
       <div className="mx-auto flex h-[clamp(4.25rem,5vw,5.5rem)] max-w-7xl items-center justify-between px-[clamp(1rem,3vw,2.5rem)]">
         {/* Logo */}
@@ -53,20 +53,20 @@ export default function Navbar() {
             alt="Forge logo"
             className="h-[clamp(1.75rem,2.5vw,2.25rem)] w-[clamp(1.75rem,2.5vw,2.25rem)] rounded-md bg-[#f4f2ec] object-cover"
           />
-          <span>ForgeHQ</span>
+          <span>Forge</span>
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden shrink-0 items-center gap-[clamp(0.25rem,0.6vw,0.75rem)] xl:flex">
+        <div className="hidden shrink-0 items-center gap-1 md:flex">
           {navigation.map(({ label, href }) => (
             <Link
               key={label}
               to={href}
               aria-current={isActive(href) ? "page" : undefined}
-              className={`rounded-lg px-[clamp(0.625rem,0.9vw,1rem)] py-[clamp(0.5rem,0.8vw,0.6875rem)] text-[clamp(0.8125rem,0.95vw,1rem)] font-medium transition-colors ${
+              className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
                 isActive(href)
-                  ? "bg-zinc-800/80 text-white"
-                  : "text-zinc-400 hover:bg-zinc-800/50 hover:text-white"
+                  ? "bg-white/10 text-white"
+                  : "text-zinc-400 hover:bg-white/5 hover:text-white"
               }`}
             >
               {label}
@@ -79,7 +79,7 @@ export default function Navbar() {
             href="https://github.com/ForgeBuilds/Struct"
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-[clamp(0.5rem,1vw,1rem)] inline-flex items-center gap-1.5 rounded-lg bg-white px-[clamp(0.75rem,1vw,1.25rem)] py-[clamp(0.5rem,0.8vw,0.6875rem)] text-[clamp(0.8125rem,0.95vw,1rem)] font-medium text-zinc-950 transition hover:bg-zinc-200"
+            className="ml-2 inline-flex items-center gap-1.5 rounded-md bg-[#ff8b52] px-4 py-2 text-sm font-semibold text-[#17100c] transition hover:bg-[#ffa274]"
           >
             <IoLogoGithub className="h-4 w-4 shrink-0" />
             <span>GitHub</span>
@@ -90,7 +90,7 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setMobileOpen((o) => !o)}
-          className="flex h-[clamp(2.75rem,3.5vw,3.25rem)] w-[clamp(2.5rem,3vw,3rem)] items-center justify-center rounded-lg bg-zinc-800/50 text-zinc-400 transition hover:bg-zinc-800 hover:text-white xl:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-md border border-white/10 bg-white/5 text-white transition hover:bg-white/10 md:hidden"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
           aria-controls="mobile-nav"
@@ -106,17 +106,18 @@ export default function Navbar() {
         <div
           id="mobile-nav"
           onKeyDown={handleMenuKeyDown}
-          className="block fixed top-[clamp(4.25rem,5vw,5.5rem)] right-2 w-[clamp(10rem,35vw,13rem)] max-w-[calc(100vw-1rem)] max-h-[calc(100dvh-6rem)] overflow-y-auto overscroll-contain bg-zinc-900 px-[clamp(1rem,3vw,1.5rem)] pb-[clamp(0.75rem,2vw,1rem)] pt-[clamp(0.5rem,1vw,0.75rem)] rounded-lg shadow-xl"        >
+          className="absolute right-4 top-full z-50 mt-2 block max-h-[calc(100dvh-6rem)] w-56 overflow-y-auto rounded-lg border border-white/10 bg-[#181817] p-2 shadow-xl md:hidden"
+        >
           {navigation.map(({ label, href }) => (
             <Link
               key={label}
               to={href}
               onClick={() => setMobileOpen(false)}
               aria-current={isActive(href) ? "page" : undefined}
-              className={`flex min-h-[clamp(2.75rem,3.5vw,3.25rem)] items-center rounded-lg px-[clamp(0.75rem,1.5vw,1rem)] py-[clamp(0.5rem,1.2vw,0.75rem)] text-[clamp(0.875rem,1.2vw,1rem)] font-medium transition-colors ${
+              className={`flex min-h-11 items-center rounded-md px-3 py-2 text-sm font-medium transition-colors ${
                 isActive(href)
-                  ? "bg-transparent text-white"
-                  : "text-zinc-400 hover:bg-zinc-800/50 hover:text-white"
+                  ? "bg-white/10 text-white"
+                  : "text-zinc-400 hover:bg-white/5 hover:text-white"
               }`}
             >
               {label}

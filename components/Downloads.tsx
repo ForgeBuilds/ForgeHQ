@@ -165,9 +165,9 @@ export default function Downloads() {
           : exe ?? msi ?? dmg ?? deb ?? appImage ?? rpm;
 
   return (
-    <main className="min-h-[calc(100vh-4rem)] text-white m-15">
+    <main className="downloads-page text-white">
       <MaintenanceBanner
-                message="V1.15.0 build is being put down for maintenence"
+                message="V1.15.0 build has been repaired"
                 variant="info"
               />
       <div className="px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
@@ -177,8 +177,8 @@ export default function Downloads() {
           <header className="mb-8 pb-6">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="mb-2 text-xs font-medium uppercase tracking-[0.16em] text-zinc-600">
-                  Forge · Struct
+                <p className="mb-2 text-xs font-medium uppercase tracking-[0.16em] text-zinc-500">
+                  Forge / Struct
                 </p>
 
                 <h1 className="text-4xl font-medium tracking-tight sm:text-5xl py-15">
@@ -186,12 +186,12 @@ export default function Downloads() {
                 </h1>
 
                 <p className="mt-3 text-sm text-white/60">
-                  Current release builds. See all projects on the{" "}
+                  Current release builds for Windows, macOS, and Linux when packages are published. See product details on the{" "}
                   <Link
-                    to="/"
+                    to="/products/struct"
                     className="text-white/90 underline decoration-white/30 underline-offset-4 transition hover:decoration-white/70"
                   >
-                    home page
+                    Struct page
                   </Link>
                   .
                 </p>

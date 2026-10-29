@@ -1,112 +1,36 @@
+import { Link } from "react-router-dom";
+import { IoArrowForward, IoMailOutline } from "react-icons/io5";
+import { FaGithub } from "react-icons/fa6";
 
+const EMAIL = "madhusudhant207@gmail.com";
+const STRUCT_REPO = "https://github.com/ForgeBuilds/Struct";
 
-
-const contact = async () => {
-  try {
-    const email = "madhusudhant207@gmail.com";
-    window.location.href = `mailto:${email}`;
-  } catch (error) {
-    console.error("Error occurred while trying to email:", error);
-  }
-};
-
-import { useState } from "react";
-
-const contact2 = () => {
-  try {
-    const phoneDiv = (
-      <div className="mt-3 inline-block border border-white/20 bg-zinc-950 px-4 py-3 text-left text-white/80 shadow-lg rounded-xl">
-        <p className="text-xs font-medium text-white">
-          Phone number
-        </p>
-
-        <p className="mt-1 text-xs leading-5 text-white/50">
-          +1 772-259-0947
-        </p>
-
-        <p className="mt-1 text-xs leading-5 text-white/50">
-          For any other inquiries contact using the email : madhusudhant207@gmail.com
-        </p>
-      </div>
-    );
-
-    return phoneDiv;
-  } catch (error) {
-    console.error("Error occurred while trying to call:", error);
-    return null;
-  }
-};
 export default function Contact() {
-  const [showPhone, setShowPhone] = useState(false);
-
   return (
-    <main className="bg-zinc-950 text-white">
-      <section className="mx-auto max-w-3xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+    <main className="contact-page">
+      <section className="page-shell contact-content">
+        <p className="eyebrow"><span className="eyebrow-dot" />Forge / Contact</p>
+        <h1>Talk to us<span className="accent-period">.</span></h1>
+        <p className="contact-intro">For questions about Struct, bug reports, and feature requests, the project repository is the best place to start.</p>
 
-        <div className="max-w-2xl">
-          <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-            Contact
-          </h1>
-
-          <p className="mt-5 text-lg leading-relaxed text-zinc-400 sm:text-xl">
-            Have a question, found a bug, or want to contribute to Struct?
-            GitHub is where the project lives.
-          </p>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a
-              href="https://github.com/ForgeBuilds/Struct"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden="true">
-                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-              </svg>
-              Struct repository
-            </a>
-            <a
-              href="https://github.com/ForgeBuilds"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-zinc-700 px-5 py-3 text-sm font-medium text-white transition hover:border-zinc-500 hover:bg-zinc-800"
-            >
-              Organization
-            </a>
-          </div>
+        <div className="contact-options">
+          <a className="contact-card contact-card-featured" href={`${STRUCT_REPO}/issues`} target="_blank" rel="noopener noreferrer">
+            <span className="contact-icon"><FaGithub aria-hidden="true" /></span>
+            <span className="contact-card-label">PROJECT SUPPORT</span>
+            <strong>Struct on GitHub</strong>
+            <span className="contact-card-copy">Open an issue or join a project discussion.</span>
+            <span className="contact-card-link">Visit repository <IoArrowForward aria-hidden="true" /></span>
+          </a>
+          <a className="contact-card" href={`mailto:${EMAIL}`}>
+            <span className="contact-icon"><IoMailOutline aria-hidden="true" /></span>
+            <span className="contact-card-label">EMAIL</span>
+            <strong>Send a message</strong>
+            <span className="contact-card-copy">Reach the Forge team by email.</span>
+            <span className="contact-card-link">{EMAIL} <IoArrowForward aria-hidden="true" /></span>
+          </a>
         </div>
 
-        <div className="mt-8 border-t border-zinc-800 pt-12 sm:mt-20 sm:pt-16">
-          <h2 className="text-xl font-semibold">
-            Struct
-          </h2>
-
-          <p className="mt-4 max-w-xl leading-7 text-zinc-400">
-            For bug reports, feature requests, questions, and contributions,
-            use the appropriate repository or discussion on GitHub or contact through email
-            </p>
-          
-        
-          <div className="mt-6">
-            <button
-              onClick={contact}>
-              <span className="hover:text-blue-500 m-4 underline underline-offset-4 font-medium">
-                Contact us using Email 
-                
-              </span>
-              </button>
-              <button
-              onClick={() => setShowPhone((v) => !v)}
-            >
-              <span className="hover:text-blue-500 m-4 underline underline-offset-4 font-medium">
-                Contact us using phone
-              </span>
-            </button>
-            {showPhone && contact2()}
-            
-          </div>
-        </div>
-
+        <p className="contact-footnote">You can also browse the <Link to="/documentation">Struct documentation</Link> or <Link to="/downloads">get the latest available build</Link>.</p>
       </section>
     </main>
   );

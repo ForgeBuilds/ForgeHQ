@@ -1,6 +1,6 @@
 export default function Legal() {
   return (
-    <main className="bg-zinc-950 text-zinc-300">
+    <main className="legal-page text-zinc-300">
       <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <article className="space-y-12">
           <header className="border-b border-zinc-800 pb-8">
