@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { IoArrowForward, IoLogoGithub } from "react-icons/io5";
 import { MaintenanceBanner } from "./alert";
-import forgeCube from "../src/assets/hero.png";
+import forgeCube from "../src/assets/forgelogo.jpg";
 
 const steps = [
   {
@@ -24,7 +24,7 @@ const steps = [
 export default function Home() {
   return (
     <div className="site-page">
-      <MaintenanceBanner message="macOS support added" variant="info" />
+      <MaintenanceBanner message="macOS support added" variant="info"/>
 
       <section className="home-hero page-shell">
         <div className="home-hero-copy">
@@ -41,7 +41,7 @@ export default function Home() {
         </div>
         <div className="home-hero-art" aria-label="Forge mark" role="img">
           <div className="hero-art-glow" />
-          <img src={forgeCube} alt="" />
+          <img src={forgeCube} alt="" className="rounded-2xl" />
           <span className="hero-art-caption">FORGE / 001</span>
         </div>
       </section>
