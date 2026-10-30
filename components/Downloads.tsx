@@ -166,10 +166,10 @@ export default function Downloads() {
 
   return (
     <main className="downloads-page text-white">
-      <MaintenanceBanner
+      {/* <MaintenanceBanner
                 message="V1.15.0 build has been repaired"
                 variant="info"
-              />
+              /> */}
       <div className="px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
         <div className="mx-auto max-w-5xl">
 
