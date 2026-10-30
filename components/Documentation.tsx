@@ -464,9 +464,9 @@ return (
               <DocSection id="building" title="Building from source">
                 <p>Development requires {devRequirements.join(", ")}. Then clone the official repository and start the development shell.</p>
                 <CodeBlock label="Development setup">{`git clone https://github.com/ForgeBuilds/Struct.git
-                cd Struct
+                cd Struct or neo depending on the version
                 npm install
-                npm run tauri dev`}</CodeBlock>
+                npm run dev:electron`}</CodeBlock>
                 <h3 className="pt-2 text-base font-semibold text-zinc-200">Before opening a pull request</h3>
                 <ul className="list-disc space-y-2 pl-5 marker:text-zinc-600">
                   <li>Run the project&apos;s lint, type-check, and test commands.</li>
