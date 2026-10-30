@@ -28,8 +28,8 @@ export default function Home() {
 
       <section className="home-hero page-shell">
         <div className="home-hero-copy">
-          <p className="eyebrow"><span className="eyebrow-dot" />Forge builds in the open</p>
-          <h1>Tools made to be<br className="home-title-break" />{" "}<span>used, not admired.</span></h1>
+          <p className="eyebrow"><span/>Forge builds</p>
+          <h1>Software made to be<br className="home-title-break" />{" "}<span>used, not admired.</span></h1>
           <p className="hero-description">
             Forge is a GitHub organization for software projects. Struct is our current project: a desktop workspace for working with an AI coding agent.
           </p>
@@ -42,7 +42,7 @@ export default function Home() {
         <div className="home-hero-art" aria-label="Forge mark" role="img">
           <div className="hero-art-glow" />
           <img src={forgeCube} alt="" className="rounded-2xl" />
-          <span className="hero-art-caption">FORGE / 001</span>
+          <span className="hero-art-caption"></span>
         </div>
       </section>
 
