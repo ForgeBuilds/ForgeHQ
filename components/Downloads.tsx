@@ -1,7 +1,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import {MaintenanceBanner} from "./alert.tsx"
+//import {MaintenanceBanner} from "./alert.tsx"
 import {
   IoLogoApple,
   IoLogoTux,
