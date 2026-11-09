@@ -1,8 +1,4 @@
-/**
- * Navbar account control — "Sign in" when signed out; avatar + profile
- * dropdown when signed in. Opens the global AuthModal (rendered once in
- * App.tsx). Uses the same Supabase account as the Struct app.
- */
+
 
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";

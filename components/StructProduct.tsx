@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { IoArrowForward, IoLogoGithub } from "react-icons/io5";
 import chatPreview from "../src/assets/chat.png";
+import { MaintenanceBanner } from "./alert";
 
 const STRUCT_URL = "https://github.com/ForgeBuilds/Struct";
 
@@ -14,6 +15,8 @@ const features = [
 export default function StructProduct() {
   return (
     <div className="product-page">
+            <MaintenanceBanner message="Temporarily halting updates. Stay tuned for more information." variant="info"/>
+      
       <section className="page-shell product-hero">
         <div className="product-hero-copy">
           <p className="eyebrow"><span className="eyebrow-dot" />Forge / Product</p>

@@ -24,7 +24,7 @@ const steps = [
 export default function Home() {
   return (
     <div className="site-page">
-      <MaintenanceBanner message="macOS support added" variant="info"/>
+      <MaintenanceBanner message="Temporarily halting updates. Stay tuned for more information." variant="info"/>
 
       <section className="home-hero page-shell">
         <div className="home-hero-copy">

@@ -23,6 +23,7 @@ import {
 import { openAuthModal } from "../src/lib/authModal";
 import { isSupabaseConfigured } from "../src/lib/supabase";
 import { notifyAccountRefresh, useAccount } from "../src/lib/useAccount";
+import { MaintenanceBanner } from "./alert";
 
 /* ── Shared classes (single source so every block matches) ── */
 
@@ -216,6 +217,7 @@ function PasswordDialog({
 }: PasswordDialogProps) {
   const inputType = reveal ? "text" : "password";
   return (
+    
     <Dialog titleId="account-password-title" onClose={onClose}>
       <div className="flex items-start justify-between gap-4 px-5 py-4">
         <div>
@@ -455,7 +457,9 @@ export default function AccountPage() {
   };
 
   return (
-    <div className="bg-zinc-950 text-white py-30">
+    <div className="bg-zinc-950 text-white py-10">
+    <MaintenanceBanner message="Temporarily halting updates. Stay tuned for more information." variant="info"/>
+      
       <section className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         {/* Page header */}
         <div className="max-w-xl">

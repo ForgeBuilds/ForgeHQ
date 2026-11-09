@@ -7,6 +7,7 @@ import chatPreview from "../src/assets/chat.png";
 import aiSettings from "../src/assets/aisettings.png";
 //import additionalInfo from "../src/assets/Additionalinfo.png";
 import { IoInformationCircleOutline } from "react-icons/io5"
+import { MaintenanceBanner } from "./alert";
 
 const docGroups = [
   {
@@ -188,6 +189,8 @@ return (
       </div>
 
       <header className="max-w-3xl border-b border-zinc-800 pb-10 sm:pb-12">
+              <MaintenanceBanner message="Temporarily halting updates. Stay tuned for more information." variant="info"/>
+        
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">Struct handbook</p>
         <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">Documentation</h1>
         <p className="mt-4 max-w-2xl text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">

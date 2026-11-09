@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { IoArrowForward, IoMailOutline } from "react-icons/io5";
 import { FaGithub } from "react-icons/fa6";
+import { MaintenanceBanner } from "./alert";
 
 const EMAIL = "madhusudhant207@gmail.com";
 const STRUCT_REPO = "https://github.com/ForgeBuilds/Struct";
@@ -8,7 +9,9 @@ const STRUCT_REPO = "https://github.com/ForgeBuilds/Struct";
 export default function Contact() {
   return (
     <main className="contact-page">
+      
       <section className="page-shell contact-content">
+        
         <p className="eyebrow"><span className="eyebrow-dot" />Forge / Contact</p>
         <h1>Talk to us<span className="accent-period">.</span></h1>
         <p className="contact-intro">For questions about Struct, bug reports, and feature requests, the project repository is the best place to start.</p>
