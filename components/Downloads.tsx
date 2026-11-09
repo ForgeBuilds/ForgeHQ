@@ -10,7 +10,7 @@ import {
   IoOpenOutline,
   IoInformationCircleOutline,
 } from "react-icons/io5";
-import { MaintenanceBanner } from "./alert";
+//import { MaintenanceBanner } from "./alert";
 
 interface ReleaseAsset {
   name: string;

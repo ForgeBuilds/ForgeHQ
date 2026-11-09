@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { IoArrowForward, IoMailOutline } from "react-icons/io5";
 import { FaGithub } from "react-icons/fa6";
-import { MaintenanceBanner } from "./alert";
+//import { MaintenanceBanner } from "./alert";
 
 const EMAIL = "madhusudhant207@gmail.com";
 const STRUCT_REPO = "https://github.com/ForgeBuilds/Struct";
