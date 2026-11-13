@@ -646,11 +646,11 @@ export default function AccountPage() {
               >
                 <div className={LIST_CLASS}>
                   <ActionRow label="Change password" onClick={openPasswordDialog} />
-                  <ActionRow
+                  {/* <ActionRow
                     label={resetBusy ? "Sending the reset email…" : "Email me a reset link"}
                     onClick={() => void handleResetLink()}
                     disabled={resetBusy}
-                  />
+                  /> */}
                   <ActionRow label="Sign out" onClick={() => void signOut()} />
                   <ActionRow
                     label="Sign out of all devices"
