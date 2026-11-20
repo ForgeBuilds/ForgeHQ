@@ -15,7 +15,7 @@ A React + TypeScript + Vite single-page app that serves:
 * **Account** — sign-in and profile, backed by the same Supabase project the
   Struct desktop app uses
 
-The desktop app source lives in a separate repository (see the app README).
+The desktop app source lives in a separate repository.
 
 ## Accounts
 
@@ -27,8 +27,8 @@ features work without signing in.
 ## Pricing
 
 **Struct is free.** There are no paid plans, no subscriptions, and no
-paywall. Every feature is available to all users at no cost, and Forge
-does not process payments.
+paywall. Every feature is available to all users at no cost, and Forge does
+not process payments.
 
 ## Getting started
 

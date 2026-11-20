@@ -13,7 +13,7 @@ export default function Legal() {
             <p className="mt-4 text-sm text-zinc-500">
               Effective date: September 19, 2026
               <br />
-              Last updated: September 25, 2026
+              Last updated: November 20, 2026
             </p>
           </header>
 
