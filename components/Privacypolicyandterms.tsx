@@ -1,27 +1,27 @@
 export default function Legal() {
   return (
-    <main className="legal-page text-zinc-300">
-      <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-        <article className="space-y-12">
-          <header className="border-b border-zinc-800 pb-8">
-            <p className="mb-3 text-sm font-medium uppercase tracking-widest text-zinc-500">
+    <main className="legal-page">
+      <div className="legal-shell">
+        <article>
+          <header>
+            <p>
               Forge · Struct
             </p>
-            <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            <h1>
               Privacy Policy &amp; Terms of Use
             </h1>
-            <p className="mt-4 text-sm text-zinc-500">
+            <p>
               Effective date: September 19, 2026
               <br />
               Last updated: November 20, 2026
             </p>
           </header>
 
-          <section className="rounded-lg border border-emerald-900/60 bg-emerald-950/20 p-5 text-sm leading-6 text-emerald-100">
-            <h2 className="font-semibold text-emerald-200">
+          <section className="legal-summary">
+            <h2>
               Plain-language summary
             </h2>
-            <p className="mt-2">
+            <p>
               Struct is a local-first, agentic app connected to a Forge-operated backend
               for account management, cloud synchronization, encrypted storage of your own
               provider API keys, and certain AI-provider requests. Your local
@@ -32,7 +32,7 @@ export default function Legal() {
               function. Struct is free — there is no subscription, paid
               plan, or paywall.
             </p>
-            <p className="mt-3">
+            <p>
               If you use a cloud AI provider through Struct, including a provider
               such as OpenRouter, the request may pass through Forge
               infrastructure before being sent to the provider. Depending on
@@ -41,7 +41,7 @@ export default function Legal() {
               API key or provider credential. Data may also be collected and
               used for service training, evaluation, security, and improvement.
             </p>
-            <p className="mt-3">
+            <p>
               We use reasonable technical and organizational safeguards, but no
               online service, local application, storage system, provider, or
               security measure can be guaranteed to be completely safe. Do not
@@ -52,8 +52,8 @@ export default function Legal() {
           </section>
 
           {/* 1. Privacy Policy */}
-          <section className="space-y-8">
-            <h2 className="text-2xl font-bold text-white">
+          <section>
+            <h2>
               1. Privacy Policy
             </h2>
 
@@ -82,10 +82,10 @@ export default function Legal() {
 
             {/* 1.1 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 1.1 What data is local and what data is online
               </h3>
-              <p className="mt-3">
+              <p>
                 Struct uses two kinds of processing. Local processing occurs on
                 your device and may include opening workspaces, editing files,
                 running a local model, maintaining local agent history,
@@ -95,7 +95,7 @@ export default function Legal() {
                 provider calls, or
                 another feature that requires network communication.
               </p>
-              <p className="mt-3">
+              <p>
                 Local-first does not mean that every feature is offline. A
                 local model can run without sending its prompt or workspace to
                 a remote model provider, but account, cloud sync, and
@@ -108,21 +108,21 @@ export default function Legal() {
 
             {/* 1.2 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 1.2 Information collected for accounts
               </h3>
-              <p className="mt-3">
+              <p>
                 To create, authenticate, secure, and maintain an account, we
                 may collect and process information such as:
               </p>
-              <ul className="mt-3 list-disc space-y-1.4 pl-6 text-zinc-400">
+              <ul>
                 <li>Email address, username, account identifier, and profile information</li>
                 <li>Authentication records, login events, session data, and security signals</li>
                 <li>Account preferences, feature settings, and consent choices</li>
                 <li>Account-status information and the date the account was created</li>
                 <li>Communications that you send to support or through the service</li>
               </ul>
-              <p className="mt-3">
+              <p>
                 We use this information to provide account access, protect
                 accounts, provide support, communicate
                 service notices, prevent abuse, and maintain the Application.
@@ -131,15 +131,15 @@ export default function Legal() {
 
             {/* 1.3 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 1.3 Information processed on your device
               </h3>
-              <p className="mt-3">
+              <p>
                 Depending on the features and permissions you use, Struct may
                 create, read, modify, index, or otherwise process the following
                 information locally:
               </p>
-              <ul className="mt-3 list-disc space-y-1.4 pl-6 text-zinc-400">
+              <ul>
                 <li>Source code, repositories, project files, and file paths</li>
                 <li>Prompts, instructions, agent plans, and local conversation history</li>
                 <li>Generated code, patches, build output, logs, and diagnostics</li>
@@ -148,7 +148,7 @@ export default function Legal() {
                 <li>Provider configuration and credentials stored at your direction</li>
                 <li>Local app and tool configuration</li>
               </ul>
-              <p className="mt-3">
+              <p>
                 When you use a local model and do not invoke an online
                 provider or backend feature, the model computation is intended
                 to occur on your device. Local data can still be exposed by
@@ -159,10 +159,10 @@ export default function Legal() {
 
             {/* 1.4 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 1.4 Backend-routed AI requests
               </h3>
-              <p className="mt-3">
+              <p>
                 Struct may use the Forge backend to call AI providers on your
                 behalf or to manage the credentials required for those calls.
                 Providers may include OpenRouter and other providers that are
@@ -170,21 +170,21 @@ export default function Legal() {
                 feature, the backend may receive or generate a request
                 containing:
               </p>
-              <ul className="mt-3 list-disc space-y-1.4 pl-6 text-zinc-400">
+              <ul>
                 <li>Your account or session identifier</li>
                 <li>Prompt text, selected files, code context, and conversation history</li>
                 <li>Tool results, agent instructions, model settings, and requested actions</li>
                 <li>IP address, timestamps, request identifiers, device information, and error data</li>
                 <li>Provider API keys, access tokens, or other credentials needed to complete the call</li>
               </ul>
-              <p className="mt-3">
+              <p>
                 The actual payload depends on the provider, model, Struct
                 configuration, and action you choose. A backend-routed request
                 can leave your device even when your project itself is stored
                 locally. Do not assume that selecting a provider in Struct makes
                 the request local or private from that provider.
               </p>
-              <p className="mt-3">
+              <p>
                 Third-party providers independently determine how they retain,
                 review, use, secure, transfer, or delete requests. OpenRouter
                 and each underlying model provider may have separate policies,
@@ -196,10 +196,10 @@ export default function Legal() {
 
             {/* 1.5 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 1.5 API keys and credentials
               </h3>
-              <p className="mt-3">
+              <p>
                 API keys, access tokens, OAuth tokens, SSH keys, environment
                 variables, and similar credentials are sensitive information.
                 Depending on the integration, a credential may be stored
@@ -208,7 +208,7 @@ export default function Legal() {
                 storage and transmission behavior should be disclosed in the
                 integration interface.
               </p>
-              <p className="mt-3">
+              <p>
                 Forge uses reasonable safeguards intended to restrict
                 unauthorized access to credentials and backend data. No
                 storage or transmission method is guaranteed to be completely
@@ -222,10 +222,10 @@ export default function Legal() {
 
             {/* 1.6 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 1.6 Training, evaluation, and service improvement
               </h3>
-              <p className="mt-3">
+              <p>
                 Data collected through the Application or backend may be used
                 for training, evaluation, abuse prevention, quality assurance,
                 debugging, security analysis, and improvement of Struct and
@@ -234,7 +234,7 @@ export default function Legal() {
                 activity, request metadata, diagnostics, feedback, and
                 provider-call records.
               </p>
-              <p className="mt-3">
+              <p>
                 Training or improvement processing may involve human or
                 automated review, filtering, de-identification, aggregation,
                 sampling, retention, and access by authorized service
@@ -244,7 +244,7 @@ export default function Legal() {
                 cannot guarantee that information will never be exposed,
                 re-identified, misused, or accessed without authorization.
               </p>
-              <p className="mt-3">
+              <p>
                 Do not submit trade secrets, passwords, API keys, personal
                 information, regulated data, or confidential source code for
                 training or improvement unless you have the right to do so and
@@ -256,10 +256,10 @@ export default function Legal() {
 
             {/* 1.7 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 1.7 Usage data, logs, and crash handling
               </h3>
-              <p className="mt-3">
+              <p>
                 The backend may collect service logs and operational metadata
                 needed to authenticate accounts, route
                 provider calls, measure usage, investigate abuse, troubleshoot
@@ -268,7 +268,7 @@ export default function Legal() {
                 selections, response status, latency, IP address, device or
                 application version, and error information.
               </p>
-              <p className="mt-3">
+              <p>
                 Struct may also include a local crash handler that records crash
                 information on your device. The crash handler does not
                 automatically make a local crash report available to Forge
@@ -282,22 +282,22 @@ export default function Legal() {
 
             {/* 1.8 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 1.8 Network requests and third-party services
               </h3>
-              <p className="mt-3">
+              <p>
                 In addition to Forge systems, Struct may interact with services
                 that you choose or that are required by a connected feature,
                 including:
               </p>
-              <ul className="mt-3 list-disc space-y-1.4 pl-6 text-zinc-400">
+              <ul>
                 <li>AI model and inference providers, including OpenRouter where supported</li>
                 <li>Git hosting, issue tracking, or source-control services</li>
                 <li>Package registries, dependency indexes, and update services</li>
                 <li>Documentation, browser, search, or web-fetch services</li>
                 <li>Operating-system, runtime, and extension services</li>
               </ul>
-              <p className="mt-3">
+              <p>
                 These services are independent third parties. Their collection,
                 use, retention, international transfer, and security practices
                 are governed by their own notices and terms. Forge does not
@@ -308,10 +308,10 @@ export default function Legal() {
 
             {/* 1.9 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 1.9 Retention and deletion
               </h3>
-              <p className="mt-3">
+              <p>
                 We retain account, security, service, provider,
                 and training-related data for as long as reasonably necessary
                 for the purposes described in this policy, to provide the
@@ -321,7 +321,7 @@ export default function Legal() {
                 data type, provider, legal requirement, and operational
                 need.
               </p>
-              <p className="mt-3">
+              <p>
                 You may be able to delete local project data directly from
                 your device and may request account or service-data deletion
                 through the available account controls or official support
@@ -331,7 +331,7 @@ export default function Legal() {
                 de-identified or aggregated training materials where retention
                 is permitted by law.
               </p>
-              <p className="mt-3">
+              <p>
                 Data sent to an external AI provider is also governed by that
                 provider&apos;s retention and deletion controls. Forge may
                 not be able to retrieve or delete information held by a
@@ -341,10 +341,10 @@ export default function Legal() {
 
             {/* 1.10 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 1.10 Security and its limitations
               </h3>
-              <p className="mt-3">
+              <p>
                 Struct may use account authentication, authorization controls,
                 approval prompts, workspace boundaries, command approval,
                 file-diff review, protected credential handling, logging,
@@ -355,7 +355,7 @@ export default function Legal() {
                 account, backend, or user-approved action will be safe, private,
                 uninterrupted, or correct.
               </p>
-              <p className="mt-3">
+              <p>
                 You are responsible for using a supported operating system,
                 applying security updates, protecting your account, enabling
                 device security, reviewing agent actions and network
@@ -370,10 +370,10 @@ export default function Legal() {
 
             {/* 1.11 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 1.11 Children and sensitive information
               </h3>
-              <p className="mt-3">
+              <p>
                 Struct is a developer tool and is not directed to children. Do
                 not use Struct or its backend to process protected health
                 information, payment-card data, government-classified
@@ -387,10 +387,10 @@ export default function Legal() {
 
             {/* 1.12 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 1.12 Privacy rights and requests
               </h3>
-              <p className="mt-3">
+              <p>
                 Depending on where you live and subject to applicable
                 exceptions, you may have rights to request access,
                 correction, deletion, restriction, portability, or objection
@@ -404,11 +404,11 @@ export default function Legal() {
             </div>
           </section>
 
-          <div className="border-t border-zinc-800" />
+          <div />
 
           {/* 2. Terms of Use */}
-          <section className="space-y-8">
-            <h2 className="text-2xl font-bold text-white">
+          <section>
+            <h2>
               2. Terms of Use
             </h2>
 
@@ -423,10 +423,10 @@ export default function Legal() {
 
             {/* 2.1 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 2.1 Accounts and account security
               </h3>
-              <p className="mt-3">
+              <p>
                 You must provide accurate information, keep your account
                 information current, protect your credentials, and promptly
                 report unauthorized access. You are responsible for activity
@@ -438,24 +438,24 @@ export default function Legal() {
 
             {/* 2.2 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 2.2 No subscription, no paywall
               </h3>
-              <p className="mt-3">
+              <p>
                 Struct is provided <strong>free of charge</strong>. There is
                 no subscription, no paid plan, no paywall, and no in-app
                 purchase or checkout. Forge does not process,
                 collect, or store payment or card information, and all
                 features are available to all users at no cost.
               </p>
-              <p className="mt-3">
+              <p>
                 An account is required only for features that need a backend,
                 such as sign-in, cloud synchronization, and encrypted storage
                 of your own provider API keys. Local model execution
                 (Ollama) and local app use work without an account. You can
                 delete your synced data at any time.
               </p>
-              <p className="mt-3">
+              <p>
                 Free of charge does not mean unlimited use of third-party
                 services. Hardware requirements, model availability,
                 performance, and local storage requirements for local model
@@ -465,10 +465,10 @@ export default function Legal() {
 
             {/* 2.3 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 2.3 Provider API calls and charges
               </h3>
-              <p className="mt-3">
+              <p>
                 If you connect an API provider, you authorize Struct and its
                 backend to make the provider calls enabled by your
                 configuration. You are responsible for having the necessary
@@ -478,7 +478,7 @@ export default function Legal() {
                 limits, availability, routing, retention, or acceptable-use
                 rules without control by Forge.
               </p>
-              <p className="mt-3">
+              <p>
                 Review every destination, model, prompt, selected file,
                 requested tool action, and expected cost before approving an
                 operation. Forge is not responsible for provider charges,
@@ -489,10 +489,10 @@ export default function Legal() {
 
             {/* 2.4 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 2.4 Agentic actions and human review
               </h3>
-              <p className="mt-3">
+              <p>
                 Struct may use AI agents to inspect files, propose or apply
                 changes, execute commands, call tools, access configured
                 services, and perform other development actions. Agentic tool
@@ -502,7 +502,7 @@ export default function Legal() {
                 supervising the result, reviewing changes, testing the result,
                 and reverting actions when necessary.
               </p>
-              <p className="mt-3">
+              <p>
                 Approval is not a guarantee of safety. Do not grant an agent
                 broader access than necessary, and do not treat a model,
                 generated code, approval prompt, or automated workflow as a
@@ -513,10 +513,10 @@ export default function Legal() {
 
             {/* 2.5 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 2.5 Your content and permissions
               </h3>
-              <p className="mt-3">
+              <p>
                 You retain your rights in code, files, prompts, instructions,
                 documentation, and other content that you create or provide,
                 subject to third-party rights and the licenses that apply to
@@ -524,7 +524,7 @@ export default function Legal() {
                 permissions, notices, and legal authority required to use that
                 content with Struct, the backend, and every provider you select.
               </p>
-              <p className="mt-3">
+              <p>
                 By submitting content to a backend feature, you grant Forge
                 the limited rights necessary to host, store, transmit,
                 process, secure, display, analyze, evaluate, train, and
@@ -537,10 +537,10 @@ export default function Legal() {
 
             {/* 2.6 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 2.6 AI-generated output
               </h3>
-              <p className="mt-3">
+              <p>
                 AI output is probabilistic and may be inaccurate, incomplete,
                 biased, insecure, outdated, unavailable, similar to output
                 generated for other users, or unsuitable for your purpose. It
@@ -549,7 +549,7 @@ export default function Legal() {
                 untrusted files, or content that violates a third party&apos;s
                 rights.
               </p>
-              <p className="mt-3">
+              <p>
                 You must independently review output for correctness, security,
                 privacy, licensing, originality, compatibility, performance,
                 and fitness for purpose before relying on it, shipping it, or
@@ -561,13 +561,13 @@ export default function Legal() {
 
             {/* 2.7 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 2.7 Application license
               </h3>
-              <p className="mt-3">
+              <p>
                 Struct is licensed under the custom license published in the
                 Struct GitHub repository&apos;s{" "}
-                <code className="rounded bg-zinc-900 px-1.4 py-0.5 text-zinc-200">
+                <code>
                   LICENSE
                 </code>
                 . That file is the authoritative source for the permissions,
@@ -575,7 +575,7 @@ export default function Legal() {
                 modification rights, distribution rights, warranty
                 disclaimers, and other license conditions applicable to Struct.
               </p>
-              <p className="mt-3">
+              <p>
                 These Terms of Use do not replace, expand, or restrict rights
                 granted by the custom license except for the separate use of
                 the hosted account, backend, and provider
@@ -587,10 +587,10 @@ export default function Legal() {
 
             {/* 2.8 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 2.8 Third-party services and software
               </h3>
-              <p className="mt-3">
+              <p>
                 Struct may include or interoperate with open-source software,
                 extensions, runtimes, package managers, model providers,
                 OpenRouter, and other third-party
@@ -599,7 +599,7 @@ export default function Legal() {
                 limits, and changes outside Forge&apos;s control. You must
                 comply with all applicable terms and preserve required notices.
               </p>
-              <p className="mt-3">
+              <p>
                 Forge does not endorse, guarantee, or assume responsibility
                 for a third-party service, model, package, repository, tool,
                 recommendation, routing decision, or result accessed through
@@ -609,13 +609,13 @@ export default function Legal() {
 
             {/* 2.9 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 2.9 Acceptable use
               </h3>
-              <p className="mt-3">
+              <p>
                 You must not use Struct or its backend to:
               </p>
-              <ul className="mt-3 list-disc space-y-1.4 pl-6 text-zinc-400">
+              <ul>
                 <li>Access, alter, destroy, or exfiltrate data without authorization</li>
                 <li>Deploy malware, ransomware, spyware, credential theft, or destructive code</li>
                 <li>Evade authentication, access controls, rate limits, or security monitoring</li>
@@ -626,7 +626,7 @@ export default function Legal() {
                 <li>Generate or deploy content that violates applicable law or a connected service&apos;s terms</li>
                 <li>Misrepresent AI-generated work as reviewed, tested, or human-authored when it was not</li>
               </ul>
-              <p className="mt-3">
+              <p>
                 This list is illustrative, not exhaustive. Forge may
                 suspend access or restrict distribution where necessary to
                 address legal, security, abuse, or operational risk.
@@ -635,10 +635,10 @@ export default function Legal() {
 
             {/* 2.10 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 2.10 Availability, updates, and changes
               </h3>
-              <p className="mt-3">
+              <p>
                 Struct and the backend may change, be discontinued, lose
                 compatibility, experience outages, or contain defects. Forge
                 does not promise uninterrupted availability, continued support
@@ -647,7 +647,7 @@ export default function Legal() {
                 account or training data beyond applicable retention
                 requirements.
               </p>
-              <p className="mt-3">
+              <p>
                 Updates may introduce security fixes, feature changes,
                 dependency changes, plan changes, provider changes, or
                 behavior changes. Review release notes, maintain backups, and
@@ -658,10 +658,10 @@ export default function Legal() {
 
             {/* 2.11 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 2.11 Disclaimers
               </h3>
-              <p className="mt-3">
+              <p>
                 TO THE MAXIMUM EXTENT PERMITTED BY LAW, STRUCT, THE BACKEND, THE
                 APPLICATION, PROVIDER ROUTING, AND ALL RELATED
                 MATERIALS ARE PROVIDED &quot;AS IS&quot; AND &quot;AS
@@ -671,7 +671,7 @@ export default function Legal() {
                 NON-INFRINGEMENT, TITLE, ACCURACY, SECURITY, AVAILABILITY, AND
                 QUIET ENJOYMENT.
               </p>
-              <p className="mt-3">
+              <p>
                 FORGE DOES NOT WARRANT THAT STRUCT, THE BACKEND, AN AGENT,
                 GENERATED OUTPUT, A PROVIDER, A LOCAL MODEL, OR A CONNECTED
                 SERVICE WILL BE ERROR-FREE, SECURE, PRIVATE, UNINTERRUPTED,
@@ -683,10 +683,10 @@ export default function Legal() {
 
             {/* 2.12 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 2.12 Limitation of liability
               </h3>
-              <p className="mt-3">
+              <p>
                 TO THE MAXIMUM EXTENT PERMITTED BY LAW, FORGE AND
                 ITS CONTRIBUTORS, MAINTAINERS, LICENSORS, SERVICE PROVIDERS,
                 AND AFFILIATES WILL NOT BE LIABLE FOR INDIRECT, INCIDENTAL,
@@ -697,7 +697,7 @@ export default function Legal() {
                 PROVIDER, OR THESE TERMS, EVEN IF ADVISED OF THE
                 POSSIBILITY OF SUCH DAMAGES.
               </p>
-              <p className="mt-3">
+              <p>
                 To the extent liability cannot be excluded, total aggregate
                 liability will be limited to the greater of the amount you paid
                 for the relevant Forge service in the twelve months before
@@ -710,10 +710,10 @@ export default function Legal() {
 
             {/* 2.13 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 2.13 Indemnity
               </h3>
-              <p className="mt-3">
+              <p>
                 To the extent permitted by law, you agree to defend, indemnify,
                 and hold harmless Forge and its contributors from claims,
                 liabilities, damages, losses, and expenses arising from your
@@ -727,10 +727,10 @@ export default function Legal() {
 
             {/* 2.14 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 2.14 Suspension and termination
               </h3>
-              <p className="mt-3">
+              <p>
                 You may stop using Struct at any time. Forge
                 may suspend or terminate an account, backend
                 access, or provider feature for abuse, security
@@ -739,7 +739,7 @@ export default function Legal() {
                 investigated. Local software and data may remain on your
                 device after hosted access ends.
               </p>
-              <p className="mt-3">
+              <p>
                 Provisions that by their nature should survive termination,
                 including ownership, license conditions, third-party terms,
                 data-use rights for data already collected, disclaimers,
@@ -750,10 +750,10 @@ export default function Legal() {
 
             {/* 2.15 */}
             <div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3>
                 2.15 Changes to this policy and terms
               </h3>
-              <p className="mt-3">
+              <p>
                 We may update this page as Struct, the backend, plans, provider
                 integrations, or data practices change. The latest version will
                 include an updated date. Where required by law, we will provide
@@ -764,11 +764,9 @@ export default function Legal() {
             </div>
           </section>
 
-          <div className="border-t border-zinc-800" />
-
           {/* 3. Contact and repository license */}
-          <section className="space-y-6">
-            <h2 className="text-2xl font-bold text-white">
+          <section>
+            <h2>
               3. Contact and repository license
             </h2>
             <p>
@@ -782,13 +780,13 @@ export default function Legal() {
             <p>
               The custom software license for Struct is available in the GitHub
               repository file{" "}
-              <code className="rounded bg-zinc-900 px-1.4 py-0.5 text-zinc-200">
+              <code>
                 LICENSE
               </code>
               . Read that file before copying, modifying, distributing,
               commercially using, or creating a derivative of Struct.
             </p>
-            <p className="text-sm text-zinc-500">
+            <p>
               Struct
               <br />
               Forge

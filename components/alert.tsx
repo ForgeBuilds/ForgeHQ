@@ -17,17 +17,17 @@ const variantStyles: Record<
 > = {
   warning: {
     icon: IoWarning,
-    classes: 'border-amber-400/20 bg-amber-950/80 text-amber-100',
+    classes: 'banner-warning',
     role: 'status',
   },
   critical: {
     icon: IoAlertCircle,
-    classes: 'border-rose-400/25 bg-rose-950/85 text-rose-100',
+    classes: 'banner-critical',
     role: 'alert',
   },
   info: {
     icon: IoMegaphone,
-    classes: 'border-white/10 bg-zinc-950/95 text-white',
+    classes: 'banner-info',
     role: 'status',
   },
 };
@@ -64,23 +64,20 @@ export function MaintenanceBanner({
           animate={{ height: 'auto', opacity: 1 }}
           exit={{ height: 0, opacity: 0 }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.2, ease: 'easeOut' }}
-          className={`w-full overflow-hidden backdrop-blur-md ${classes}`}
+          className={`banner overflow-hidden ${classes}`}
         >
           <div role={role} aria-atomic="true">
-            <div className="mx-auto flex w-full max-w-6xl items-center gap-4 px-4 py-4 sm:px-6 lg:px-8">
-              <Icon aria-hidden="true" className="h-5 w-5 shrink-0 opacity-90" />
-              <p className="min-w-0 flex-1 text-sm font-medium leading-6 tracking-wide sm:text-base">
-                {message}
-              </p>
+            <div className="banner-inner">
+              <Icon aria-hidden="true" className="h-4 w-4 shrink-0 opacity-60" />
+              <p>{message}</p>
 
               {isClosable && (
                 <button
                   type="button"
                   onClick={() => setIsVisible(false)}
-                  className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-current transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
                   aria-label="Dismiss notification"
                 >
-                  <IoClose aria-hidden="true" className="h-5 w-5" />
+                  <IoClose aria-hidden="true" className="h-4 w-4" />
                 </button>
               )}
             </div>

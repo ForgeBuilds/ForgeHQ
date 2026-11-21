@@ -1,81 +1,156 @@
 import { Link } from "react-router-dom";
 import { IoArrowForward, IoLogoGithub } from "react-icons/io5";
 import { MaintenanceBanner } from "./alert";
-import forgeCube from "../src/assets/forgelogo.jpg";
+import chatPreview from "../src/assets/chat.png";
 
 const steps = [
   {
-    number: "01",
-    title: "Open a workspace",
-    body: "Choose the project folder you want Struct to work in. Keep the agent focused on the files that matter.",
+    number: "Workspace",
+    title: "Open a folder",
+    body: "Choose the project you want Struct to work in. The agent stays focused on the files that matter.",
   },
   {
-    number: "02",
-    title: "Choose a model",
-    body: "Connect a supported hosted provider or use a local model through Ollama.",
+    number: "Model",
+    title: "Bring your own",
+    body: "Connect a hosted provider or run a local model through Ollama. You stay in control of cost and privacy.",
   },
   {
-    number: "03",
-    title: "Review the changes",
-    body: "See the proposed edits and decide what to keep. File deletions require confirmation.",
+    number: "Review",
+    title: "See every change",
+    body: "Inspect proposed edits before accepting them. File deletions always require confirmation.",
   },
 ];
 
 export default function Home() {
   return (
     <div className="site-page">
-      <MaintenanceBanner message="Back up and running" variant="info"/>
+      <MaintenanceBanner message="Back up and running" variant="info" />
 
-      <section className="home-hero page-shell">
-        <div className="home-hero-copy">
-          <p className="eyebrow"><span/>Forge builds</p>
-          <h1>Software made to be<br className="home-title-break" />{" "}<span>used, not admired.</span></h1>
-          <p className="hero-description">
-            Forge is a GitHub organization for software projects. Struct is our current project: a desktop workspace for working with an AI coding agent.
-          </p>
-          <div className="hero-actions">
-            <Link to="/products/struct" className="button button-primary">Explore Struct <IoArrowForward aria-hidden="true" /></Link>
-            <a href="https://github.com/ForgeBuilds" target="_blank" rel="noopener noreferrer" className="button button-quiet"><IoLogoGithub aria-hidden="true" /> GitHub</a>
+      <section className="site-shell hero">
+        <div className="hero-copy rise">
+          <p className="eyebrow">Forge builds</p>
+
+          <h1 className="display display-xl hero-title">
+            Software made to be used, not admired.
+          </h1>
+
+          <div className="hero-bottom">
+            <p className="lead hero-lead">
+              Forge is a small studio for software projects. Struct is our
+              current project: a desktop workspace for working with an AI coding
+              agent.
+            </p>
+
+            <div className="hero-actions">
+              <Link to="/products/struct" className="btn btn-primary">
+                Explore Struct
+                <IoArrowForward aria-hidden="true" />
+              </Link>
+              <a
+                href="https://github.com/ForgeBuilds"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-quiet"
+              >
+                <IoLogoGithub aria-hidden="true" />
+                GitHub
+              </a>
+            </div>
           </div>
-          <p className="hero-note">Struct is free to use. A Struct account is optional for local features.</p>
+
+          <div className="hero-meta">
+            <span>Desktop app</span>
+            <span>Local-first</span>
+            <span>Free to use</span>
+          </div>
         </div>
-        <div className="home-hero-art" aria-label="Forge mark" role="img">
-          <div className="hero-art-glow" />
-          <img src={forgeCube} alt="" className="rounded-2xl" />
-          <span className="hero-art-caption"></span>
+
+        <figure className="hero-figure rise rise-delay-2">
+          <img
+            src={chatPreview}
+            alt="The Struct desktop workspace with an agent conversation"
+            className="hero-shot"
+          />
+          <figcaption>Struct — agent workspace</figcaption>
+        </figure>
+      </section>
+
+      <section className="section hairline">
+        <div className="site-shell">
+          <div className="section-heading-row">
+            <div>
+              <p className="eyebrow">The project</p>
+              <h2 className="display display-md mt-3">
+                Meet Struct<span className="accent">.</span>
+              </h2>
+              <p className="section-intro">
+                A lightweight desktop app that brings an AI agent into the
+                project folder you open. You choose the model, and review the
+                work before accepting changes.
+              </p>
+            </div>
+
+            <Link className="text-link" to="/products/struct">
+              Product details
+              <IoArrowForward aria-hidden="true" />
+            </Link>
+          </div>
+
+          <div className="feature-grid mt-12">
+            {steps.map((step) => (
+              <article className="feature-cell" key={step.number}>
+                <span className="feature-kicker">{step.number}</span>
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="home-project page-shell">
-        <div className="section-heading-row">
+      <section className="quote-band">
+        <div className="site-shell quote-inner">
           <div>
-            <p className="eyebrow">The project</p>
-            <h2>Meet Struct<span className="accent-period">.</span></h2>
+            <p className="eyebrow">The idea</p>
+            <p className="quote-source">A collaborator, not an autopilot</p>
           </div>
-          <Link className="text-link" to="/products/struct">Product details <IoArrowForward aria-hidden="true" /></Link>
-        </div>
-        <p className="section-intro">A lightweight desktop app that brings an AI agent into the project folder you open. You choose the model, and review the work before accepting changes.</p>
 
-        <div className="workflow-grid">
-          {steps.map((step) => (
-            <article className="workflow-card" key={step.number}>
-              <span className="workflow-number">{step.number}</span>
-              <h3>{step.title}</h3>
-              <p>{step.body}</p>
-            </article>
-          ))}
+          <div className="quote-aside">
+            <blockquote>
+              “The agent should feel like a capable teammate — one that shows its
+              work, and leaves the final decision to you.”
+            </blockquote>
+            <p>
+              Struct can read, search, and propose edits inside a real folder.
+              It does not silently take ownership of your repository.
+            </p>
+            <p>
+              Every consequential change is reviewable. That is the whole point.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="home-closer page-shell">
-        <div>
-          <p className="eyebrow">Start here</p>
-          <h2>Want to try it?</h2>
-          <p>Get the latest available build, or read the guide before installing.</p>
-        </div>
-        <div className="hero-actions">
-          <Link to="/downloads" className="button button-primary">Downloads <IoArrowForward aria-hidden="true" /></Link>
-          <Link to="/documentation" className="button button-quiet">Read the guide</Link>
+      <section className="closer">
+        <div className="site-shell closer-inner">
+          <div className="closer-copy">
+            <p className="eyebrow">Start here</p>
+            <h2 className="display display-lg">Want to try it?</h2>
+            <p>
+              Get the latest available build, or read the guide before
+              installing.
+            </p>
+          </div>
+
+          <div className="closer-actions">
+            <Link to="/downloads" className="btn btn-primary">
+              Downloads
+              <IoArrowForward aria-hidden="true" />
+            </Link>
+            <Link to="/documentation" className="btn btn-quiet">
+              Read the guide
+            </Link>
+          </div>
         </div>
       </section>
     </div>

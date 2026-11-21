@@ -1,7 +1,5 @@
-
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-//import {MaintenanceBanner} from "./alert.tsx"
 import {
   IoLogoApple,
   IoLogoTux,
@@ -10,7 +8,6 @@ import {
   IoOpenOutline,
   IoInformationCircleOutline,
 } from "react-icons/io5";
-//import { MaintenanceBanner } from "./alert";
 
 interface ReleaseAsset {
   name: string;
@@ -74,7 +71,10 @@ function parseVersion(tag: string) {
   return match ? match[1] : tag.replace(/^release[_v-]*/i, "");
 }
 
-function findAsset(assets: ReleaseAsset[], matches: (asset: ReleaseAsset) => boolean) {
+function findAsset(
+  assets: ReleaseAsset[],
+  matches: (asset: ReleaseAsset) => boolean,
+) {
   return assets.find(matches);
 }
 
@@ -88,6 +88,26 @@ function PlatformIcon({ os }: { os: OsKey }) {
   }
 
   return <IoLogoTux className="h-5 w-5" />;
+}
+
+function BuildRow({
+  href,
+  name,
+  size,
+}: {
+  href: string;
+  name: string;
+  size: number;
+}) {
+  return (
+    <a className="build-row" href={href}>
+      <div className="min-w-0">
+        <p className="build-row-name">{name}</p>
+        <p className="build-row-size">{formatSize(size)}</p>
+      </div>
+      <IoDownloadOutline className="h-4 w-4" aria-hidden="true" />
+    </a>
+  );
 }
 
 export default function Downloads() {
@@ -122,9 +142,7 @@ export default function Downloads() {
           !(err instanceof DOMException && err.name === "AbortError")
         ) {
           setError(
-            err instanceof Error
-              ? err.message
-              : "Could not load release info."
+            err instanceof Error ? err.message : "Could not load release info.",
           );
         }
       } finally {
@@ -153,7 +171,8 @@ export default function Downloads() {
   const appImage = findAsset(assets, (asset) => /\.appimage$/i.test(asset.name));
   const dmg = findAsset(
     assets,
-    (asset) => /\.dmg$/i.test(asset.name) || /macos.*dmg.*\.zip$/i.test(asset.name),
+    (asset) =>
+      /\.dmg$/i.test(asset.name) || /macos.*dmg.*\.zip$/i.test(asset.name),
   );
 
   const primary =
@@ -166,393 +185,262 @@ export default function Downloads() {
           : exe ?? msi ?? dmg ?? deb ?? appImage ?? rpm;
 
   return (
-    <main className="downloads-page text-white">
-      {/* <MaintenanceBanner
-                message="V1.15.0 build has been repaired"
-                variant="info"
-              /> */}
-                    {/* <MaintenanceBanner message="Temporarily halting updates. Stay tuned for more information." variant="info"/> */}
-              
-      <div className="px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
-        <div className="mx-auto max-w-5xl">
-
-          {/* Header */}
-          <header className="mb-8 pb-6">
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-              <div>
-                <p className="mb-2 text-xs font-medium uppercase tracking-[0.16em] text-zinc-500">
-                  Forge / Struct
-                </p>
-
-                <h1 className="text-4xl font-medium tracking-tight sm:text-5xl py-15">
-                  Downloads
-                </h1>
-
-                <p className="mt-3 text-sm text-white/60">
-                  Current release builds for Windows, macOS, and Linux when packages are published. See product details on the{" "}
-                  <Link
-                    to="/products/struct"
-                    className="text-white/90 underline decoration-white/30 underline-offset-4 transition hover:decoration-white/70"
-                  >
-                    Struct page
-                  </Link>
-                  .
-                </p>
-              </div>
-
-              {version && (
-                <div className="font-mono text-xs text-white/50 ">
-                  v{version}
-                  {date && ` · ${date}`}
-                </div>
-              )}
-            </div>
-          </header>
-
-          {/* Recommended */}
-          <section className="border border-white/15 bg-black/40 rounded-lg">
-            <div className="p-6 sm:p-7">
-              {loading ? (
-                <div className="font-mono text-sm text-white/60">
-                  Loading...
-                </div>
-              ) : error ? (
-                <div>
-                  <p className="text-sm text-white/70">{error}</p>
-
-                  <a
-                    href={RELEASES_PAGE}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-4 inline-flex items-center gap-2 text-sm text-white underline underline-offset-4 hover:text-white/70"
-                  >
-                    Open releases
-                    <IoOpenOutline />
-                  </a>
-                </div>
-              ) : primary ? (
-                <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-11 w-11 items-center justify-center border border-white/25 bg-black/60">
-                      <PlatformIcon os={os} />
-                    </div>
-
-                    <div>
-                      <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">
-                        Recommended build
-                      </p>
-
-                      <h2 className="mt-1 text-lg font-medium">
-                        Struct v{version}
-                      </h2>
-
-                      <p className="mt-1 text-sm text-white/55">
-                        {OS_LABEL[os]} · {primary.name} ·{" "}
-                        {formatSize(primary.size)}
-                      </p>
-                    </div>
-                  </div>
-
-                  <a
-                    href={primary.browser_download_url}
-                    className="inline-flex h-11 items-center justify-center gap-2 bg-white px-6 text-sm font-medium text-black transition hover:bg-white/80"
-                  >
-                    Download
-                    <IoDownloadOutline className="h-4 w-4" />
-                  </a>
-                </div>
-              ) : (
-                <div>
-                  <h2 className="text-lg font-medium">
-                    Struct {version ? `v${version}` : ""}
-                  </h2>
-
-                  <p className="mt-2 text-sm text-white/55">
-                    No prebuilt package for {OS_LABEL[os]} is available.
-                  </p>
-
-                  <div className="mt-4 flex gap-5">
-                    <a
-                      href={RELEASES_PAGE}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-white underline underline-offset-4"
-                    >
-                      View releases
-                    </a>
-
-                    <a
-                      href={REPO_PAGE}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-white/60 underline underline-offset-4"
-                    >
-                      Build from source
-                    </a>
-                  </div>
-                </div>
-              )}
-            </div>
-
-             {exe && msi && (
-              <div className="border-t border-white/15 bg-white/[0.03] px-6 py-4">
-                <p className="text-xs text-white/50">
-                  Alternate Windows installer:{" "}
-                  <a
-                    href={msi.browser_download_url}
-                    className="text-white/80 underline underline-offset-4 hover:text-white"
-                  >
-                    {msi.name}
-                  </a>{" "}
-                  ({formatSize(msi.size)})
-                </p>
-              </div>
-            )} 
-          </section>
-
-          {/* Builds */}
-          <section className="mt-10">
-            <div className="mb-5">
-              <h2 className="text-lg font-medium m-0.5">
-                Available builds
-              </h2>
-
-              {/* <p className="mt-1 text-sm text-white/50">
-                Installers included with the latest release.
-              </p> */}
-            </div>
-
-            <div className="grid gap-6 md:grid-cols-2">
-
-              {/* Windows */}
-              <section className="border border-white/25 bg-black/40 rounded-lg">
-                <div className="flex items-center gap-3 border-b border-white/20 px-5 py-4">
-                  <IoLogoWindows className="h-5 w-5 text-white/80" />
-
-                  <div>
-                    <h3 className="text-sm font-medium">
-                      Windows
-                    </h3>
-
-                    <p className="mt-0.5 text-xs text-white/45">
-                      Windows 11 or later · 64-bit
-                    </p>
-                  </div>
-                </div>
-
-                <div className="px-5">
-                  {exe && (
-                    <a
-                      href={exe.browser_download_url}
-                      className="group flex items-center justify-between py-4"
-                    >
-                      <div className="min-w-0">
-                        <p className="truncate text-sm text-white/80 group-hover:text-white">
-                          {exe.name}
-                        </p>
-
-                        <p className="mt-1 font-mono text-[11px] text-white/40">
-                          {formatSize(exe.size)}
-                        </p>
-                      </div>
-
-                      <IoDownloadOutline className="ml-4 h-4 w-4 shrink-0 text-white/40 group-hover:text-white" />
-                    </a>
-                  )}
-
-                  {msi && (
-                    <a
-                      href={msi.browser_download_url}
-                      className="group flex items-center justify-between border-b border-white/10 py-4"
-                    >
-                      <div className="min-w-0">
-                        <p className="truncate text-sm text-white/80 group-hover:text-white">
-                          {msi.name}
-                        </p>
-
-                        <p className="mt-1 font-mono text-[11px] text-white/40">
-                          {formatSize(msi.size)}
-                        </p>
-                      </div>
-
-                      <IoDownloadOutline className="ml-4 h-4 w-4 shrink-0 text-white/40 group-hover:text-white" />
-                    </a>
-                  )}
-
-                  {!exe && !msi && (
-                    <p className="py-5 text-sm text-white/40">
-                      No Windows installer available.
-                    </p>
-                  )}
-                </div>
-              </section>
-
-              {/* Linux / macOS */}
-              <section className="border border-white/25 bg-black/40 rounded-lg">
-                <div className="flex items-center gap-3 border-b border-white/20 px-5 py-4">
-                  {dmg ? (
-                    <IoLogoApple className="h-5 w-5 text-white/80" />
-                  ) : (
-                    <IoLogoTux className="h-5 w-5 text-white/80" />
-                  )}
-
-                  <div>
-                    <h3 className="text-sm font-medium">
-                      Linux & macOS
-                    </h3>
-
-                    <p className="mt-0.5 text-xs text-white/45">
-                      Available release packages
-                    </p>
-                  </div>
-                </div>
-
-                <div className="px-5">
-                  {deb && (
-                    <a
-                      href={deb.browser_download_url}
-                      className="group flex items-center justify-between border-white/10 py-4"
-                    >
-                      <div>
-                        <p className="text-sm text-white/80 group-hover:text-white">
-                          {deb.name}
-                        </p>
-
-                        <p className="mt-1 font-mono text-[11px] text-white/40">
-                          {formatSize(deb.size)}
-                        </p>
-                      </div>
-
-                      <IoDownloadOutline className="h-4 w-4 text-white/40 group-hover:text-white" />
-                    </a>
-                  )}
-
-                  {rpm && (
-                    <a
-                      href={rpm.browser_download_url}
-                      className="group flex items-center justify-between border-white/10 py-4"
-                    >
-                      <div>
-                        <p className="text-sm text-white/80 group-hover:text-white">
-                          {rpm.name}
-                        </p>
-
-                        <p className="mt-1 font-mono text-[11px] text-white/40">
-                          {formatSize(rpm.size)}
-                        </p>
-                      </div>
-
-                      <IoDownloadOutline className="h-4 w-4 text-white/40 group-hover:text-white" />
-                    </a>
-                  )}
-
-                  {appImage && (
-                    <a
-                      href={appImage.browser_download_url}
-                      className="group flex items-center justify-between bg-(--fill-3) py-4"
-                    >
-                      <div className="min-w-0">
-                        <p className="truncate text-sm text-white/80 group-hover:text-white">
-                          {appImage.name}
-                        </p>
-
-                        <p className="mt-1 font-mono text-[11px] text-white/40">
-                          {formatSize(appImage.size)}
-                        </p>
-                      </div>
-
-                      <IoDownloadOutline className="ml-4 h-4 w-4 shrink-0 text-white/40 group-hover:text-white" />
-                    </a>
-                  )}
-
-                  {dmg && (
-                    <a
-                      href={dmg.browser_download_url}
-                      className="group flex items-center justify-between border-b border-white/10 py-4"
-                    >
-                      <div>
-                        <p className="text-sm text-white/80 group-hover:text-white">
-                          {dmg.name}
-                        </p>
-
-                        <p className="mt-1 font-mono text-[11px] text-white/40">
-                          {formatSize(dmg.size)}
-                        </p>
-                      </div>
-
-                      <IoDownloadOutline className="h-4 w-4 text-white/40 group-hover:text-white" />
-                    </a>
-                  )}
-
-                  {!deb && !rpm && !appImage && !dmg && (
-                    <a
-                      href={REPO_PAGE}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-between py-5 text-sm text-white/55 hover:text-white"
-                    >
-                      Build from source on GitHub
-                      <IoOpenOutline className="h-4 w-4" />
-                    </a>
-                  )}
-                </div>
-              </section>
-            </div>
-          </section>
-
-          {/* Footer */}
-          <footer className="mt-8 flex flex-col gap-4 pt-6 sm:flex-row sm:items-start sm:justify-between">
-        <div>
-          <p className="text-sm text-white/50 py-10">
-            Looking for an older build or release notes?
-          </p>
-
-          <a
-            href={RELEASES_PAGE}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2 inline-flex items-center gap-2 text-sm text-white hover:text-white/70"
-          >
-            Browse all releases
-            <IoOpenOutline />
-          </a>
-          <p className = "py-5"></p>
-        </div>
-
-        <div className="relative max-w-md sm:text-right">
-          <button
-            type="button"
-            className="inline-flex items-center gap-2 text-xs text-white/40 transition hover:text-white/70"
-            onClick={(e) => {
-              const popover = e.currentTarget.nextElementSibling;
-              popover?.classList.toggle("hidden");
-            }}
-          >
-            Important information
-            <IoInformationCircleOutline className="h-4 w-4" />
-          </button>
-
-          <div className="absolute right-0 z-50 mt-3 hidden w-80 border border-white/20 bg-zinc-950 p-4 text-left shadow-xl rounded-2xl">
-            <p className="text-xs font-medium text-white">
-              About builds
-            </p>
-
-            <p className="mt-2 text-xs leading-5 text-white/50">
-              Struct is currently in beta and Windows, macos, and linux builds are unsigned, so
-              Microsoft Defender SmartScreen may display a warning.
-            </p>
-
-            <p className="mt-2 text-xs leading-5 text-white/50">
-              Only download Struct from this page or the official Forge
-              GitHub repository. Never trust third-party builds or installers.
-              Verify the source before installing !
+    <main className="downloads-page">
+      <div className="site-shell">
+        <header className="page-header">
+          <div className="page-header-copy">
+            <p className="eyebrow">Forge / Struct</p>
+            <h1 className="display page-title">
+              Downloads<span className="accent">.</span>
+            </h1>
+            <p className="page-lead">
+              Current release builds for Windows, macOS, and Linux when packages
+              are published. See product details on the{" "}
+              <Link className="text-link" to="/products/struct">
+                Struct page
+              </Link>
+              .
             </p>
           </div>
-        </div>
-      </footer>
+
+          {version && (
+            <div className="page-aside">
+              v{version}
+              {date && (
+                <>
+                  <br />
+                  {date}
+                </>
+              )}
+            </div>
+          )}
+        </header>
+
+        <section className="download-hero" aria-label="Recommended download">
+          {loading ? (
+            <div className="download-hero-main">
+              <div className="platform-icon">
+                <PlatformIcon os={os} />
+              </div>
+              <div>
+                <p className="mono-label">Recommended build</p>
+                <h2>Checking the latest release…</h2>
+                <p className="download-hero-meta">
+                  Reading release information from GitHub.
+                </p>
               </div>
             </div>
-          </main>
-        
-      );
-      }
+          ) : error ? (
+            <div>
+              <p className="mono-label">Recommended build</p>
+              <h2>Release information unavailable</h2>
+              <p className="download-hero-meta">{error}</p>
+              <div className="download-actions mt-5">
+                <a
+                  href={RELEASES_PAGE}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                >
+                  Open releases
+                  <IoOpenOutline aria-hidden="true" />
+                </a>
+              </div>
+            </div>
+          ) : primary ? (
+            <>
+              <div className="download-hero-main">
+                <div className="platform-icon">
+                  <PlatformIcon os={os} />
+                </div>
+
+                <div className="min-w-0">
+                  <p className="mono-label">Recommended build</p>
+                  <h2>Struct v{version}</h2>
+                  <p className="download-hero-meta">
+                    {OS_LABEL[os]} · {primary.name} ·{" "}
+                    {formatSize(primary.size)}
+                  </p>
+                </div>
+              </div>
+
+              <div className="download-actions">
+                <a href={primary.browser_download_url} className="btn btn-primary">
+                  Download
+                  <IoDownloadOutline aria-hidden="true" />
+                </a>
+                <a
+                  href={RELEASES_PAGE}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-quiet"
+                >
+                  All releases
+                </a>
+              </div>
+            </>
+          ) : (
+            <>
+              <div>
+                <p className="mono-label">Recommended build</p>
+                <h2>Struct {version ? `v${version}` : ""}</h2>
+                <p className="download-hero-meta">
+                  No prebuilt package for {OS_LABEL[os]} is available in this
+                  release.
+                </p>
+              </div>
+              <div className="download-actions">
+                <a
+                  href={RELEASES_PAGE}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                >
+                  View releases
+                  <IoOpenOutline aria-hidden="true" />
+                </a>
+                <a
+                  href={REPO_PAGE}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-quiet"
+                >
+                  Build from source
+                </a>
+              </div>
+            </>
+          )}
+        </section>
+
+        <section className="builds-section" aria-labelledby="builds-title">
+          <div className="builds-heading">
+            <h2 id="builds-title">Available builds</h2>
+            <span className="mono-label">Latest release</span>
+          </div>
+
+          <div className="builds-grid">
+            <section className="build-card" aria-labelledby="windows-builds">
+              <div className="build-card-head">
+                <IoLogoWindows className="h-5 w-5" aria-hidden="true" />
+                <div>
+                  <h3 id="windows-builds">Windows</h3>
+                  <p>Windows 11 or later · 64-bit</p>
+                </div>
+              </div>
+
+              <div className="build-card-body">
+                {exe && (
+                  <BuildRow
+                    href={exe.browser_download_url}
+                    name={exe.name}
+                    size={exe.size}
+                  />
+                )}
+                {msi && (
+                  <BuildRow
+                    href={msi.browser_download_url}
+                    name={msi.name}
+                    size={msi.size}
+                  />
+                )}
+                {!exe && !msi && (
+                  <p className="build-empty">No Windows installer available.</p>
+                )}
+              </div>
+            </section>
+
+            <section className="build-card" aria-labelledby="unix-builds">
+              <div className="build-card-head">
+                {dmg ? (
+                  <IoLogoApple className="h-5 w-5" aria-hidden="true" />
+                ) : (
+                  <IoLogoTux className="h-5 w-5" aria-hidden="true" />
+                )}
+                <div>
+                  <h3 id="unix-builds">Linux &amp; macOS</h3>
+                  <p>Available release packages</p>
+                </div>
+              </div>
+
+              <div className="build-card-body">
+                {deb && (
+                  <BuildRow
+                    href={deb.browser_download_url}
+                    name={deb.name}
+                    size={deb.size}
+                  />
+                )}
+                {rpm && (
+                  <BuildRow
+                    href={rpm.browser_download_url}
+                    name={rpm.name}
+                    size={rpm.size}
+                  />
+                )}
+                {appImage && (
+                  <BuildRow
+                    href={appImage.browser_download_url}
+                    name={appImage.name}
+                    size={appImage.size}
+                  />
+                )}
+                {dmg && (
+                  <BuildRow
+                    href={dmg.browser_download_url}
+                    name={dmg.name}
+                    size={dmg.size}
+                  />
+                )}
+                {!deb && !rpm && !appImage && !dmg && (
+                  <a
+                    className="build-row"
+                    href={REPO_PAGE}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <p className="build-row-name">Build from source on GitHub</p>
+                    <IoOpenOutline className="h-4 w-4" aria-hidden="true" />
+                  </a>
+                )}
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <div className="builds-footer">
+          <div>
+            <p>Looking for an older build or release notes?</p>
+            <a
+              href={RELEASES_PAGE}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-link"
+            >
+              Browse all releases
+              <IoOpenOutline aria-hidden="true" />
+            </a>
+          </div>
+
+          <details className="info-details">
+            <summary>
+              Important information
+              <IoInformationCircleOutline className="h-4 w-4" aria-hidden="true" />
+            </summary>
+            <div className="info-body">
+              <p>
+                Struct is currently in beta and Windows, macOS, and Linux builds
+                are unsigned, so Microsoft Defender SmartScreen may display a
+                warning.
+              </p>
+              <p>
+                Only download Struct from this page or the official Forge GitHub
+                repository. Never trust third-party builds or installers. Verify
+                the source before installing.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </main>
+  );
+}

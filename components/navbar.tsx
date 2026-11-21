@@ -3,7 +3,7 @@ import type { KeyboardEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
 import icon from "../src/assets/forgelogo.jpg";
 import AccountMenu from "./AccountMenu";
-import { IoClose, IoLogoGithub, IoMenu } from "react-icons/io5";
+import { IoArrowForward, IoClose, IoLogoGithub, IoMenu } from "react-icons/io5";
 
 const navigation = [
   { label: "Struct", href: "/products/struct" },
@@ -37,96 +37,80 @@ export default function Navbar() {
   };
 
   return (
-    <nav
-      aria-label="Primary"
-      className="site-nav sticky top-0 z-50 w-full border-b border-white/10 bg-[#10100f]/90 backdrop-blur-xl"
-    >
-      <div className="site-nav-inner mx-auto flex h-[clamp(4.25rem,5vw,5.5rem)] max-w-7xl items-center justify-between px-[clamp(1rem,3vw,2.5rem)]">
-        {/* Logo */}
-        <Link
-          to="/"
-          className="flex shrink-0 items-center gap-[clamp(0.5rem,1vw,0.75rem)] text-[clamp(1rem,1.2vw,1.25rem)] font-semibold tracking-tight text-white"
-          aria-label="Forge — home"
-        >
-          <img
-            src={icon}
-            alt="Forge logo"
-            className="h-[clamp(1.75rem,2.5vw,2.25rem)] w-[clamp(1.75rem,2.5vw,2.25rem)] rounded-md bg-[#f4f2ec] object-cover"
-          />
+    <nav aria-label="Primary" className="site-nav">
+      <div className="nav-shell">
+        <Link to="/" className="brand" aria-label="Forge — home">
+          <img src={icon} alt="Forge logo" className="brand-mark" />
           <span>Forge</span>
         </Link>
 
-        {/* Desktop nav */}
-        <div className="hidden shrink-0 items-center gap-1 md:flex">
+        <div className="nav-links">
           {navigation.map(({ label, href }) => (
             <Link
               key={label}
               to={href}
               aria-current={isActive(href) ? "page" : undefined}
-              className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-                isActive(href)
-                  ? "bg-white/10 text-white"
-                  : "text-zinc-400 hover:bg-white/5 hover:text-white"
-              }`}
+              className="nav-link"
             >
               {label}
             </Link>
           ))}
+        </div>
 
+        <div className="nav-actions">
           <AccountMenu />
-
           <a
             href="https://github.com/ForgeBuilds/Struct"
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-2 inline-flex items-center gap-1.5 rounded-md bg-[#ff8b52] px-4 py-2 text-sm font-semibold text-[#17100c] transition hover:bg-[#ffa274]"
+            className="nav-cta"
           >
-            <IoLogoGithub className="h-4 w-4 shrink-0" />
+            <IoLogoGithub className="h-4 w-4" aria-hidden="true" />
             <span>GitHub</span>
           </a>
         </div>
 
-        {/* Mobile hamburger */}
         <button
           type="button"
-          onClick={() => setMobileOpen((o) => !o)}
-          className="flex h-10 w-10 items-center justify-center rounded-md border border-white/10 bg-white/5 text-white transition hover:bg-white/10 md:hidden"
+          onClick={() => setMobileOpen((open) => !open)}
+          className="nav-toggle"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
           aria-controls="mobile-nav"
         >
-          {mobileOpen ? (
-          <IoClose/>
-          ) : (
-          <IoMenu/>
-          )}
+          {mobileOpen ? <IoClose className="h-5 w-5" /> : <IoMenu className="h-5 w-5" />}
         </button>
       </div>
+
       {mobileOpen && (
-        <div
-          id="mobile-nav"
-          onKeyDown={handleMenuKeyDown}
-          className="mobile-nav-menu md:hidden"
-        >
-          {navigation.map(({ label, href }) => (
-            <Link
-              key={label}
-              to={href}
-              onClick={() => setMobileOpen(false)}
-              aria-current={isActive(href) ? "page" : undefined}
-              className={`flex min-h-11 items-center rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-                isActive(href)
-                  ? "bg-white/10 text-white"
-                  : "text-zinc-400 hover:bg-white/5 hover:text-white"
-              }`}
-            >
-              {label}
-            </Link>
-          ))}
+        <div id="mobile-nav" onKeyDown={handleMenuKeyDown} className="mobile-menu">
+          <div className="mobile-menu-inner">
+            {navigation.map(({ label, href }) => (
+              <Link
+                key={label}
+                to={href}
+                onClick={() => setMobileOpen(false)}
+                aria-current={isActive(href) ? "page" : undefined}
+                className="mobile-link"
+              >
+                <span>{label}</span>
+                <IoArrowForward className="h-4 w-4 opacity-40" aria-hidden="true" />
+              </Link>
+            ))}
 
-          <AccountMenu />
-
-          
+            <div className="mobile-menu-actions">
+              <AccountMenu />
+              <a
+                href="https://github.com/ForgeBuilds/Struct"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary btn-sm"
+              >
+                <IoLogoGithub className="h-4 w-4" aria-hidden="true" />
+                GitHub
+              </a>
+            </div>
+          </div>
         </div>
       )}
     </nav>
