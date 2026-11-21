@@ -458,7 +458,7 @@ export default function AccountPage() {
 
   return (
     <div className="bg-zinc-950 text-white py-10">
-    <MaintenanceBanner message="Temporarily halting updates. Stay tuned for more information." variant="info"/>
+    <MaintenanceBanner message="Back up and running!!" variant="info"/>
       
       <section className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         {/* Page header */}

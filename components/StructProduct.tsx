@@ -15,7 +15,7 @@ const features = [
 export default function StructProduct() {
   return (
     <div className="product-page">
-            <MaintenanceBanner message="Temporarily halting updates. Stay tuned for more information." variant="info"/>
+            <MaintenanceBanner message="Back up and running!!!" variant="info"/>
       
       <section className="page-shell product-hero">
         <div className="product-hero-copy">
