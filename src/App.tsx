@@ -32,14 +32,14 @@ function ScrollToTop() {
 
 function PageContent() {
   return (
-    <div className="min-h-screen bg-[#10100f] text-white">
+    <div className="site-page min-h-screen">
       <Navbar />
-      
-        {/* Global auth modal (sign in / sign up) — opened by the navbar. */}
-        <AuthModal />
 
-        <main className="min-h-[65vh]">
-          <Suspense fallback={<div className="mx-auto max-w-7xl px-4 py-20 sm:px-6" aria-label="Loading page" />}>
+      {/* Global auth modal (sign in / sign up) — opened by the navbar. */}
+      <AuthModal />
+
+      <main className="min-h-[65vh]">
+        <Suspense fallback={<div className="site-shell py-24" aria-label="Loading page" />}>
             <Routes>
 
             {/* Home */}
@@ -112,19 +112,14 @@ function PageContent() {
             <Route
               path="*"
               element={
-                <div className="mx-auto max-w-7xl px-4 py-32 text-center sm:px-6">
-                  <h1 className="text-5xl font-semibold text-white">
-                    404
-                  </h1>
-
-                  <p className="mt-4 text-zinc-400">
-                    This page doesn&apos;t exist.
+                <div className="site-shell flex min-h-[60vh] flex-col items-start justify-center py-24">
+                  <p className="eyebrow">Error 404</p>
+                  <h1 className="display display-xl mt-4">Lost in the forge.</h1>
+                  <p className="lead">
+                    This page doesn&apos;t exist. It may have moved, or the link
+                    might be out of date.
                   </p>
-
-                  <Link
-                    to="/"
-                    className="mt-8 inline-block rounded-lg bg-white px-5 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
-                  >
+                  <Link to="/" className="btn btn-primary mt-8">
                     Back home
                   </Link>
                 </div>

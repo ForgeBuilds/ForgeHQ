@@ -156,156 +156,150 @@ export default function AuthModal() {
   const googleOff = providers?.google === false;
 
   return (
-    <>
-      <div
-        className="fixed inset-0 z-[60] flex items-center justify-center p-4"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="auth-modal-title"
-      >
+    <div
+      className="dialog-backdrop"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="auth-modal-title"
+    >
+      <button
+        type="button"
+        aria-label="Close sign-in"
+        onClick={close}
+        className="dialog-scrim"
+      />
+
+      <div className="dialog-panel auth-panel">
         <button
           type="button"
-          aria-label="Close sign-in"
           onClick={close}
-          className="absolute inset-0 h-full w-full cursor-default bg-zinc-950/80 backdrop-blur-sm"
-        />
-        <div className="relative w-full max-w-md rounded-2xl border border-zinc-800 bg-zinc-900 p-6 shadow-2xl shadow-black/50 sm:p-8">
-          <button
-            type="button"
-            onClick={close}
-            aria-label="Close"
-            className="absolute right-4 top-4 rounded-lg p-1 text-zinc-500 transition hover:bg-zinc-800 hover:text-white"
-          >
-            <IoCloseOutline className="h-5 w-5" />
-          </button>
+          aria-label="Close"
+          className="dialog-close absolute right-4 top-4"
+        >
+          <IoCloseOutline className="h-4 w-4" />
+        </button>
 
-          <h2 id="auth-modal-title" className="text-xl font-semibold text-white">
-            {isSetPassword ? "Set a new password" : isSignUp ? "Create your account" : "Sign in to Forge"}
-          </h2>
-          <p className="mt-2 text-sm leading-6 text-zinc-400">
-            {isSetPassword
-              ? "Choose a new password for your account."
-              : "The same account you use in the Struct app — chats, settings and keys follow you across devices."}
-          </p>
+        <h2 id="auth-modal-title">
+          {isSetPassword
+            ? "Set a new password"
+            : isSignUp
+              ? "Create your account"
+              : "Sign in to Forge"}
+        </h2>
+        <p>
+          {isSetPassword
+            ? "Choose a new password for your account."
+            : "The same account you use in the Struct app — chats, settings and keys follow you across devices."}
+        </p>
 
-          <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
-            {!isSetPassword && (
-              <div>
-                <label htmlFor="auth-email" className="block text-sm font-medium text-zinc-300">
-                  Email
-                </label>
-                <input
-                  id="auth-email"
-                  type="email"
-                  required
-                  autoComplete="email"
-                  value={email}
-                  onChange={(event) => setEmail(event.target.value)}
-                  placeholder="you@example.com"
-                  className="mt-1.5 w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3.5 py-2.5 text-sm text-white placeholder:text-zinc-600 outline-none transition focus:border-zinc-400"
-                />
-              </div>
-            )}
-
+        <form className="auth-form" onSubmit={handleSubmit}>
+          {!isSetPassword && (
             <div>
-              <label htmlFor="auth-password" className="block text-sm font-medium text-zinc-300">
-                {isSetPassword ? "New password" : "Password"}
-              </label>
+              <label htmlFor="auth-email">Email</label>
               <input
-                id="auth-password"
-                type="password"
+                id="auth-email"
+                type="email"
                 required
-                minLength={6}
-                autoComplete={isSetPassword || isSignUp ? "new-password" : "current-password"}
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-                placeholder={isSetPassword ? "At least 6 characters" : "Your password"}
-                className="mt-1.5 w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3.5 py-2.5 text-sm text-white placeholder:text-zinc-600 outline-none transition focus:border-zinc-400"
+                autoComplete="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                placeholder="you@example.com"
+                className="field"
               />
             </div>
-
-            {error && (
-              <p className="rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm leading-5 text-red-300">
-                {error}
-              </p>
-            )}
-            {notice && !error && (
-              <p className="rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-3 py-2 text-sm leading-5 text-emerald-300">
-                {notice}
-              </p>
-            )}
-
-            <button
-              type="submit"
-              disabled={busy}
-              className="w-full rounded-lg bg-white px-4 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200 disabled:opacity-50"
-            >
-              {busy ? "Working…" : isSetPassword ? "Save password" : isSignUp ? "Create account" : "Sign in"}
-            </button>
-          </form>
-
-          {!isSetPassword && (
-            <>
-              {!isSignUp && (
-                <button
-                  type="button"
-                  onClick={() => void handleForgot()}
-                  disabled={busy}
-                  className="mt-3 text-sm text-zinc-400 underline underline-offset-4 transition hover:text-white disabled:opacity-50"
-                >
-                  Forgot password?
-                </button>
-              )}
-
-              <div className="my-5 flex items-center gap-3">
-                <span className="h-px flex-1 bg-zinc-800" />
-                <span className="text-[11px] uppercase tracking-widest text-zinc-500">or continue with</span>
-                <span className="h-px flex-1 bg-zinc-800" />
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                <button
-                  type="button"
-                  disabled={busy || githubOff}
-                  title={githubOff ? providerDisabledMessage("github") : "Continue with GitHub"}
-                  onClick={() => void handleOAuth("github")}
-                  className="flex items-center justify-center gap-2 rounded-lg border border-zinc-700 px-3 py-2.5 text-sm font-medium text-white transition hover:bg-zinc-800 disabled:opacity-50"
-                >
-                  <IoLogoGithub className="h-4 w-4" />
-                  GitHub
-                </button>
-                <button
-                  type="button"
-                  disabled={busy || googleOff}
-                  title={googleOff ? providerDisabledMessage("google") : "Continue with Google"}
-                  onClick={() => void handleOAuth("google")}
-                  className="flex items-center justify-center gap-2 rounded-lg border border-zinc-700 px-3 py-2.5 text-sm font-medium text-white transition hover:bg-zinc-800 disabled:opacity-50"
-                >
-                  <IoLogoGoogle className="h-4 w-4" />
-                  Google
-                </button>
-              </div>
-              {(githubOff || googleOff) && (
-                <p className="mt-2 text-xs leading-5 text-amber-400/90">
-                  {[githubOff ? "GitHub" : null, googleOff ? "Google" : null].filter(Boolean).join(" and ")}{" "}
-                  sign-in is switched off in Supabase.
-                </p>
-              )}
-
-              <p className="mt-5 text-center text-sm text-zinc-400">
-                {isSignUp ? "Already have an account?" : "New to Forge?"}{" "}
-                <button
-                  type="button"
-                  onClick={() => switchMode(isSignUp ? "sign-in" : "sign-up")}
-                  className="font-medium text-white underline underline-offset-4 transition hover:text-zinc-300"
-                >
-                  {isSignUp ? "Sign in" : "Create one"}
-                </button>
-              </p>
-            </>
           )}
-        </div>
+
+          <div>
+            <label htmlFor="auth-password">
+              {isSetPassword ? "New password" : "Password"}
+            </label>
+            <input
+              id="auth-password"
+              type="password"
+              required
+              minLength={6}
+              autoComplete={isSetPassword || isSignUp ? "new-password" : "current-password"}
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              placeholder={isSetPassword ? "At least 6 characters" : "Your password"}
+              className="field"
+            />
+          </div>
+
+          {error && (
+            <p className="auth-message auth-message-error">{error}</p>
+          )}
+          {notice && !error && (
+            <p className="auth-message auth-message-ok">{notice}</p>
+          )}
+
+          <button type="submit" disabled={busy} className="btn btn-primary btn-block">
+            {busy
+              ? "Working…"
+              : isSetPassword
+                ? "Save password"
+                : isSignUp
+                  ? "Create account"
+                  : "Sign in"}
+          </button>
+        </form>
+
+        {!isSetPassword && (
+          <>
+            {!isSignUp && (
+              <button
+                type="button"
+                onClick={() => void handleForgot()}
+                disabled={busy}
+                className="mt-3 text-sm text-[var(--muted)] underline underline-offset-4 transition hover:text-[var(--ink)] disabled:opacity-50"
+              >
+                Forgot password?
+              </button>
+            )}
+
+            <div className="auth-divider">or continue with</div>
+
+            <div className="auth-oauth">
+              <button
+                type="button"
+                disabled={busy || githubOff}
+                title={githubOff ? providerDisabledMessage("github") : "Continue with GitHub"}
+                onClick={() => void handleOAuth("github")}
+              >
+                <IoLogoGithub className="h-4 w-4" />
+                GitHub
+              </button>
+              <button
+                type="button"
+                disabled={busy || googleOff}
+                title={googleOff ? providerDisabledMessage("google") : "Continue with Google"}
+                onClick={() => void handleOAuth("google")}
+              >
+                <IoLogoGoogle className="h-4 w-4" />
+                Google
+              </button>
+            </div>
+            {(githubOff || googleOff) && (
+              <p className="mt-2 text-xs leading-5 text-[var(--accent-dark)]">
+                {[githubOff ? "GitHub" : null, googleOff ? "Google" : null]
+                  .filter(Boolean)
+                  .join(" and ")}{" "}
+                sign-in is switched off in Supabase.
+              </p>
+            )}
+
+            <p className="auth-switch">
+              {isSignUp ? "Already have an account?" : "New to Forge?"}{" "}
+              <button
+                type="button"
+                onClick={() => switchMode(isSignUp ? "sign-in" : "sign-up")}
+              >
+                {isSignUp ? "Sign in" : "Create one"}
+              </button>
+            </p>
+          </>
+        )}
       </div>
-    </>
+    </div>
   );
 }

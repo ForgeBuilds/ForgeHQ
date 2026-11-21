@@ -1,5 +1,4 @@
 
-
 import {
   useCallback,
   useEffect,
@@ -25,23 +24,6 @@ import { isSupabaseConfigured } from "../src/lib/supabase";
 import { notifyAccountRefresh, useAccount } from "../src/lib/useAccount";
 import { MaintenanceBanner } from "./alert";
 
-/* ── Shared classes (single source so every block matches) ── */
-
-const FIELD_CLASS =
-  "w-full border-b border-zinc-800 bg-transparent py-1.5 text-sm text-white placeholder:text-zinc-600 transition focus:border-zinc-500 focus:outline-none";
-/** Compact label rhythm shared by the page and password dialog. */
-const LABEL_CLASS = "mb-1.5 block text-xs font-medium text-zinc-500";
-const PRIMARY_BUTTON =
-  "inline-flex items-center justify-center rounded-md bg-white px-4 py-2.5 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200 disabled:cursor-not-allowed disabled:opacity-40";
-const GHOST_BUTTON =
-  "inline-flex items-center justify-center rounded-md border border-zinc-800 px-4 py-2.5 text-sm font-medium text-zinc-300 transition hover:border-zinc-600 hover:text-white disabled:cursor-not-allowed disabled:opacity-50";
-const TEXT_BUTTON =
-  "text-sm text-zinc-400 transition hover:text-white disabled:cursor-not-allowed disabled:opacity-50";
-/** One clickable line in a hairline-separated list. */
-const ROW_CLASS =
-  "flex w-full items-center justify-between gap-4 py-2.5 text-left text-sm text-zinc-300 transition hover:text-white";
-const LIST_CLASS = "divide-y divide-zinc-800/70";
-
 function messageOf(err: unknown): string {
   return err instanceof Error ? err.message : String(err);
 }
@@ -50,7 +32,11 @@ function formatDate(iso: string | null): string {
   if (!iso) return "—";
   const date = new Date(iso);
   if (Number.isNaN(date.getTime())) return "—";
-  return date.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+  return date.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
 }
 
 function providerLabel(provider: string): string {
@@ -58,13 +44,6 @@ function providerLabel(provider: string): string {
   if (provider === "google") return "Google";
   return "Email & password";
 }
-
-/** Icon for the account's sign-in provider. */
-//function ProviderIcon({ provider }: { provider: string }) {
-  //if (provider === "github") return <IoLogoGithub className="h-3.5 w-3.5" />;
-  //if (provider === "google") return <IoLogoGoogle className="h-3.5 w-3.5" />;
-  //return <IoMailOutline className="h-3.5 w-3.5" />;
-//}
 
 /* ── UI primitives ── */
 
@@ -81,13 +60,15 @@ function Section({
   children: ReactNode;
 }) {
   return (
-    <section className="border-t border-zinc-800 pt-6">
-      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-        <h2 className="text-sm font-medium text-white">{title}</h2>
+    <section className="account-section">
+      <div className="account-section-head">
+        <h2>{title}</h2>
         {action}
       </div>
-      {description && <p className="mt-2 text-sm leading-5 text-zinc-500">{description}</p>}
-      <div className="mt-5">{children}</div>
+      {description && (
+        <p className="account-section-desc">{description}</p>
+      )}
+      <div className="account-section-body">{children}</div>
     </section>
   );
 }
@@ -109,12 +90,10 @@ function ActionRow({
       type="button"
       onClick={onClick}
       disabled={disabled}
-      className={`${ROW_CLASS} disabled:cursor-not-allowed disabled:opacity-50 ${
-        danger ? "text-red-400 hover:text-red-300" : ""
-      }`}
+      className={`row-button ${danger ? "is-danger" : ""}`}
     >
       <span className="min-w-0 truncate">{label}</span>
-      <IoChevronForward className="h-4 w-4 shrink-0 text-zinc-600" />
+      <IoChevronForward className="h-4 w-4" aria-hidden="true" />
     </button>
   );
 }
@@ -127,20 +106,16 @@ function Alert({
   tone: "error" | "success" | "warning";
   children: ReactNode;
 }) {
-  const styles =
-    tone === "error"
-      ? "border-red-500/40 text-red-300/90"
-      : tone === "success"
-        ? "border-emerald-500/40 text-emerald-300/90"
-        : "border-amber-500/40 text-amber-200/90";
-  return <p className={`border-l-2 pl-3 text-sm leading-5 ${styles}`}>{children}</p>;
+  return (
+    <p className={`alert-line alert-${tone}`}>{children}</p>
+  );
 }
 
 /** Centered modal shell: dimmed backdrop, Escape + backdrop close, scroll lock. */
 function Dialog({
   titleId,
   onClose,
-  width = "max-w-md",
+  width = "",
   children,
 }: {
   titleId: string;
@@ -162,18 +137,18 @@ function Dialog({
   }, [onClose]);
 
   return (
-    <div className="fixed inset-0 z-[70] flex items-center justify-center p-4">
+    <div className="dialog-backdrop">
       <button
         type="button"
         aria-label="Close dialog"
         onClick={onClose}
-        className="absolute inset-0 cursor-default bg-black/70 backdrop-blur-sm"
+        className="dialog-scrim"
       />
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className={`relative w-full ${width} rounded-lg border border-zinc-800 bg-zinc-900`}
+        className={`dialog-panel ${width}`}
       >
         {children}
       </div>
@@ -217,14 +192,11 @@ function PasswordDialog({
 }: PasswordDialogProps) {
   const inputType = reveal ? "text" : "password";
   return (
-    
     <Dialog titleId="account-password-title" onClose={onClose}>
-      <div className="flex items-start justify-between gap-4 px-5 py-4">
+      <div className="dialog-head">
         <div>
-          <h2 id="account-password-title" className="text-sm font-medium text-white">
-            Change password
-          </h2>
-          <p className="mt-1 text-xs leading-5 text-zinc-500">
+          <h2 id="account-password-title">Change password</h2>
+          <p>
             Signed in as {email || "your account"} · at least 6 characters.
           </p>
         </div>
@@ -232,21 +204,21 @@ function PasswordDialog({
           type="button"
           onClick={onClose}
           aria-label="Close"
-          className="-m-1 shrink-0 rounded p-1 text-zinc-500 transition hover:text-white"
+          className="dialog-close"
         >
           <IoCloseOutline className="h-4 w-4" />
         </button>
       </div>
 
-      <form onSubmit={onSubmit} className="border-t border-zinc-800 px-5 py-4">
-        <div className="flex items-baseline justify-between gap-3">
-          <label htmlFor="account-new-password" className={LABEL_CLASS}>
+      <form onSubmit={onSubmit} className="dialog-body">
+        <div className="field-label-row">
+          <label htmlFor="account-new-password" className="label">
             New password
           </label>
           <button
             type="button"
             onClick={onToggleReveal}
-            className="text-xs text-zinc-500 transition hover:text-zinc-300"
+            className="field-reveal"
           >
             {reveal ? "Hide" : "Show"}
           </button>
@@ -259,9 +231,12 @@ function PasswordDialog({
           autoComplete="new-password"
           autoFocus
           placeholder="At least 6 characters"
-          className={FIELD_CLASS}
+          className="field"
         />
-        <label htmlFor="account-confirm-password" className={`${LABEL_CLASS} mt-4`}>
+        <label
+          htmlFor="account-confirm-password"
+          className="label mt-4"
+        >
           Confirm new password
         </label>
         <input
@@ -271,7 +246,7 @@ function PasswordDialog({
           onChange={(event) => onConfirmChange(event.target.value)}
           autoComplete="new-password"
           placeholder="Repeat it"
-          className={FIELD_CLASS}
+          className="field"
         />
 
         {(error || note) && (
@@ -281,22 +256,21 @@ function PasswordDialog({
           </div>
         )}
 
-        <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
-          <button type="button" onClick={onClose} className={GHOST_BUTTON}>
+        <div className="dialog-actions">
+          <button type="button" onClick={onClose} className="btn btn-quiet btn-sm">
             Cancel
           </button>
-          <button type="submit" disabled={busy} className={PRIMARY_BUTTON}>
+          <button type="submit" disabled={busy} className="btn btn-primary btn-sm">
             {busy ? "Updating…" : "Update password"}
           </button>
         </div>
 
-        <p className="mt-5 border-t border-zinc-800 pt-4 text-xs leading-5 text-zinc-500">
+        <p className="dialog-footnote">
           Don&apos;t know your current password?{" "}
           <button
             type="button"
             onClick={onResetLink}
             disabled={resetBusy}
-            className="text-zinc-300 underline underline-offset-4 transition hover:text-white disabled:opacity-50"
           >
             {resetBusy ? "Sending the reset email…" : "Email me a reset link"}
           </button>
@@ -322,20 +296,24 @@ function ConfirmDialog({
   onConfirm: () => void;
 }) {
   return (
-    <Dialog titleId="account-confirm-title" onClose={onClose} width="max-w-sm">
-      <div className="p-5">
-        <h2 id="account-confirm-title" className="text-sm font-medium text-white">
-          {title}
-        </h2>
-        <p className="mt-2 text-sm leading-5 text-zinc-400">{body}</p>
-        <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
-          <button type="button" onClick={onClose} className={GHOST_BUTTON}>
+    <Dialog
+      titleId="account-confirm-title"
+      onClose={onClose}
+      width="dialog-panel-sm"
+    >
+      <div className="dialog-head">
+        <h2 id="account-confirm-title">{title}</h2>
+      </div>
+      <div className="dialog-body">
+        <p className="body-text">{body}</p>
+        <div className="dialog-actions">
+          <button type="button" onClick={onClose} className="btn btn-quiet btn-sm">
             Cancel
           </button>
           <button
             type="button"
             onClick={onConfirm}
-            className="inline-flex items-center justify-center rounded-md bg-red-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-red-400"
+            className="btn btn-danger btn-sm"
           >
             {confirmLabel}
           </button>
@@ -457,21 +435,23 @@ export default function AccountPage() {
   };
 
   return (
-    <div className="bg-zinc-950 text-white py-10">
-    <MaintenanceBanner message="Back up and running!!" variant="info"/>
-      
-      <section className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-        {/* Page header */}
-        <div className="max-w-xl">
-          <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Your account</h1>
-          <p className="mt-2 text-sm leading-5 text-zinc-400">
-            One account for this site and the Struct app — your profile and settings live here.
+    <div className="site-page">
+      <MaintenanceBanner message="Back up and running!!" variant="info" />
+
+      <div className="account-page">
+      <div className="account-shell">
+        <header className="account-header">
+          <p className="eyebrow">Forge / Account</p>
+          <h1>Your account</h1>
+          <p>
+            One account for this site and the Struct app — your profile and
+            settings live here.
           </p>
-        </div>
+        </header>
 
         {/* Result of a security action taken from the Security list */}
         {user && !passwordOpen && (passwordError || passwordNote) && (
-          <div className="mt-8 flex items-start justify-between gap-4">
+          <div className="account-alert-row">
             <Alert tone={passwordError ? "error" : "success"}>
               {passwordError ?? passwordNote}
             </Alert>
@@ -482,7 +462,7 @@ export default function AccountPage() {
                 setPasswordError(null);
                 setPasswordNote(null);
               }}
-              className="-m-1 shrink-0 rounded p-1 text-zinc-500 transition hover:text-white"
+              className="account-dismiss"
             >
               <IoCloseOutline className="h-4 w-4" />
             </button>
@@ -491,200 +471,197 @@ export default function AccountPage() {
 
         {/* Supabase not configured on this deployment */}
         {!isSupabaseConfigured && (
-          <div className="mt-10 max-w-xl">
+          <div className="account-section">
             <Alert tone="warning">
               Accounts aren&apos;t switched on for this deployment yet. Add{" "}
-              <code className="text-zinc-300">VITE_SUPABASE_URL</code> and{" "}
-              <code className="text-zinc-300">VITE_SUPABASE_ANON_KEY</code> (see{" "}
-              <code className="text-zinc-300">.env.example</code>) to the build environment and
-              redeploy.
+              <code>VITE_SUPABASE_URL</code> and{" "}
+              <code>VITE_SUPABASE_ANON_KEY</code> (see{" "}
+              <code>.env.example</code>) to the build environment and redeploy.
             </Alert>
           </div>
         )}
 
         {/* First session probe */}
         {isSupabaseConfigured && loading && (
-          <p className="mt-10 text-sm text-zinc-500">Loading your account…</p>
+          <p className="account-loading">Loading your account…</p>
         )}
 
         {/* Signed out gate */}
         {isSupabaseConfigured && !loading && !user && (
-          <div className="mt-10 max-w-xl">
-            <h2 className="text-xl font-semibold tracking-tight">Sign in to view your account</h2>
-            <p className="mt-3 text-sm leading-6 text-zinc-400">
-              Your profile shows up here once you&apos;re signed in. Use the same account you
-              sign into inside the Struct app.
+          <section className="account-section">
+            <div className="account-section-head">
+              <h2 className="display display-sm">Sign in to view your account</h2>
+            </div>
+            <p className="account-section-desc mt-3">
+              Your profile shows up here once you&apos;re signed in. Use the
+              same account you sign into inside the Struct app.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="account-actions">
               <button
                 type="button"
                 onClick={() => openAuthModal("sign-in")}
-                className={PRIMARY_BUTTON}
+                className="btn btn-primary"
               >
                 Sign in
               </button>
               <button
                 type="button"
                 onClick={() => openAuthModal("sign-up")}
-                className={GHOST_BUTTON}
+                className="btn btn-quiet"
               >
                 Create an account
               </button>
             </div>
-            <p className="mt-6 text-xs text-zinc-500">
+            <p className="hero-note">
               Free to create · no card required · cancel any time.
             </p>
-          </div>
+          </section>
         )}
 
         {user && (
           <>
             {/* Who you are */}
-            <div className="mt-6 flex items-start gap-3">
+            <div className="account-identity">
               {user.avatarUrl ? (
                 <img
                   src={user.avatarUrl}
                   alt=""
-                  className="h-10 w-10 shrink-0 rounded-full object-cover"
+                  className="account-avatar"
                 />
               ) : (
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-zinc-800 text-sm font-medium text-zinc-300">
+                <span className="account-avatar">
                   {(user.name || user.email || "A").charAt(0).toUpperCase()}
                 </span>
               )}
               <div className="min-w-0">
-                <p className="truncate text-sm font-medium text-white">{user.name}</p>
-                <p className="mt-0.5 truncate text-sm text-zinc-500">
+                <p className="account-name truncate">{user.name}</p>
+                <p className="account-sub truncate">
                   {user.email || providerLabel(user.provider)}
                 </p>
-                <p className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-zinc-500">
-                 
-                 
-                  <span>
-                    Member since {profile?.createdAt ? formatDate(profile.createdAt) : "—"}
-                  </span>
-                  <span aria-hidden="true">·</span>
-                  {/* <span className="font-mono" title={user.id}>
-                    {user.id.slice(0, 8)}…{user.id.slice(-4)}
-                  </span> */}
+                <p className="account-meta">
+                  Member since{" "}
+                  {profile?.createdAt ? formatDate(profile.createdAt) : "—"}
                 </p>
               </div>
             </div>
 
-            <div className="mt-8 space-y-8">
-
-              {/* ── Profile ── */}
-              <Section
-                title="Profile"
-                description="Shows on this page and inside the Struct app."
-                action={
-                  dirty ? <span className="text-xs text-amber-300/90">Unsaved changes</span> : undefined
-                }
-              >
-                <form onSubmit={(event) => void handleProfileSave(event)}>
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <div>
-                      <label htmlFor="account-name" className={LABEL_CLASS}>
-                        Display name
-                      </label>
-                      <input
-                        id="account-name"
-                        value={draft.name}
-                        onChange={(event) => {
-                          setSavedNote(null);
-                          setDraft((value) => ({ ...value, name: event.target.value }));
-                        }}
-                        placeholder="Your name"
-                        maxLength={80}
-                        className={FIELD_CLASS}
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="account-avatar" className={LABEL_CLASS}>
-                        Avatar URL <span className="text-zinc-600">(optional)</span>
-                      </label>
-                      <input
-                        id="account-avatar"
-                        value={draft.avatar}
-                        onChange={(event) => {
-                          setSavedNote(null);
-                          setDraft((value) => ({ ...value, avatar: event.target.value }));
-                        }}
-                        placeholder="https://example.com/avatar.png"
-                        className={FIELD_CLASS}
-                      />
-                    </div>
+            {/* ── Profile ── */}
+            <Section
+              title="Profile"
+              description="Shows on this page and inside the Struct app."
+              action={
+                dirty ? (
+                  <span className="account-unsaved">Unsaved changes</span>
+                ) : undefined
+              }
+            >
+              <form onSubmit={(event) => void handleProfileSave(event)}>
+                <div className="account-form-grid">
+                  <div>
+                    <label htmlFor="account-name" className="label">
+                      Display name
+                    </label>
+                    <input
+                      id="account-name"
+                      value={draft.name}
+                      onChange={(event) => {
+                        setSavedNote(null);
+                        setDraft((value) => ({ ...value, name: event.target.value }));
+                      }}
+                      placeholder="Your name"
+                      maxLength={80}
+                      className="field"
+                    />
                   </div>
-                  <div className="mt-5 flex flex-wrap items-center gap-3">
-                    <button type="submit" disabled={saving || !dirty} className={PRIMARY_BUTTON}>
-                      {saving ? "Saving…" : "Save changes"}
-                    </button>
-                    {dirty && (
-                      <button type="button" onClick={discardDraft} className={TEXT_BUTTON}>
-                        Discard
-                      </button>
-                    )}
-                    {savedNote && (
-                      <p className="flex items-center gap-1.5 text-xs text-emerald-300">
-                        <IoCheckmarkCircle className="h-3.5 w-3.5" />
-                        {savedNote}
-                      </p>
-                    )}
+                  <div>
+                    <label htmlFor="account-avatar" className="label">
+                      Avatar URL{" "}
+                      <span className="text-[var(--faint)]">(optional)</span>
+                    </label>
+                    <input
+                      id="account-avatar"
+                      value={draft.avatar}
+                      onChange={(event) => {
+                        setSavedNote(null);
+                        setDraft((value) => ({ ...value, avatar: event.target.value }));
+                      }}
+                      placeholder="https://example.com/avatar.png"
+                      className="field"
+                    />
                   </div>
-                  {saveError && (
-                    <div className="mt-6">
-                      <Alert tone="error">{saveError}</Alert>
-                    </div>
-                  )}
-                </form>
-              </Section>
-
-              {/* ── Security ── */}
-              <Section
-                title="Security"
-                description="Applies to this site and the Struct app on every device."
-              >
-                <div className={LIST_CLASS}>
-                  <ActionRow label="Change password" onClick={openPasswordDialog} />
-                  {/* <ActionRow
-                    label={resetBusy ? "Sending the reset email…" : "Email me a reset link"}
-                    onClick={() => void handleResetLink()}
-                    disabled={resetBusy}
-                  /> */}
-                  <ActionRow label="Sign out" onClick={() => void signOut()} />
-                  <ActionRow
-                    label="Sign out of all devices"
-                    onClick={() => setConfirmSignOutAll(true)}
-                    danger
-                  />
                 </div>
-              </Section>
-
-              {/* ── Help ── */}
-              <Section
-                title="Need a hand?"
-                description="Billing question, or something off with your account? We read everything that comes in."
-              >
-                <div className={LIST_CLASS}>
-                  <Link to="/contact" className={ROW_CLASS}>
-                    <span>Contact support</span>
-                    <IoChevronForward className="h-4 w-4 shrink-0 text-zinc-600" />
-                  </Link>
-                  <a
-                    href="https://discord.gg/nMfbNrebs"
-                    target="_blank"
-                    rel="noreferrer"
-                    className={ROW_CLASS}
+                <div className="account-actions">
+                  <button
+                    type="submit"
+                    disabled={saving || !dirty}
+                    className="btn btn-primary"
                   >
-                    <span>Join the Discord</span>
-                    <IoChevronForward className="h-4 w-4 shrink-0 text-zinc-600" />
-                  </a>
+                    {saving ? "Saving…" : "Save changes"}
+                  </button>
+                  {dirty && (
+                    <button
+                      type="button"
+                      onClick={discardDraft}
+                      className="btn btn-ghost btn-sm"
+                    >
+                      Discard
+                    </button>
+                  )}
+                  {savedNote && (
+                    <p className="account-note">
+                      <IoCheckmarkCircle className="h-3.5 w-3.5" />
+                      {savedNote}
+                    </p>
+                  )}
                 </div>
-              </Section>
-            </div>
+                {saveError && (
+                  <div className="mt-6">
+                    <Alert tone="error">{saveError}</Alert>
+                  </div>
+                )}
+              </form>
+            </Section>
+
+            {/* ── Security ── */}
+            <Section
+              title="Security"
+              description="Applies to this site and the Struct app on every device."
+            >
+              <div className="row-list">
+                <ActionRow label="Change password" onClick={openPasswordDialog} />
+                <ActionRow label="Sign out" onClick={() => void signOut()} />
+                <ActionRow
+                  label="Sign out of all devices"
+                  onClick={() => setConfirmSignOutAll(true)}
+                  danger
+                />
+              </div>
+            </Section>
+
+            {/* ── Help ── */}
+            <Section
+              title="Need a hand?"
+              description="Billing question, or something off with your account? We read everything that comes in."
+            >
+              <div className="row-list">
+                <Link to="/contact" className="row-button">
+                  <span>Contact support</span>
+                  <IoChevronForward className="h-4 w-4" aria-hidden="true" />
+                </Link>
+                <a
+                  href="https://discord.gg/nMfbNrebs"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="row-button"
+                >
+                  <span>Join the Discord</span>
+                  <IoChevronForward className="h-4 w-4" aria-hidden="true" />
+                </a>
+              </div>
+            </Section>
           </>
         )}
-      </section>
+      </div>
 
       {/* Change password — opened from the Security list */}
       {passwordOpen && (
@@ -716,7 +693,7 @@ export default function AccountPage() {
           onConfirm={handleSignOutEverywhere}
         />
       )}
+      </div>
     </div>
   );
 }
-
