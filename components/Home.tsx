@@ -31,7 +31,7 @@ const textLink =
 export default function Home() {
   return (
     <div className="relative overflow-clip">
-      <MaintenanceBanner message="Back up and running" variant="info" />
+      <MaintenanceBanner message="Github and google login methods are currently down. Stay updated!" variant="info" />
 
       <section className="mx-auto w-full max-w-6xl px-5 pb-14 pt-16 sm:px-6 sm:pb-16 sm:pt-20 lg:pt-28">
         <div className="rise max-w-4xl">
