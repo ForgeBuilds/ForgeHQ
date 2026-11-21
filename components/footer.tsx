@@ -15,24 +15,32 @@ const forgeLinks = [
 
 export default function Footer() {
   return (
-    <footer className="site-footer">
-      <div className="site-shell">
-        <div className="footer-grid">
-          <div className="footer-brand">
-            <Link to="/" className="brand">
-              <img src={icon} alt="" className="brand-mark" />
+    <footer className=" bg-paper py-14 sm:py-16 lg:py-20">
+      <div className="mx-auto w-full max-w-6xl px-5 sm:px-6">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr] lg:gap-12">
+          <div className="sm:col-span-2 lg:col-span-1">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2.5 font-sans text-[1.35rem] tracking-[-0.01em] text-ink"
+            >
+              <img
+                src={icon}
+                alt=""
+                className="block h-[1.95rem] w-[1.95rem] rounded-[0.45rem] object-cover shadow-sm"
+              />
               <span>Forge</span>
             </Link>
-            <p>
+            <p className="mt-4 max-w-xs text-[0.82rem] leading-[1.7] text-muted">
               A small studio building software made to be used, not admired.
-              Struct is our current project.
+              Struct is our current project. (not an actual legal entity, just a github org)
             </p>
-            <div className="footer-social">
+            <div className="mt-5 flex gap-2">
               <a
                 href="https://github.com/ForgeBuilds"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Forge on GitHub"
+                className="grid h-[2.2rem] w-[2.2rem] place-items-center rounded-[0.45rem] text-muted transition-colors hover:bg-surface hover:text-ink"
               >
                 <FaGithub />
               </a>
@@ -41,25 +49,38 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Forge on Instagram"
+                className="grid h-[2.2rem] w-[2.2rem] place-items-center rounded-[0.45rem] text-muted transition-colors hover:bg-surface hover:text-ink"
               >
                 <FaInstagram />
               </a>
             </div>
           </div>
 
-          <div className="footer-col">
-            <h3>Product</h3>
+          <div>
+            <h3 className="mb-3 font-mono text-[0.58rem] font-medium uppercase tracking-[0.15em] text-faint">
+              Product
+            </h3>
             {productLinks.map(({ label, href }) => (
-              <Link key={label} to={href}>
+              <Link
+                key={label}
+                to={href}
+                className="block py-1 text-[0.84rem] text-muted transition-colors hover:text-ink"
+              >
                 {label}
               </Link>
             ))}
           </div>
 
-          <div className="footer-col">
-            <h3>Forge</h3>
+          <div>
+            <h3 className="mb-3 font-mono text-[0.58rem] font-medium uppercase tracking-[0.15em] text-faint">
+              Forge
+            </h3>
             {forgeLinks.map(({ label, href }) => (
-              <Link key={label} to={href}>
+              <Link
+                key={label}
+                to={href}
+                className="block py-1 text-[0.84rem] text-muted transition-colors hover:text-ink"
+              >
                 {label}
               </Link>
             ))}
@@ -67,13 +88,14 @@ export default function Footer() {
               href="https://github.com/ForgeBuilds"
               target="_blank"
               rel="noopener noreferrer"
+              className="block py-1 text-[0.84rem] text-muted transition-colors hover:text-ink"
             >
               GitHub organization
             </a>
           </div>
         </div>
 
-        <div className="footer-bottom">
+        <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-line pt-5 text-[0.72rem] text-faint sm:flex-row sm:items-center lg:mt-16">
           <span>© {new Date().getFullYear()} Forge. All rights reserved.</span>
           <span>Struct is free to use</span>
         </div>

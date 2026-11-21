@@ -32,14 +32,14 @@ function ScrollToTop() {
 
 function PageContent() {
   return (
-    <div className="site-page min-h-screen">
+    <div className="relative min-h-screen overflow-clip">
       <Navbar />
 
       {/* Global auth modal (sign in / sign up) — opened by the navbar. */}
       <AuthModal />
 
       <main className="min-h-[65vh]">
-        <Suspense fallback={<div className="site-shell py-24" aria-label="Loading page" />}>
+        <Suspense fallback={<div className="mx-auto min-h-[50vh] w-full max-w-6xl px-5 sm:px-6" aria-label="Loading page" />}>
             <Routes>
 
             {/* Home */}
@@ -112,14 +112,21 @@ function PageContent() {
             <Route
               path="*"
               element={
-                <div className="site-shell flex min-h-[60vh] flex-col items-start justify-center py-24">
-                  <p className="eyebrow">Error 404</p>
-                  <h1 className="display display-xl mt-4">Lost in the forge.</h1>
-                  <p className="lead">
+                <div className="mx-auto flex min-h-[60vh] w-full max-w-6xl flex-col items-start justify-center px-5 py-24 sm:px-6">
+                  <p className="inline-flex items-center gap-2.5 font-mono text-[0.66rem] font-medium uppercase tracking-[0.16em] text-faint before:h-px before:w-6 before:bg-current before:opacity-55 before:content-['']">
+                    Error 404
+                  </p>
+                  <h1 className="mt-4 max-w-4xl text-balance text-[clamp(3.2rem,7.2vw,5.4rem)] font-bold leading-[0.98] tracking-[-0.038em] text-ink">
+                    Lost in the forge.
+                  </h1>
+                  <p className="mt-6 max-w-[38rem] text-pretty text-[clamp(1.02rem,1.5vw,1.16rem)] leading-[1.72] text-muted">
                     This page doesn&apos;t exist. It may have moved, or the link
                     might be out of date.
                   </p>
-                  <Link to="/" className="btn btn-primary mt-8">
+                  <Link
+                    to="/"
+                    className="mt-8 inline-flex min-h-11 items-center justify-center gap-2 rounded-[0.6rem] bg-ink px-4 py-2.5 text-sm font-medium text-cream shadow-[0_10px_24px_-16px_rgba(27,26,23,0.65)] transition hover:-translate-y-px hover:bg-[#2f2c26]"
+                  >
                     Back home
                   </Link>
                 </div>

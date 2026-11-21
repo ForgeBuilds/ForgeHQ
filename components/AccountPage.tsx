@@ -441,10 +441,10 @@ export default function AccountPage() {
       <div className="account-page">
       <div className="account-shell">
         <header className="account-header">
-          <p className="eyebrow">Forge / Account</p>
+          <p className="">Account</p>
           <h1>Your account</h1>
           <p>
-            One account for this site and the Struct app — your profile and
+            One account for this site and the Struct app. Your profile and
             settings live here.
           </p>
         </header>

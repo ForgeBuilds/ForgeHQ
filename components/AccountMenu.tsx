@@ -51,7 +51,7 @@ export default function AccountMenu() {
       <button
         type="button"
         onClick={() => openAuthModal("sign-in")}
-        className="nav-signin"
+        className="inline-flex min-h-[2.45rem] items-center px-2.5 py-2 text-sm font-medium text-muted transition-colors hover:text-ink"
       >
         Sign in
       </button>
@@ -61,18 +61,24 @@ export default function AccountMenu() {
   const initial = (user.name || user.email || "A").charAt(0).toUpperCase();
 
   return (
-    <div ref={containerRef} className="account-menu">
+    <div ref={containerRef} className="relative">
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
         aria-haspopup="menu"
         aria-expanded={open}
-        className="account-trigger"
+        className="inline-flex min-h-[2.45rem] items-center gap-2 rounded-[0.55rem] py-1 pl-1 pr-2 text-[0.82rem] font-medium text-ink-2 transition-colors hover:bg-ink/5"
       >
         {user.avatarUrl ? (
-          <img src={user.avatarUrl} alt="" className="account-trigger-avatar" />
+          <img
+            src={user.avatarUrl}
+            alt=""
+            className="grid h-7 w-7 place-items-center rounded-full bg-surface-2 object-cover text-[0.7rem] font-semibold text-ink-2"
+          />
         ) : (
-          <span className="account-trigger-avatar">{initial}</span>
+          <span className="grid h-7 w-7 place-items-center rounded-full bg-surface-2 text-[0.7rem] font-semibold text-ink-2">
+            {initial}
+          </span>
         )}
         <span className="hidden max-w-28 truncate sm:block">{user.name}</span>
         <IoChevronDown
@@ -81,14 +87,25 @@ export default function AccountMenu() {
       </button>
 
       {open && (
-        <div role="menu" className="account-dropdown">
-          <div className="account-dropdown-head">
-            <p>{user.name}</p>
-            <span>{user.email || user.provider}</span>
+        <div
+          role="menu"
+          className="absolute right-0 top-[calc(100%+0.5rem)] z-[60] w-60 overflow-hidden rounded-xl border border-line bg-black shadow-deep"
+        >
+          <div className="p-4">
+            <p className="m-0 truncate text-[0.84rem] font-semibold text-ink text-white">
+              {user.name}
+            </p>
+            <span className="mt-0.5 block truncate text-[0.72rem] text-faint text-white">
+              {user.email || user.provider}
+            </span>
           </div>
 
-          <div className="account-dropdown-links">
-            <Link to="/account" onClick={() => setOpen(false)}>
+          <div className=" p-1.5 text-white">
+            <Link
+              to="/account"
+              onClick={() => setOpen(false)}
+              className="flex min-h-[2.35rem] w-full items-center gap-2 rounded-[0.45rem] px-2 py-1.5 text-left text-[0.82rem] text-muted transition-colors"
+            >
               <IoPersonCircleOutline className="h-4 w-4" />
               <span>Your profile</span>
               <IoChevronForward className="ml-auto h-3.5 w-3.5 opacity-50" />
@@ -100,6 +117,7 @@ export default function AccountMenu() {
                 setOpen(false);
                 void signOut();
               }}
+              className="flex min-h-[2.35rem] w-full items-center gap-2 rounded-[0.45rem] px-2 py-1.5 text-left text-[0.82rem] text-muted transition-colors hover:bg-gray hover:text-ink"
             >
               <IoLogOutOutline className="h-4 w-4" />
               <span>Sign out</span>

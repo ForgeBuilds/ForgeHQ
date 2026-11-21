@@ -694,7 +694,7 @@ img {
 }
 
 .feature-cell {
-  border-top: 1px solid var(--line);
+
   padding-top: 1.25rem;
 }
 
@@ -1851,8 +1851,8 @@ img {
 
 .account-avatar {
   display: grid;
-  width: 2.7rem;
-  height: 2.7rem;
+  width: 5.7rem;
+  height: 5.7rem;
   flex-shrink: 0;
   place-items: center;
   border-radius: 50%;
