@@ -89,7 +89,7 @@ export default function AccountMenu() {
       {open && (
         <div
           role="menu"
-          className="absolute right-0 top-[calc(100%+0.5rem)] z-[60] w-60 overflow-hidden rounded-xl border border-line bg-black shadow-deep"
+          className="absolute right-0 top-[calc(100%+0.5rem)] z-[60] w-60 overflow-hidden rounded-xl border border-line bg-surface-0 shadow-deep"
         >
           <div className="p-4 bg-surface-2">
             <p className="m-0 truncate text-[0.84rem] font-semibold text-ink">
@@ -100,7 +100,7 @@ export default function AccountMenu() {
             </span>
           </div>
 
-          <div className=" p-1.5 text-white">
+          <div className=" p-1.5 text-ink">
             <Link
               to="/account"
               onClick={() => setOpen(false)}
