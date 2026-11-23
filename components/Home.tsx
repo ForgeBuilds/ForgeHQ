@@ -41,7 +41,7 @@ export default function Home() {
 
           <div className="mt-8 grid max-w-4xl grid-cols-1 items-end gap-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-10">
             <p className="max-w-[38rem] text-pretty text-[clamp(1.02rem,1.5vw,1.16rem)] leading-[1.72] text-muted">
-              Forge is a small studio for software projects. Struct is our
+              Forge is a small github organization that builds software projects. Struct is our
               current project: a desktop workspace for working with an AI coding
               agent.
             </p>
