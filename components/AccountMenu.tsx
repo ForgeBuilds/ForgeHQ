@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { Link, useLocation } from "react-router-dom";
 import {
   IoChevronDown,
@@ -86,10 +87,10 @@ export default function AccountMenu() {
         />
       </button>
 
-      {open && (
+      {open && createPortal(
         <div
           role="menu"
-          className="absolute right-0 top-[calc(100%+0.5rem)] z-[100] w-60 overflow-hidden rounded-xl border border-line bg-surface-0 shadow-deep"
+          className="fixed right-4 top-16 z-[9999] w-60 overflow-hidden rounded-xl border border-line bg-surface-0 shadow-deep"
         >
           <div className="p-4 bg-surface-2">
             <p className="m-0 truncate text-[0.84rem] font-semibold text-ink">
