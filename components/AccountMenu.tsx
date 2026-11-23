@@ -91,11 +91,11 @@ export default function AccountMenu() {
           role="menu"
           className="absolute right-0 top-[calc(100%+0.5rem)] z-[60] w-60 overflow-hidden rounded-xl border border-line bg-black shadow-deep"
         >
-          <div className="p-4">
-            <p className="m-0 truncate text-[0.84rem] font-semibold text-ink text-white">
+          <div className="p-4 bg-surface-2">
+            <p className="m-0 truncate text-[0.84rem] font-semibold text-ink">
               {user.name}
             </p>
-            <span className="mt-0.5 block truncate text-[0.72rem] text-faint text-white">
+            <span className="mt-0.5 block truncate text-[0.72rem] text-faint">
               {user.email || user.provider}
             </span>
           </div>
@@ -106,7 +106,7 @@ export default function AccountMenu() {
               onClick={() => setOpen(false)}
               className="flex min-h-[2.35rem] w-full items-center gap-2 rounded-[0.45rem] px-2 py-1.5 text-left text-[0.82rem] text-muted transition-colors"
             >
-              <IoPersonCircleOutline className="h-4 w-4" />
+              <IoPersonCircleOutline className="h-4.5 w-4.5" />
               <span>Your profile</span>
               <IoChevronForward className="ml-auto h-3.5 w-3.5 opacity-50" />
             </Link>
