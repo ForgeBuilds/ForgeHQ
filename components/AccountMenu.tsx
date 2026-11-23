@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
-import { Link, useLocation } from "react-router-dom";
+import { //Link, 
+  Link,
+  useLocation } from "react-router-dom";
 import {
   IoChevronDown,
-  IoChevronForward,
-  IoLogOutOutline,
-  IoPersonCircleOutline,
+  // IoChevronForward,
+  // IoLogOutOutline,
+  // IoPersonCircleOutline,
 } from "react-icons/io5";
-import { signOut } from "../src/lib/auth";
+// import { signOut } from "../src/lib/auth";
 import { openAuthModal } from "../src/lib/authModal";
 import { isSupabaseConfigured } from "../src/lib/supabase";
 import { useAccount } from "../src/lib/useAccount";
@@ -63,11 +64,9 @@ export default function AccountMenu() {
 
   return (
     <div ref={containerRef} className="relative">
-      <button
-        type="button"
-        onClick={() => setOpen((value) => !value)}
-        aria-haspopup="menu"
-        aria-expanded={open}
+      <Link
+        
+        to = "/account"
         className="inline-flex min-h-[2.45rem] items-center gap-2 rounded-[0.55rem] py-1 pl-1 pr-2 text-[0.82rem] font-medium text-ink-2 transition-colors hover:bg-ink/5"
       >
         {user.avatarUrl ? (
@@ -85,12 +84,12 @@ export default function AccountMenu() {
         <IoChevronDown
           className={`h-3.5 w-3.5 text-current opacity-50 transition ${open ? "rotate-180" : ""}`}
         />
-      </button>
-
-      {open && createPortal(
+      </Link>
+{/* 
+      {open && (
         <div
           role="menu"
-          className="fixed right-4 top-16 z-[9999] w-60 overflow-hidden rounded-xl border border-line bg-surface-0 shadow-deep"
+          className="absolute right-0 top-[calc(100%+0.5rem)] z-[9999] w-60 overflow-hidden rounded-xl border border-line bg-surface-0 shadow-deep"
         >
           <div className="p-4 bg-surface-2">
             <p className="m-0 truncate text-[0.84rem] font-semibold text-ink">
@@ -125,7 +124,7 @@ export default function AccountMenu() {
             </button>
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
